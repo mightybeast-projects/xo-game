@@ -24,10 +24,12 @@ namespace xo
             return size;
         }
 
+        void placeNext(int i, int j);
         void place(int i, int j, XOValue value);
 
     private:
         int size;
+        XOValue nextValue = X;
         std::vector<std::vector<XOValue>> arr;
     };
 }
