@@ -2,18 +2,20 @@
 #include "xo.hpp"
 
 using namespace xo;
+using namespace testing;
 
-TEST(XO, XO_Should_Have_Size_Specified_On_Initialization)
+struct XO_Tests : public Test
 {
-    int size = 3;
-    XO xo(size);
+    XO xo = XO(3);
+};
 
-    EXPECT_EQ(xo.getSize(), size);
+TEST_F(XO_Tests, XO_Should_Have_Size_Specified_On_Initialization)
+{
+    EXPECT_EQ(xo.getSize(), 3);
 }
 
-TEST(XO, Newly_Created_XO_Should_Have_Empty_Cells)
+TEST_F(XO_Tests, Newly_Created_XO_Should_Have_Empty_Cells)
 {
-    XO xo(3);
     auto state = xo.state();
 
     for (auto i = 0; i < xo.getSize(); i++)
@@ -21,10 +23,8 @@ TEST(XO, Newly_Created_XO_Should_Have_Empty_Cells)
             EXPECT_EQ(state[i][j], EMPTY);
 }
 
-TEST(XO, XO_Should_Place_Value)
+TEST_F(XO_Tests, XO_Should_Place_Value)
 {
-    XO xo(3);
-
     xo.place(1, 2, X);
     xo.place(2, 2, O);
 
@@ -32,10 +32,8 @@ TEST(XO, XO_Should_Place_Value)
     EXPECT_EQ(xo.state()[2][2], O);
 }
 
-TEST(XO, XO_Should_Not_Place_Empty_Value)
+TEST_F(XO_Tests, XO_Should_Not_Place_Empty_Value)
 {
-    XO xo(3);
-
     xo.place(1, 2, X);
     xo.place(1, 2, EMPTY);
 
