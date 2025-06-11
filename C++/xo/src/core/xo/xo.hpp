@@ -14,8 +14,17 @@ namespace xo
         XO(int size) : size(size),
                        arr(size, std::vector<XOValue>(size, EMPTY)) {};
 
-        const std::vector<std::vector<XOValue>> &state() const { return arr; }
-        int getSize() const { return size; }
+        inline const std::vector<std::vector<XOValue>> &state() const
+        {
+            return arr;
+        }
+
+        inline int getSize() const
+        {
+            return size;
+        }
+
+        void place(int i, int j, XOValue value);
 
     private:
         int size;
