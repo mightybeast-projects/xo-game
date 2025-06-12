@@ -27,7 +27,11 @@ bool XO::checkWin()
     auto diagonal1 = checkLine(0, 0, 1, 1);
     auto diagonal2 = checkLine(0, 2, 1, -1);
 
-    return diagonal1 || diagonal2;
+    auto vertical1 = checkLine(0, 0, 0, 1);
+    auto vertical2 = checkLine(1, 0, 0, 1);
+    auto vertical3 = checkLine(2, 0, 0, 1);
+
+    return diagonal1 || diagonal2 || vertical1 || vertical2 || vertical3;
 }
 
 bool XO::checkLine(int startI, int startJ, int iIncrement, int jIncrement)
