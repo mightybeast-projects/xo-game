@@ -48,7 +48,8 @@ TEST_F(XO_Tests, Should_Not_Place_Value_On_Already_Occupied_Cell)
 
 TEST_F(XO_Tests, Should_Not_Place_Value_If_Index_Is_Out_Of_Bounds)
 {
-    xo.place(-1, 3, X);
+    xo.place(0, 3, X);
+    xo.place(-1, 1, X);
 
     for (auto i = 0; i < xo.getSize(); i++)
         for (auto j = 0; j < xo.getSize(); j++)
@@ -71,4 +72,29 @@ TEST_F(XO_Tests, Should_Switch_Next_Value_After_Every_Next_Placement)
     EXPECT_EQ(xo.state()[0][1], X);
     EXPECT_EQ(xo.state()[1][1], O);
     EXPECT_EQ(xo.state()[2][2], X);
+}
+
+//---
+
+TEST_F(XO_Tests, Should_Check_Win_And_Return_False_On_Newly_Created_OX)
+{
+    EXPECT_EQ(xo.checkWin(), false);
+}
+
+TEST_F(XO_Tests, Should_Check_Win_And_Return_True_If_Player_Won_With_Diagonal_Line_1)
+{
+    xo.place(0, 0, X);
+    xo.place(1, 1, X);
+    xo.place(2, 2, X);
+
+    EXPECT_EQ(xo.checkWin(), true);
+}
+
+TEST_F(XO_Tests, Should_Check_Win_And_Return_True_If_Player_Won_With_Diagonal_Line_2)
+{
+    xo.place(0, 2, X);
+    xo.place(1, 1, X);
+    xo.place(2, 0, X);
+
+    EXPECT_EQ(xo.checkWin(), true);
 }

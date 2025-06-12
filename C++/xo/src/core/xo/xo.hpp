@@ -26,10 +26,13 @@ namespace xo
 
         void placeNext(int i, int j);
         void place(int i, int j, XOValue value);
+        bool checkWin();
 
     private:
-        int size;
+        const int size;
         XOValue nextValue = X;
         std::vector<std::vector<XOValue>> arr;
+
+        bool checkLine(int startI, int startJ, int iIncrement, int jIncrement);
     };
 }
