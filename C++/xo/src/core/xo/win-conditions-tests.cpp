@@ -9,12 +9,12 @@ struct XOWinConditions : public Test
     XO xo = XO(3);
 };
 
-TEST_F(XOWinConditions, Should_Check_Win_And_Return_False_On_Newly_Created_OX)
+TEST_F(XOWinConditions, Newly_Created_XO_Should_Not_Be_Finished)
 {
     EXPECT_EQ(xo.finished(), false);
 }
 
-TEST_F(XOWinConditions, Should_Check_Win_And_Return_True_If_Player_Won_With_Diagonal_Line_1)
+TEST_F(XOWinConditions, Should_Be_Finished_With_Diagonal_Win_Condition_1)
 {
     xo.place(0, 0, X);
     xo.place(1, 1, X);
@@ -23,7 +23,7 @@ TEST_F(XOWinConditions, Should_Check_Win_And_Return_True_If_Player_Won_With_Diag
     EXPECT_EQ(xo.finished(), true);
 }
 
-TEST_F(XOWinConditions, Should_Check_Win_And_Return_True_If_Player_Won_With_Diagonal_Line_2)
+TEST_F(XOWinConditions, Should_Be_Finished_With_Diagonal_Win_Condition_2)
 {
     xo.place(0, 2, X);
     xo.place(1, 1, X);
@@ -32,7 +32,7 @@ TEST_F(XOWinConditions, Should_Check_Win_And_Return_True_If_Player_Won_With_Diag
     EXPECT_EQ(xo.finished(), true);
 }
 
-TEST_F(XOWinConditions, Should_Check_Win_And_Return_True_If_Player_Won_With_Vertical_Line_1)
+TEST_F(XOWinConditions, Should_Be_Finished_With_Vertical_Win_Condition_1)
 {
     xo.place(0, 0, X);
     xo.place(0, 1, X);
@@ -41,7 +41,7 @@ TEST_F(XOWinConditions, Should_Check_Win_And_Return_True_If_Player_Won_With_Vert
     EXPECT_EQ(xo.finished(), true);
 }
 
-TEST_F(XOWinConditions, Should_Check_Win_And_Return_True_If_Player_Won_With_Vertical_Line_2)
+TEST_F(XOWinConditions, Should_Be_Finished_With_Vertical_Win_Condition_2)
 {
     xo.place(1, 0, X);
     xo.place(1, 1, X);
@@ -50,7 +50,7 @@ TEST_F(XOWinConditions, Should_Check_Win_And_Return_True_If_Player_Won_With_Vert
     EXPECT_EQ(xo.finished(), true);
 }
 
-TEST_F(XOWinConditions, Should_Check_Win_And_Return_True_If_Player_Won_With_Vertical_Line_3)
+TEST_F(XOWinConditions, Should_Be_Finished_With_Vertical_Win_Condition_3)
 {
     xo.place(2, 0, X);
     xo.place(2, 1, X);
@@ -59,7 +59,7 @@ TEST_F(XOWinConditions, Should_Check_Win_And_Return_True_If_Player_Won_With_Vert
     EXPECT_EQ(xo.finished(), true);
 }
 
-TEST_F(XOWinConditions, Should_Check_Win_And_Return_True_If_Player_Won_With_Horizontal_Line_1)
+TEST_F(XOWinConditions, Should_Be_Finished_With_Horizontal_Win_Condition_1)
 {
     xo.place(0, 0, X);
     xo.place(1, 0, X);
@@ -68,7 +68,7 @@ TEST_F(XOWinConditions, Should_Check_Win_And_Return_True_If_Player_Won_With_Hori
     EXPECT_EQ(xo.finished(), true);
 }
 
-TEST_F(XOWinConditions, Should_Check_Win_And_Return_True_If_Player_Won_With_Horizontal_Line_2)
+TEST_F(XOWinConditions, Should_Be_Finished_With_Horizontal_Win_Condition_2)
 {
     xo.place(0, 1, X);
     xo.place(1, 1, X);
@@ -77,7 +77,7 @@ TEST_F(XOWinConditions, Should_Check_Win_And_Return_True_If_Player_Won_With_Hori
     EXPECT_EQ(xo.finished(), true);
 }
 
-TEST_F(XOWinConditions, Should_Check_Win_And_Return_True_If_Player_Won_With_Horizontal_Line_3)
+TEST_F(XOWinConditions, Should_Be_Finished_With_Horizontal_Win_Condition_3)
 {
     xo.place(0, 2, X);
     xo.place(1, 2, X);

@@ -29,7 +29,7 @@ namespace xo
             return winner != EMPTY;
         }
 
-        inline bool getWinner() const
+        inline XOValue getWinner() const
         {
             return winner;
         }
