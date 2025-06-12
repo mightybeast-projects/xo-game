@@ -56,6 +56,17 @@ TEST_F(XOGeneral, Should_Not_Place_Value_If_Index_Is_Out_Of_Bounds)
             EXPECT_EQ(xo.state()[i][j], EMPTY);
 }
 
+TEST_F(XOGeneral, Should_Not_Place_Value_If_Player_Already_Won)
+{
+    xo.place(0, 0, X);
+    xo.place(1, 1, X);
+    xo.place(2, 2, X);
+
+    xo.place(0, 1, X);
+
+    EXPECT_EQ(xo.state()[0][1], EMPTY);
+}
+
 TEST_F(XOGeneral, Should_Place_Next_Value_Starting_With_X)
 {
     xo.placeNext(0, 2);

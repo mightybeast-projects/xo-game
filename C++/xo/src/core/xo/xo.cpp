@@ -4,19 +4,19 @@ using namespace xo;
 
 void XO::placeNext(int i, int j)
 {
-    place(i, j, nextValue);
-
     if (nextValue == X)
         nextValue = O;
-    else if (nextValue == O)
+    else if (nextValue == EMPTY || nextValue == O)
         nextValue = X;
+
+    place(i, j, nextValue);
 }
 
 void XO::place(int i, int j, XOValue value)
 {
-    const auto indexesAreOutOfBounds = (i < 0 || i >= size) || (j < 0 || j >= size);
+    const auto oob = (i < 0 || i >= size) || (j < 0 || j >= size);
 
-    if (indexesAreOutOfBounds || value == EMPTY || arr[i][j] != EMPTY)
+    if (checkWin() || oob || value == EMPTY || arr[i][j] != EMPTY)
         return;
 
     arr[i][j] = value;
@@ -24,25 +24,18 @@ void XO::place(int i, int j, XOValue value)
 
 bool XO::checkWin()
 {
-    auto diagonal1 = checkLine(0, 0, 1, 1);
-    auto diagonal2 = checkLine(0, 2, 1, -1);
+    auto d1 = checkLine(0, 0, 1, 1);
+    auto d2 = checkLine(0, 2, 1, -1);
 
-    auto vertical1 = checkLine(0, 0, 0, 1);
-    auto vertical2 = checkLine(1, 0, 0, 1);
-    auto vertical3 = checkLine(2, 0, 0, 1);
+    auto v1 = checkLine(0, 0, 0, 1);
+    auto v2 = checkLine(1, 0, 0, 1);
+    auto v3 = checkLine(2, 0, 0, 1);
 
-    auto horizontal1 = checkLine(0, 0, 1, 0);
-    auto horizontal2 = checkLine(0, 1, 1, 0);
-    auto horizontal3 = checkLine(0, 2, 1, 0);
+    auto h1 = checkLine(0, 0, 1, 0);
+    auto h2 = checkLine(0, 1, 1, 0);
+    auto h3 = checkLine(0, 2, 1, 0);
 
-    return diagonal1 ||
-           diagonal2 ||
-           vertical1 ||
-           vertical2 ||
-           vertical3 ||
-           horizontal1 ||
-           horizontal2 ||
-           horizontal3;
+    return d1 || d2 || v1 || v2 || v3 || h1 || h2 || h3;
 }
 
 bool XO::checkLine(int startI, int startJ, int iIncrement, int jIncrement)

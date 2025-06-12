@@ -30,7 +30,7 @@ namespace xo
 
     private:
         const int size;
-        XOValue nextValue = X;
+        XOValue nextValue = EMPTY;
         std::vector<std::vector<XOValue>> arr;
 
         bool checkLine(int startI, int startJ, int iIncrement, int jIncrement);
