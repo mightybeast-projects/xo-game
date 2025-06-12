@@ -16,7 +16,7 @@ void XO::place(int i, int j, XOValue value)
 {
     const auto oob = (i < 0 || i >= size) || (j < 0 || j >= size);
 
-    if (winner != EMPTY || oob || value == EMPTY || arr[i][j] != EMPTY)
+    if (isFinished() || oob || value == EMPTY || arr[i][j] != EMPTY)
         return;
 
     arr[i][j] = value;
@@ -26,8 +26,6 @@ void XO::place(int i, int j, XOValue value)
 
 bool XO::checkWinConditions()
 {
-    winner = EMPTY;
-
     int directions[8][4] = {
         {0, 0, 1, 1},
         {0, 2, 1, -1},
@@ -44,7 +42,7 @@ bool XO::checkWinConditions()
 
         if (checkLine(d[0], d[1], d[2], d[3]))
         {
-            winner = arr[d[0]][d[1]];
+            winner = &arr[d[0]][d[1]];
             return true;
         }
     }

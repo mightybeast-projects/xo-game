@@ -14,6 +14,9 @@ namespace xo
         XO(int size) : size(size),
                        arr(size, std::vector<XOValue>(size, EMPTY)) {};
 
+        void placeNext(int i, int j);
+        void place(int i, int j, XOValue value);
+
         inline const std::vector<std::vector<XOValue>> &state() const
         {
             return arr;
@@ -24,23 +27,20 @@ namespace xo
             return size;
         }
 
-        inline bool finished() const
+        inline bool isFinished() const
         {
-            return winner != EMPTY;
+            return (winner != nullptr && *winner != EMPTY);
         }
 
-        inline XOValue getWinner() const
+        inline XOValue *getWinner() const
         {
             return winner;
         }
 
-        void placeNext(int i, int j);
-        void place(int i, int j, XOValue value);
-
     private:
         const int size;
         XOValue nextValue = X;
-        XOValue winner = EMPTY;
+        XOValue *winner = nullptr;
         std::vector<std::vector<XOValue>> arr;
 
         bool checkWinConditions();
