@@ -16,11 +16,9 @@ TEST_F(XO_Tests, Should_Have_Size_Specified_On_Initialization)
 
 TEST_F(XO_Tests, Newly_Created_XO_Should_Have_Empty_Cells)
 {
-    auto state = xo.state();
-
     for (auto i = 0; i < xo.getSize(); i++)
         for (auto j = 0; j < xo.getSize(); j++)
-            EXPECT_EQ(state[i][j], EMPTY);
+            EXPECT_EQ(xo.state()[i][j], EMPTY);
 }
 
 TEST_F(XO_Tests, Should_Place_Value)
@@ -38,6 +36,23 @@ TEST_F(XO_Tests, Should_Not_Place_Empty_Value)
     xo.place(1, 2, EMPTY);
 
     EXPECT_EQ(xo.state()[1][2], X);
+}
+
+TEST_F(XO_Tests, Should_Not_Place_Value_On_Already_Occupied_Cell)
+{
+    xo.place(1, 2, X);
+    xo.place(1, 2, O);
+
+    EXPECT_EQ(xo.state()[1][2], X);
+}
+
+TEST_F(XO_Tests, Should_Not_Place_Value_If_Index_Is_Out_Of_Bounds)
+{
+    xo.place(-1, 3, X);
+
+    for (auto i = 0; i < xo.getSize(); i++)
+        for (auto j = 0; j < xo.getSize(); j++)
+            EXPECT_EQ(xo.state()[i][j], EMPTY);
 }
 
 TEST_F(XO_Tests, Should_Place_Next_Value_Starting_With_X)

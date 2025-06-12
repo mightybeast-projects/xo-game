@@ -14,6 +14,10 @@ void XO::placeNext(int i, int j)
 
 void XO::place(int i, int j, XOValue value)
 {
-    if (value != EMPTY)
-        arr[i][j] = value;
+    const auto indexesAreOutOfBounds = (i < 0 || i >= size) || (j < 0 || j >= size);
+
+    if (indexesAreOutOfBounds || value == EMPTY || arr[i][j] != EMPTY)
+        return;
+
+    arr[i][j] = value;
 }
