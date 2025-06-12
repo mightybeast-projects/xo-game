@@ -92,10 +92,10 @@ TEST_F(XOWinConditions, Should_Get_Winner)
     xo.place(1, 2, O);
     xo.place(2, 2, O);
 
-    EXPECT_EQ(*xo.getWinner(), O);
+    EXPECT_EQ(xo.getWinner(), O);
 }
 
 TEST_F(XOWinConditions, Winner_In_Newly_Created_XO_Should_Not_Be_Defined)
 {
-    EXPECT_EQ(xo.getWinner(), nullptr);
+    EXPECT_EQ(xo.getWinner(), EMPTY);
 }

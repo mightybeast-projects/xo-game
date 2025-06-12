@@ -29,10 +29,10 @@ namespace xo
 
         inline bool isFinished() const
         {
-            return (winner != nullptr && *winner != EMPTY);
+            return winner != EMPTY;
         }
 
-        inline XOValue *getWinner() const
+        inline XOValue getWinner() const
         {
             return winner;
         }
@@ -40,7 +40,7 @@ namespace xo
     private:
         const int size;
         XOValue nextValue = X;
-        XOValue *winner = nullptr;
+        XOValue winner = EMPTY;
         std::vector<std::vector<XOValue>> arr;
 
         bool checkWinConditions();

@@ -42,7 +42,7 @@ bool XO::checkWinConditions()
 
         if (checkLine(d[0], d[1], d[2], d[3]))
         {
-            winner = &arr[d[0]][d[1]];
+            winner = arr[d[0]][d[1]];
             return true;
         }
     }
