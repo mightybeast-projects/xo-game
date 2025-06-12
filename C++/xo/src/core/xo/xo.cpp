@@ -4,38 +4,52 @@ using namespace xo;
 
 void XO::placeNext(int i, int j)
 {
+    place(i, j, nextValue);
+
     if (nextValue == X)
         nextValue = O;
-    else if (nextValue == EMPTY || nextValue == O)
+    else if (nextValue == O)
         nextValue = X;
-
-    place(i, j, nextValue);
 }
 
 void XO::place(int i, int j, XOValue value)
 {
     const auto oob = (i < 0 || i >= size) || (j < 0 || j >= size);
 
-    if (checkWin() || oob || value == EMPTY || arr[i][j] != EMPTY)
+    if (winner != EMPTY || oob || value == EMPTY || arr[i][j] != EMPTY)
         return;
 
     arr[i][j] = value;
+
+    checkWinConditions();
 }
 
-bool XO::checkWin()
+bool XO::checkWinConditions()
 {
-    auto d1 = checkLine(0, 0, 1, 1);
-    auto d2 = checkLine(0, 2, 1, -1);
+    winner = EMPTY;
 
-    auto v1 = checkLine(0, 0, 0, 1);
-    auto v2 = checkLine(1, 0, 0, 1);
-    auto v3 = checkLine(2, 0, 0, 1);
+    int directions[8][4] = {
+        {0, 0, 1, 1},
+        {0, 2, 1, -1},
+        {0, 0, 0, 1},
+        {1, 0, 0, 1},
+        {2, 0, 0, 1},
+        {0, 0, 1, 0},
+        {0, 1, 1, 0},
+        {0, 2, 1, 0}};
 
-    auto h1 = checkLine(0, 0, 1, 0);
-    auto h2 = checkLine(0, 1, 1, 0);
-    auto h3 = checkLine(0, 2, 1, 0);
+    for (auto i = 0; i < 8; i++)
+    {
+        auto d = directions[i];
 
-    return d1 || d2 || v1 || v2 || v3 || h1 || h2 || h3;
+        if (checkLine(d[0], d[1], d[2], d[3]))
+        {
+            winner = arr[d[0]][d[1]];
+            return true;
+        }
+    }
+
+    return false;
 }
 
 bool XO::checkLine(int startI, int startJ, int iIncrement, int jIncrement)

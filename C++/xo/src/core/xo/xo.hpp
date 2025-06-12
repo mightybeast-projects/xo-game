@@ -24,15 +24,26 @@ namespace xo
             return size;
         }
 
+        inline bool finished() const
+        {
+            return winner != EMPTY;
+        }
+
+        inline bool getWinner() const
+        {
+            return winner;
+        }
+
         void placeNext(int i, int j);
         void place(int i, int j, XOValue value);
-        bool checkWin();
 
     private:
         const int size;
-        XOValue nextValue = EMPTY;
+        XOValue nextValue = X;
+        XOValue winner = EMPTY;
         std::vector<std::vector<XOValue>> arr;
 
+        bool checkWinConditions();
         bool checkLine(int startI, int startJ, int iIncrement, int jIncrement);
     };
 }
