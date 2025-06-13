@@ -3,6 +3,7 @@
 
 using namespace xo;
 using namespace testing;
+using namespace std;
 
 struct XOGame : public Test
 {
@@ -11,7 +12,7 @@ struct XOGame : public Test
 
 TEST_F(XOGame, Winner_Should_Not_Be_Defined_On_Initialization)
 {
-    EXPECT_EQ(xo.winner(), std::nullopt);
+    EXPECT_EQ(xo.winner(), nullopt);
 }
 
 TEST_F(XOGame, Should_Have_Winner_If_Winning_Condition_Is_Met)
