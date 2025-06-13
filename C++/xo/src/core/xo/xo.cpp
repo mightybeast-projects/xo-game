@@ -1,6 +1,16 @@
 #include "xo.hpp"
 
 using namespace xo;
+using namespace std;
+
+XO::XO(int size)
+{
+    _size = size;
+    _state.resize(size);
+
+    for (auto i = 0; i < size; i++)
+        _state[i].resize(size, nullopt);
+}
 
 void XO::placeNext(int i, int j)
 {
@@ -36,10 +46,8 @@ bool XO::checkWinConditions()
         {0, 1, 1, 0},
         {0, 2, 1, 0}};
 
-    for (auto i = 0; i < 8; i++)
+    for (auto d : directions)
     {
-        auto d = directions[i];
-
         if (checkLine(d[0], d[1], d[2], d[3]))
         {
             _winner = _state[d[0]][d[1]];
