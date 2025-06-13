@@ -16,7 +16,7 @@ void XO::place(int i, int j, XOValue value)
 {
     const auto oob = (i < 0 || i >= size) || (j < 0 || j >= size);
 
-    if (isFinished() || oob || value == EMPTY || arr[i][j] != EMPTY)
+    if (winner.has_value() || oob || value == EMPTY || arr[i][j] != EMPTY)
         return;
 
     arr[i][j] = value;

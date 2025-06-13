@@ -1,4 +1,5 @@
 #include <vector>
+#include <optional>
 
 namespace xo
 {
@@ -27,12 +28,7 @@ namespace xo
             return size;
         }
 
-        inline bool isFinished() const
-        {
-            return winner != EMPTY;
-        }
-
-        inline XOValue getWinner() const
+        inline std::optional<XOValue> getWinner() const
         {
             return winner;
         }
@@ -40,7 +36,7 @@ namespace xo
     private:
         const int size;
         XOValue nextValue = X;
-        XOValue winner = EMPTY;
+        std::optional<XOValue> winner = std::nullopt;
         std::vector<std::vector<XOValue>> arr;
 
         bool checkWinConditions();
