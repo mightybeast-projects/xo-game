@@ -11,13 +11,13 @@ struct XOGeneral : public Test
 
 TEST_F(XOGeneral, Should_Have_Size_Specified_On_Initialization)
 {
-    EXPECT_EQ(xo.getSize(), 3);
+    EXPECT_EQ(xo.size(), 3);
 }
 
 TEST_F(XOGeneral, Newly_Created_XO_Should_Have_Empty_Cells)
 {
-    for (auto i = 0; i < xo.getSize(); i++)
-        for (auto j = 0; j < xo.getSize(); j++)
+    for (auto i = 0; i < xo.size(); i++)
+        for (auto j = 0; j < xo.size(); j++)
             EXPECT_EQ(xo.state()[i][j], EMPTY);
 }
 
@@ -51,8 +51,8 @@ TEST_F(XOGeneral, Should_Not_Place_Value_If_Index_Is_Out_Of_Bounds)
     xo.place(0, 3, X);
     xo.place(-1, 1, X);
 
-    for (auto i = 0; i < xo.getSize(); i++)
-        for (auto j = 0; j < xo.getSize(); j++)
+    for (auto i = 0; i < xo.size(); i++)
+        for (auto j = 0; j < xo.size(); j++)
             EXPECT_EQ(xo.state()[i][j], EMPTY);
 }
 

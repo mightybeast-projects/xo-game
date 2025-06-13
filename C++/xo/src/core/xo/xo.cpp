@@ -4,22 +4,22 @@ using namespace xo;
 
 void XO::placeNext(int i, int j)
 {
-    place(i, j, nextValue);
+    place(i, j, _nextValue);
 
-    if (nextValue == X)
-        nextValue = O;
-    else if (nextValue == O)
-        nextValue = X;
+    if (_nextValue == X)
+        _nextValue = O;
+    else if (_nextValue == O)
+        _nextValue = X;
 }
 
 void XO::place(int i, int j, XOValue value)
 {
-    const auto oob = (i < 0 || i >= size) || (j < 0 || j >= size);
+    const auto oob = (i < 0 || i >= _size) || (j < 0 || j >= _size);
 
-    if (winner.has_value() || oob || value == EMPTY || arr[i][j] != EMPTY)
+    if (_winner.has_value() || oob || value == EMPTY || _state[i][j] != EMPTY)
         return;
 
-    arr[i][j] = value;
+    _state[i][j] = value;
 
     checkWinConditions();
 }
@@ -42,7 +42,7 @@ bool XO::checkWinConditions()
 
         if (checkLine(d[0], d[1], d[2], d[3]))
         {
-            winner = arr[d[0]][d[1]];
+            _winner = _state[d[0]][d[1]];
             return true;
         }
     }
@@ -54,10 +54,10 @@ bool XO::checkLine(int startI, int startJ, int iIncrement, int jIncrement)
 {
     int i = startI;
     int j = startJ;
-    XOValue value = arr[i][j];
+    XOValue value = _state[i][j];
 
-    for (auto k = 0; k < size; k++, i += iIncrement, j += jIncrement)
-        if (arr[i][j] == EMPTY || arr[i][j] != value)
+    for (auto k = 0; k < _size; k++, i += iIncrement, j += jIncrement)
+        if (_state[i][j] == EMPTY || _state[i][j] != value)
             return false;
 
     return true;

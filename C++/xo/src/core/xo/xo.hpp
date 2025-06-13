@@ -12,32 +12,32 @@ namespace xo
 
     struct XO
     {
-        XO(int size) : size(size),
-                       arr(size, std::vector<XOValue>(size, EMPTY)) {};
+        XO(int size) : _size(size),
+                       _state(size, std::vector<XOValue>(size, EMPTY)) {};
 
         void placeNext(int i, int j);
         void place(int i, int j, XOValue value);
 
         inline const std::vector<std::vector<XOValue>> &state() const
         {
-            return arr;
+            return _state;
         }
 
-        inline int getSize() const
+        inline int size() const
         {
-            return size;
+            return _size;
         }
 
-        inline std::optional<XOValue> getWinner() const
+        inline std::optional<XOValue> winner() const
         {
-            return winner;
+            return _winner;
         }
 
     private:
-        const int size;
-        XOValue nextValue = X;
-        std::optional<XOValue> winner = std::nullopt;
-        std::vector<std::vector<XOValue>> arr;
+        const int _size;
+        XOValue _nextValue = X;
+        std::optional<XOValue> _winner = std::nullopt;
+        std::vector<std::vector<XOValue>> _state;
 
         bool checkWinConditions();
         bool checkLine(int startI, int startJ, int iIncrement, int jIncrement);
