@@ -3,6 +3,7 @@
 
 using namespace xo;
 using namespace testing;
+using namespace std;
 
 struct XOGeneral : public Test
 {
@@ -18,7 +19,7 @@ TEST_F(XOGeneral, Newly_Created_XO_Should_Have_Empty_Cells)
 {
     for (auto i = 0; i < xo.size(); i++)
         for (auto j = 0; j < xo.size(); j++)
-            EXPECT_EQ(xo.state()[i][j], EMPTY);
+            EXPECT_EQ(xo.state()[i][j], nullopt);
 }
 
 TEST_F(XOGeneral, Should_Place_Value)
@@ -28,14 +29,6 @@ TEST_F(XOGeneral, Should_Place_Value)
 
     EXPECT_EQ(xo.state()[1][2], X);
     EXPECT_EQ(xo.state()[2][2], O);
-}
-
-TEST_F(XOGeneral, Should_Not_Place_Empty_Value)
-{
-    xo.place(1, 2, X);
-    xo.place(1, 2, EMPTY);
-
-    EXPECT_EQ(xo.state()[1][2], X);
 }
 
 TEST_F(XOGeneral, Should_Not_Place_Value_On_Already_Occupied_Cell)
@@ -53,7 +46,7 @@ TEST_F(XOGeneral, Should_Not_Place_Value_If_Index_Is_Out_Of_Bounds)
 
     for (auto i = 0; i < xo.size(); i++)
         for (auto j = 0; j < xo.size(); j++)
-            EXPECT_EQ(xo.state()[i][j], EMPTY);
+            EXPECT_EQ(xo.state()[i][j], nullopt);
 }
 
 TEST_F(XOGeneral, Should_Not_Place_Value_If_Player_Already_Won)
@@ -64,7 +57,7 @@ TEST_F(XOGeneral, Should_Not_Place_Value_If_Player_Already_Won)
 
     xo.place(0, 1, X);
 
-    EXPECT_EQ(xo.state()[0][1], EMPTY);
+    EXPECT_EQ(xo.state()[0][1], nullopt);
 }
 
 TEST_F(XOGeneral, Should_Place_Next_Value_Starting_With_X)
@@ -74,7 +67,7 @@ TEST_F(XOGeneral, Should_Place_Next_Value_Starting_With_X)
     EXPECT_EQ(xo.state()[0][2], X);
 }
 
-TEST_F(XOGeneral, Should_Switch_Next_Value_After_Every_Next_Placement)
+TEST_F(XOGeneral, Should_Switch_Value_After_Every_Next_Placement)
 {
     xo.placeNext(0, 1);
     xo.placeNext(1, 1);

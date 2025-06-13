@@ -16,7 +16,7 @@ void XO::place(int i, int j, XOValue value)
 {
     const auto oob = (i < 0 || i >= _size) || (j < 0 || j >= _size);
 
-    if (_winner.has_value() || oob || value == EMPTY || _state[i][j] != EMPTY)
+    if (_winner.has_value() || oob || _state[i][j].has_value())
         return;
 
     _state[i][j] = value;
@@ -54,10 +54,14 @@ bool XO::checkLine(int startI, int startJ, int iIncrement, int jIncrement)
 {
     int i = startI;
     int j = startJ;
-    XOValue value = _state[i][j];
+
+    if (!_state[i][j].has_value())
+        return false;
+
+    XOValue value = _state[i][j].value();
 
     for (auto k = 0; k < _size; k++, i += iIncrement, j += jIncrement)
-        if (_state[i][j] == EMPTY || _state[i][j] != value)
+        if (!_state[i][j].has_value() || _state[i][j] != value)
             return false;
 
     return true;
