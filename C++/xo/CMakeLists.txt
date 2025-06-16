@@ -16,12 +16,12 @@ FetchContent_MakeAvailable(googletest)
 
 enable_testing()
 
-file(GLOB_RECURSE SOURCE_FILES CONFIGURE_DEPENDS
-    src/core/**/*.cpp
-    src/core/**/*.hpp
+file(GLOB_RECURSE CORE_FILES CONFIGURE_DEPENDS
+    src/core/*.cpp
+    src/core/*.hpp
 )
 
-add_executable(xo-tests ${SOURCE_FILES})
+add_executable(xo-tests ${CORE_FILES})
 
 target_link_libraries(
   xo-tests
@@ -30,3 +30,18 @@ target_link_libraries(
 
 include(GoogleTest)
 gtest_discover_tests(xo-tests)
+
+file(GLOB_RECURSE UI_FILES CONFIGURE_DEPENDS
+    src/ui/*.cpp
+    src/ui/*.hpp
+)
+
+add_executable(xo-game ${UI_FILES}) 
+
+add_subdirectory(lib/raylib)
+
+target_link_libraries(xo-game raylib)
+
+target_include_directories(xo-game PRIVATE
+  ${CMAKE_CURRENT_SOURCE_DIR}/lib/raygui/src
+)
