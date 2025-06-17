@@ -44,4 +44,13 @@ target_link_libraries(xo-game raylib)
 
 target_include_directories(xo-game PRIVATE
   ${CMAKE_CURRENT_SOURCE_DIR}/lib/raygui/src
+  ${CMAKE_SOURCE_DIR}/src/core
 )
+
+file(GLOB_RECURSE ELEMENT_DIRS LIST_DIRECTORIES true "${CMAKE_SOURCE_DIR}/src/ui/*")
+
+foreach(dir ${ELEMENT_DIRS})
+    if(IS_DIRECTORY ${dir})
+        target_include_directories(xo-game PRIVATE ${dir})
+    endif()
+endforeach()
