@@ -1,27 +1,24 @@
 #define RAYGUI_IMPLEMENTATION
 #include "raylib.h"
 #include "raygui.h"
-#include "button.hpp"
 #include "config.hpp"
+#include "game-screen.hpp"
 
-using namespace element;
+using namespace screen;
 
 int main()
 {
     InitWindow(WIDTH, HEIGHT, "XOGame");
     SetTargetFPS(TARGET_FPS);
 
-    Button showBtn = Button((Rectangle){100, 200, 120, 30}, "#191#Show Message");
+    GameScreen game;
 
     while (!WindowShouldClose())
     {
+        ClearBackground(BG);
         BeginDrawing();
 
-        ClearBackground(BG);
-
-        DrawLine(0, 0, 300, 500, GREEN);
-
-        showBtn.draw();
+        game.draw();
 
         EndDrawing();
     }

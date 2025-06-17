@@ -1,7 +1,7 @@
 #include "button.hpp"
 #include "raygui.h"
 
-using namespace element;
+using namespace widget;
 
 void Button::draw()
 {
