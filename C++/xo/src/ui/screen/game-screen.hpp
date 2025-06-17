@@ -16,9 +16,9 @@ namespace screen
         void draw();
 
     private:
-        widget::Button btn;
-        widget::X x;
-        widget::O o;
+        widget::Button _startBtn;
+        widget::X _x;
+        widget::O _o;
 
         void init();
     };

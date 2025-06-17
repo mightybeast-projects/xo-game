@@ -5,8 +5,5 @@ using namespace widget;
 
 void Button::draw()
 {
-    const int res = GuiButton(_rect, _text.c_str());
-
-    if (res == 1)
-        isPressed = true;
+    GuiButton(_rect, _text.c_str());
 }

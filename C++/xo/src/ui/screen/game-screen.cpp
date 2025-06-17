@@ -20,16 +20,16 @@ void GameScreen::init()
         WIDTH / 2 - btnHeight / 2,
         btnWidth,
         btnHeight};
-    btn = Button(btnRect, GuiIconText(ICON_PLAYER_PLAY, "Start Game"));
+    _startBtn = Button(btnRect, GuiIconText(ICON_PLAYER_PLAY, "Start Game"));
 
-    x = X(100, 100, cellSize / 2);
-    o = O(50, 50, cellSize / 4);
+    _x = X(100, 100, cellSize / 2);
+    _o = O(50, 50, cellSize / 4);
 }
 
 void GameScreen::draw()
 {
-    x.draw();
-    o.draw();
+    _x.draw();
+    _o.draw();
 
     DrawLine(cellSize, 0, cellSize, WIDTH, CELL);
     DrawLine(cellSize * 2, 0, cellSize * 2, WIDTH, CELL);
@@ -37,5 +37,5 @@ void GameScreen::draw()
     DrawLine(0, cellSize, WIDTH, cellSize, CELL);
     DrawLine(0, cellSize * 2, WIDTH, cellSize * 2, CELL);
 
-    btn.draw();
+    _startBtn.draw();
 }

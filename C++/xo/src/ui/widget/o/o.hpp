@@ -1,3 +1,5 @@
+#pragma once
+
 #include "raylib.h"
 #include "config.hpp"
 
@@ -6,16 +8,16 @@ namespace widget
     struct O
     {
         O() {}
-        O(int x, int y, int radius) : x(x), y(y), radius(radius) {}
+        O(int x, int y, int radius) : _x(x), _y(y), _radius(radius) {}
 
         inline void draw()
         {
-            DrawCircleLines(x, y, radius * 1.3, CIRCLE);
+            DrawCircleLines(_x, _y, _radius * 1.3, CIRCLE);
         }
 
     private:
-        int x;
-        int y;
-        int radius;
+        int _x;
+        int _y;
+        int _radius;
     };
 }
