@@ -8,17 +8,24 @@ using namespace widget;
 
 void GameScreen::init()
 {
-    btn = Button((Rectangle){WIDTH / 2 - 120 / 2, HEIGHT / 2 - 30 / 2, 120, 30}, "#191#Start Game");
+    float btnWidth = 120;
+    float btnHeight = 30;
+
+    btn = Button((Rectangle){
+                     WIDTH / 2 - btnWidth / 2,
+                     HEIGHT / 2 - btnHeight / 2,
+                     btnWidth,
+                     btnHeight},
+                 "#191#Start Game");
+
+    x = X(100, 100, 50);
+    o = O(50, 50, 25);
 }
 
 void GameScreen::draw()
 {
-    DrawLine(0, 0, 10, 10, CROSS);
-    DrawLine(10, 0, 0, 10, CROSS);
-
-    DrawGrid(4, 2);
-
-    DrawCircleLines(20, 20, 50, CIRCLE);
+    x.draw();
+    o.draw();
 
     btn.draw();
 }

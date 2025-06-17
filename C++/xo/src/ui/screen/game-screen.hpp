@@ -1,6 +1,8 @@
 #pragma once
 
 #include "button.hpp"
+#include "x.hpp"
+#include "o.hpp"
 
 namespace screen
 {
@@ -12,6 +14,8 @@ namespace screen
 
     private:
         widget::Button btn;
+        widget::X x;
+        widget::O o;
 
         void init();
     };
