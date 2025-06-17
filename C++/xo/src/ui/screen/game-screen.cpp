@@ -8,26 +8,34 @@ using namespace screen;
 using namespace widget;
 using namespace std;
 
+float cellSize = WIDTH / 3;
+
 void GameScreen::init()
 {
     float btnWidth = 120;
     float btnHeight = 30;
 
-    btn = Button((Rectangle){
-                     WIDTH / 2 - btnWidth / 2,
-                     HEIGHT / 2 - btnHeight / 2,
-                     btnWidth,
-                     btnHeight},
-                 GuiIconText(ICON_PLAYER_PLAY, "Start Game"));
+    auto btnRect = (Rectangle){
+        WIDTH / 2 - btnWidth / 2,
+        WIDTH / 2 - btnHeight / 2,
+        btnWidth,
+        btnHeight};
+    btn = Button(btnRect, GuiIconText(ICON_PLAYER_PLAY, "Start Game"));
 
-    x = X(100, 100, 50);
-    o = O(50, 50, 25);
+    x = X(100, 100, cellSize / 2);
+    o = O(50, 50, cellSize / 4);
 }
 
 void GameScreen::draw()
 {
     x.draw();
     o.draw();
+
+    DrawLine(cellSize, 0, cellSize, WIDTH, CELL);
+    DrawLine(cellSize * 2, 0, cellSize * 2, WIDTH, CELL);
+
+    DrawLine(0, cellSize, WIDTH, cellSize, CELL);
+    DrawLine(0, cellSize * 2, WIDTH, cellSize * 2, CELL);
 
     btn.draw();
 }

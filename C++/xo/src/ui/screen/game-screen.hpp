@@ -8,7 +8,10 @@ namespace screen
 {
     struct GameScreen
     {
-        GameScreen() { init(); };
+        GameScreen()
+        {
+            init();
+        };
 
         void draw();
 

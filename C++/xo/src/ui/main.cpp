@@ -9,7 +9,7 @@ using namespace screen;
 
 int main()
 {
-    InitWindow(WIDTH, HEIGHT, "XOGame");
+    InitWindow(WIDTH, WIDTH, "XOGame");
     SetTargetFPS(TARGET_FPS);
 
     GuiLoadStyleCyber();
