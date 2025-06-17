@@ -3,6 +3,7 @@
 #include "raygui.h"
 #include "config.hpp"
 #include "game-screen.hpp"
+#include "style_cyber.h"
 
 using namespace screen;
 
@@ -11,14 +12,16 @@ int main()
     InitWindow(WIDTH, HEIGHT, "XOGame");
     SetTargetFPS(TARGET_FPS);
 
-    GameScreen game;
+    GuiLoadStyleCyber();
+
+    GameScreen gameScreen;
 
     while (!WindowShouldClose())
     {
         ClearBackground(BG);
         BeginDrawing();
 
-        game.draw();
+        gameScreen.draw();
 
         EndDrawing();
     }

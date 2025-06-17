@@ -44,6 +44,7 @@ target_link_libraries(xo-game raylib)
 
 target_include_directories(xo-game PRIVATE
   ${CMAKE_CURRENT_SOURCE_DIR}/lib/raygui/src
+  ${CMAKE_CURRENT_SOURCE_DIR}/lib/raygui/styles/cyber
   ${CMAKE_SOURCE_DIR}/src/core
   ${CMAKE_SOURCE_DIR}/src/ui
 )
