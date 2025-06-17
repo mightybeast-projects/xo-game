@@ -1,8 +1,7 @@
 #pragma once
 
 #include "button.hpp"
-#include "x.hpp"
-#include "o.hpp"
+#include "xo-grid.hpp"
 
 namespace screen
 {
@@ -17,8 +16,7 @@ namespace screen
 
     private:
         widget::Button _startBtn;
-        widget::X _x;
-        widget::O _o;
+        widget::XOGrid *_grid;
 
         void init();
     };

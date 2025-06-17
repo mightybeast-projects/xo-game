@@ -34,6 +34,8 @@ gtest_discover_tests(xo-tests)
 file(GLOB_RECURSE UI_FILES CONFIGURE_DEPENDS
     src/ui/*.cpp
     src/ui/*.hpp
+    ${CMAKE_SOURCE_DIR}/src/xo.cpp
+    ${CMAKE_SOURCE_DIR}/src/xo.h
 )
 
 add_executable(xo-game ${UI_FILES}) 
