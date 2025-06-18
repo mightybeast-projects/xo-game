@@ -1,18 +1,15 @@
 #include "xo.hpp"
 
-using namespace xo;
-using namespace std;
-
-XO::XO(int size)
+xo::XO::XO(int size)
 {
     _size = size;
     _state.resize(size);
 
     for (auto i = 0; i < size; i++)
-        _state[i].resize(size, nullopt);
+        _state[i].resize(size, std::nullopt);
 }
 
-void XO::placeNext(int i, int j)
+void xo::XO::placeNext(int i, int j)
 {
     place(i, j, _nextValue);
 
@@ -22,7 +19,7 @@ void XO::placeNext(int i, int j)
         _nextValue = X;
 }
 
-void XO::place(int i, int j, XOValue value)
+void xo::XO::place(int i, int j, XOValue value)
 {
     const auto oob = (i < 0 || i >= _size) || (j < 0 || j >= _size);
 
@@ -34,7 +31,7 @@ void XO::place(int i, int j, XOValue value)
     checkWinConditions();
 }
 
-bool XO::checkWinConditions()
+bool xo::XO::checkWinConditions()
 {
     int directions[8][4] = {
         {0, 0, 1, 1},
@@ -58,7 +55,7 @@ bool XO::checkWinConditions()
     return false;
 }
 
-bool XO::checkLine(int startI, int startJ, int iIncrement, int jIncrement)
+bool xo::XO::checkLine(int startI, int startJ, int iIncrement, int jIncrement)
 {
     int i = startI;
     int j = startJ;
