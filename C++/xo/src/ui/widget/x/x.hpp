@@ -7,7 +7,6 @@ namespace widget
 {
     struct X
     {
-        X() {}
         X(int x, int y, int size) : _x(x), _y(y), _size(size) {}
 
         inline void draw()

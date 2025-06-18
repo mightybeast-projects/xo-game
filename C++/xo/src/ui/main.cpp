@@ -5,8 +5,6 @@
 #include "game-screen.hpp"
 #include "style_cyber.h"
 
-using namespace screen;
-
 int main()
 {
     InitWindow(WIDTH, WIDTH, "XOGame");
@@ -14,7 +12,7 @@ int main()
 
     GuiLoadStyleCyber();
 
-    GameScreen gameScreen;
+    screen::GameScreen gameScreen;
 
     while (!WindowShouldClose())
     {

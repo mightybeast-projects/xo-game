@@ -7,7 +7,6 @@ namespace widget
 {
     struct Button
     {
-        Button() {};
         Button(Rectangle rect, std::string text) : _rect(rect), _text(text) {};
 
         void draw();

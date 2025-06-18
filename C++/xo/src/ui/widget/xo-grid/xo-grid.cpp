@@ -4,7 +4,7 @@
 
 widget::XOGrid::XOGrid(int size)
 {
-    _xo = new xo::XO(size);
+    _xo = std::make_unique<xo::XO>(size);
 }
 
 void widget::XOGrid::draw()

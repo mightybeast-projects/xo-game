@@ -2,22 +2,18 @@
 
 #include "button.hpp"
 #include "xo-grid.hpp"
+#include <memory>
 
 namespace screen
 {
     struct GameScreen
     {
-        GameScreen()
-        {
-            init();
-        };
+        GameScreen();
 
         void draw();
 
     private:
-        widget::Button _startBtn;
-        widget::XOGrid *_grid;
-
-        void init();
+        std::unique_ptr<widget::Button> _startBtn;
+        std::unique_ptr<widget::XOGrid> _grid;
     };
 }

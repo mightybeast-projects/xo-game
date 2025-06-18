@@ -1,6 +1,7 @@
 #pragma once
 
 #include "xo.hpp"
+#include <memory>
 
 namespace widget
 {
@@ -11,6 +12,6 @@ namespace widget
         void draw();
 
     private:
-        xo::XO *_xo;
+        std::unique_ptr<xo::XO> _xo;
     };
 }
