@@ -4,6 +4,8 @@
 #include "config.hpp"
 #include "game-screen.hpp"
 #include "style_cyber.h"
+#include "screen-manager.hpp"
+#include "main-menu.hpp"
 
 int main()
 {
@@ -12,14 +14,21 @@ int main()
 
     GuiLoadStyleCyber();
 
-    screen::GameScreen gameScreen;
+    screen::ScreenManager sm;
+
+    sm.switchTo(new screen::MainMenuScreen());
 
     while (!WindowShouldClose())
     {
+        if (IsKeyPressed(KEY_Q))
+            sm.switchTo(new screen::MainMenuScreen());
+        if (IsKeyPressed(KEY_W))
+            sm.switchTo(new screen::GameScreen());
+
         ClearBackground(BG);
         BeginDrawing();
 
-        gameScreen.draw();
+        sm.draw();
 
         EndDrawing();
     }
