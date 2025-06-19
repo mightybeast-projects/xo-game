@@ -2,10 +2,11 @@
 
 #include <memory>
 #include "button.hpp"
+#include "screen.hpp"
 
 namespace screen
 {
-    struct MainMenuScreen
+    struct MainMenuScreen : Screen
     {
         MainMenuScreen();
 
