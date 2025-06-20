@@ -2,10 +2,11 @@
 
 #include "xo.hpp"
 #include <memory>
+#include "drawable.hpp"
 
 namespace widget
 {
-    struct XOGrid
+    struct XOGrid : utils::Drawable
     {
         XOGrid(int size);
 

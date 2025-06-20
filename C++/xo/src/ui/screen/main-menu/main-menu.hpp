@@ -9,10 +9,5 @@ namespace screen
     struct MainMenuScreen : Screen
     {
         MainMenuScreen();
-
-        void draw();
-
-    private:
-        std::unique_ptr<widget::Button> _startBtn;
     };
 }
