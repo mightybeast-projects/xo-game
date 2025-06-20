@@ -2,15 +2,14 @@
 
 #include "screen-manager.hpp"
 #include <memory>
+#include "drawable.hpp"
 
 namespace screen
 {
     struct ScreenManager;
 
-    struct Screen
+    struct Screen : utils::Drawable
     {
-        virtual void draw() = 0;
-
         inline void setScreenManager(ScreenManager *sm)
         {
             _sm = sm;

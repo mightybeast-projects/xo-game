@@ -3,10 +3,11 @@
 #include "raylib.h"
 #include "string"
 #include "functional"
+#include "drawable.hpp"
 
 namespace widget
 {
-    struct Button
+    struct Button : utils::Drawable
     {
         Button(Rectangle rect, std::string text) : _rect(rect), _text(text) {};
 
