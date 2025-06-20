@@ -9,7 +9,7 @@ namespace screen
 {
     struct ScreenManager;
 
-    struct Screen : utils::Drawable
+    struct Screen : common::Drawable
     {
         inline void setScreenManager(ScreenManager *sm)
         {
@@ -24,6 +24,6 @@ namespace screen
 
     protected:
         screen::ScreenManager *_sm;
-        std::vector<std::unique_ptr<utils::Drawable>> _widgets;
+        std::vector<std::unique_ptr<common::Drawable>> _widgets;
     };
 }

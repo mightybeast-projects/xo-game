@@ -7,7 +7,7 @@
 
 namespace widget
 {
-    struct Button : utils::Drawable
+    struct Button : common::Drawable
     {
         Button(Rectangle rect, std::string text) : _rect(rect), _text(text) {};
 
@@ -15,12 +15,12 @@ namespace widget
 
         void onClick(std::function<void()> cb)
         {
-            _onClickCb = cb;
+            _onClick = cb;
         }
 
     private:
         Rectangle _rect;
         std::string _text;
-        std::function<void()> _onClickCb;
+        std::function<void()> _onClick;
     };
 }

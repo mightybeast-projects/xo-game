@@ -2,10 +2,11 @@
 
 #include "raylib.h"
 #include "config.hpp"
+#include "drawable.hpp"
 
 namespace widget
 {
-    struct X
+    struct X : common::Drawable
     {
         X(int x, int y, int size) : _x(x), _y(y), _size(size) {}
 

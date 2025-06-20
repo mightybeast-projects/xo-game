@@ -6,7 +6,7 @@
 
 namespace widget
 {
-    struct XOGrid : utils::Drawable
+    struct XOGrid : common::Drawable
     {
         XOGrid(int size);
 
