@@ -7,11 +7,25 @@
 
 screen::MainMenuScreen::MainMenuScreen()
 {
-    initLogo();
-    initStartButton();
+    drawLogo();
+    drawStartButton();
 }
 
-void screen::MainMenuScreen::initLogo()
+void screen::MainMenuScreen::draw()
+{
+    Screen::draw();
+
+    float x = WIDTH / 2;
+    float y = WIDTH / 2 - 20;
+
+    auto text = "also known as TicTacToe";
+    auto fontSize = 5;
+    auto width = MeasureText(text, fontSize);
+
+    DrawText(text, x - width / 2, y, fontSize, CROSS);
+}
+
+void screen::MainMenuScreen::drawLogo()
 {
     float size = 75;
 
@@ -32,7 +46,7 @@ void screen::MainMenuScreen::initLogo()
     _widgets.push_back(std::move(o));
 }
 
-void screen::MainMenuScreen::initStartButton()
+void screen::MainMenuScreen::drawStartButton()
 {
     float width = 120;
     float height = 30;
@@ -51,18 +65,4 @@ void screen::MainMenuScreen::initStartButton()
     startBtn->onClick(cb);
 
     _widgets.push_back(std::move(startBtn));
-}
-
-void screen::MainMenuScreen::draw()
-{
-    Screen::draw();
-
-    float x = WIDTH / 2;
-    float y = WIDTH / 2 - 20;
-
-    auto text = "also known as TicTacToe";
-    auto fontSize = 5;
-    auto width = MeasureText(text, fontSize);
-
-    DrawText(text, x - width / 2, y, fontSize, CROSS);
 }

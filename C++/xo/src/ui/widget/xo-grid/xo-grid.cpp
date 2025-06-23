@@ -1,6 +1,8 @@
 #include "xo-grid.hpp"
 #include "xo.hpp"
 #include "config.hpp"
+#include "x.hpp"
+#include "cell.hpp"
 
 widget::XOGrid::XOGrid(int size)
 {
@@ -12,6 +14,10 @@ void widget::XOGrid::draw()
     drawFrame();
     drawSeparators();
     drawCells();
+
+    widget::X x = widget::X(cellSize() / 4, cellSize() / 4, cellSize());
+
+    x.draw();
 }
 
 void widget::XOGrid::drawFrame()
@@ -39,12 +45,13 @@ void widget::XOGrid::drawCells()
     {
         for (auto j = 0; j < _xo->size(); j++)
         {
-            Rectangle rect = {cellSize() * i + padding,
-                              cellSize() * j + padding,
-                              cellSize() - padding * 2,
-                              cellSize() - padding * 2};
+            auto x = cellSize() * i + padding;
+            auto y = cellSize() * j + padding;
+            auto size = cellSize() - padding * 2;
 
-            DrawRectangleRounded(rect, 0.1, 0, BG_SECONDARY);
+            widget::Cell cell = widget::Cell(x, y, size);
+
+            cell.draw();
         }
     }
 }
