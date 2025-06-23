@@ -6,6 +6,8 @@
 widget::Cell::Cell(float x, float y, int size, std::optional<xo::XOValue> value)
     : _x(x), _y(y), _size(size)
 {
+    _rect = {_x, _y, (float)_size, (float)_size};
+
     if (!value.has_value())
         return;
 
@@ -14,14 +16,12 @@ widget::Cell::Cell(float x, float y, int size, std::optional<xo::XOValue> value)
 
 void widget::Cell::draw()
 {
-    DrawRectangleRounded(
-        {_x, _y, (float)_size, (float)_size},
-        0.1,
-        0,
-        BG_SECONDARY);
+    DrawRectangleRounded(_rect, 0.1, 0, BG_SECONDARY);
 
     if (_drawable.has_value())
         _drawable->get()->draw();
+
+    handleClick(_rect);
 }
 
 void widget::Cell::setValue(xo::XOValue value)

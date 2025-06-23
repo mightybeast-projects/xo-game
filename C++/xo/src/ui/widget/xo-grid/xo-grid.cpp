@@ -10,15 +10,6 @@ widget::XOGrid::XOGrid(int size)
     _xo = std::make_unique<xo::XO>(size);
 
     initCells();
-
-    _xo->placeNext(0, 0);
-    _cells[0][0].setValue(_xo->state()[0][0].value());
-
-    _xo->placeNext(0, 2);
-    _cells[0][2].setValue(_xo->state()[0][2].value());
-
-    _xo->placeNext(1, 1);
-    _cells[1][1].setValue(_xo->state()[1][1].value());
 }
 
 void widget::XOGrid::draw()
@@ -36,17 +27,27 @@ void widget::XOGrid::initCells()
     auto padding = 4;
 
     for (auto i = 0; i < _xo->size(); i++)
-    {
         for (auto j = 0; j < _xo->size(); j++)
-        {
-            auto x = cellSize() * i + padding;
-            auto y = cellSize() * j + padding;
-            auto size = cellSize() - padding * 2;
-            auto value = _xo->state()[i][j];
+            initCell(i, j, padding);
+}
 
-            _cells[i][j] = widget::Cell(x, y, size, value);
-        }
-    }
+void widget::XOGrid::initCell(int i, int j, int padding)
+{
+    auto x = cellSize() * i + padding;
+    auto y = cellSize() * j + padding;
+    auto size = cellSize() - padding * 2;
+    auto value = _xo->state()[i][j];
+
+    auto cell = widget::Cell(x, y, size, value);
+    auto cb = [this, i, j]()
+    {
+        _xo->placeNext(i, j);
+        _cells[i][j].setValue(_xo->state()[i][j].value());
+    };
+
+    cell.onClick(cb);
+
+    _cells[i][j] = cell;
 }
 
 void widget::XOGrid::drawFrame()
