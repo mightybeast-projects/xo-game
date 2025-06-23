@@ -3,8 +3,13 @@
 #include "x.hpp"
 #include "o.hpp"
 
-widget::Cell::Cell(float x, float y, int size, std::optional<xo::XOValue> value)
-    : _x(x), _y(y), _size(size)
+widget::Cell::Cell(
+    float x,
+    float y,
+    int size,
+    std::optional<xo::XOValue> value,
+    std::function<void()> onClick)
+    : common::Clickable(onClick), _x(x), _y(y), _size(size)
 {
     _rect = {_x, _y, (float)_size, (float)_size};
 

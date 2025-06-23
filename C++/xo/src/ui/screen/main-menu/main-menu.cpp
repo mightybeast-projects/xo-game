@@ -43,14 +43,10 @@ void screen::MainMenuScreen::drawStartButton()
     auto rect = (Rectangle){x, y, width, height};
     auto text = GuiIconText(ICON_PLAYER_PLAY, "Start Game");
 
-    auto startBtn = std::make_unique<widget::Button>(rect, text);
-
     auto cb = [this]()
     {
         _sm->switchTo(new screen::GameScreen());
     };
 
-    startBtn->onClick(cb);
-
-    _widgets.push_back(std::move(startBtn));
+    _widgets.push_back(std::make_unique<widget::Button>(rect, text, cb));
 }

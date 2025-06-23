@@ -7,10 +7,8 @@ namespace common
 {
     struct Clickable
     {
-        inline void onClick(std::function<void()> cb)
-        {
-            _onClick = cb;
-        }
+        Clickable() = default;
+        Clickable(std::function<void()> onClick) : _onClick(onClick) {};
 
     protected:
         std::function<void()> _onClick;

@@ -10,7 +10,8 @@ namespace widget
 {
     struct Button : common::Drawable, common::Clickable
     {
-        Button(Rectangle rect, std::string text) : _rect(rect), _text(text) {};
+        Button(Rectangle rect, std::string text, std::function<void()> onClick)
+            : common::Clickable(onClick), _rect(rect), _text(text) {};
 
         void draw();
 

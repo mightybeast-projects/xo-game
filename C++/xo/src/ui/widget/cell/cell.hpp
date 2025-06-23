@@ -13,7 +13,12 @@ namespace widget
     struct Cell : common::Drawable, common::Clickable
     {
         Cell() = default;
-        Cell(float x, float y, int size, std::optional<xo::XOValue> value);
+        Cell(
+            float x,
+            float y,
+            int size,
+            std::optional<xo::XOValue> value,
+            std::function<void()> onClick);
 
         void draw();
         void setValue(xo::XOValue value);

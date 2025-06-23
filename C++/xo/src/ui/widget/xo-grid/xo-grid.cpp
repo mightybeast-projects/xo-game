@@ -37,7 +37,6 @@ void widget::XOGrid::initCell(int i, int j)
     auto size = cellSize() - padding * 2;
     auto value = _xo->state()[i][j];
 
-    auto cell = widget::Cell(x, y, size, value);
     auto cb = [this, i, j]()
     {
         auto res = _xo->placeNext(i, j);
@@ -46,9 +45,7 @@ void widget::XOGrid::initCell(int i, int j)
             _cells[i][j].setValue(_xo->state()[i][j].value());
     };
 
-    cell.onClick(cb);
-
-    _cells[i][j] = cell;
+    _cells[i][j] = widget::Cell(x, y, size, value, cb);
 }
 
 void widget::XOGrid::drawFrame()
