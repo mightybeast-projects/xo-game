@@ -1,0 +1,6 @@
+namespace widget
+{
+    struct Cell
+    {
+    };
+}

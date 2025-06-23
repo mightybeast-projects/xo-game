@@ -3,6 +3,7 @@
 #include "xo.hpp"
 #include <memory>
 #include "drawable.hpp"
+#include "config.hpp"
 
 namespace widget
 {
@@ -14,5 +15,14 @@ namespace widget
 
     private:
         std::unique_ptr<xo::XO> _xo;
+
+        void drawFrame();
+        void drawSeparators();
+        void drawCells();
+
+        inline float cellSize()
+        {
+            return WIDTH / _xo->size();
+        }
     };
 }
