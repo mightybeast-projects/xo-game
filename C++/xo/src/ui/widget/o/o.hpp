@@ -8,16 +8,21 @@ namespace widget
 {
     struct O : common::Drawable
     {
-        O(int x, int y, int radius) : _x(x), _y(y), _radius(radius) {}
+        O(int x, int y, int size) : _x(x), _y(y), _size(size) {}
 
         inline void draw()
         {
-            DrawCircleLines(_x, _y, _radius * 0.55, CIRCLE);
+            DrawText("o", _x, _y - _size / 3.3, _size, CIRCLE);
+        }
+
+        inline int width()
+        {
+            return MeasureText("o", _size);
         }
 
     private:
         int _x;
         int _y;
-        int _radius;
+        int _size;
     };
 }

@@ -13,12 +13,17 @@ screen::MainMenuScreen::MainMenuScreen()
 
 void screen::MainMenuScreen::initLogo()
 {
-    float size = 50;
+    float size = 75;
 
-    float xx = WIDTH / 2 - size / 2 - size;
-    float xy = WIDTH / 2 - size - 50;
-    float ox = WIDTH / 2 + size / 2 + size / 3;
-    float oy = WIDTH / 2 - size - 50 / 2;
+    float padding = 20;
+
+    float xCenter = WIDTH / 2;
+    float yCenter = WIDTH / 2;
+
+    float xx = xCenter - size / 2;
+    float xy = yCenter - size * 1.75;
+    float ox = xCenter + 75 / 2 + padding / 2 - size / 2;
+    float oy = yCenter + 75 / 2 + padding / 2 - size * 1.75;
 
     auto x = std::make_unique<widget::X>(xx, xy, size);
     auto o = std::make_unique<widget::O>(ox, oy, size);
@@ -32,7 +37,7 @@ void screen::MainMenuScreen::initStartButton()
     float width = 120;
     float height = 30;
     float x = WIDTH / 2 - width / 2;
-    float y = WIDTH / 2 - height / 2 + 100;
+    float y = WIDTH / 2 - height / 2 + 75;
     auto rect = (Rectangle){x, y, width, height};
     auto text = GuiIconText(ICON_PLAYER_PLAY, "Start Game");
 
@@ -53,10 +58,10 @@ void screen::MainMenuScreen::draw()
     Screen::draw();
 
     float x = WIDTH / 2;
-    float y = WIDTH / 2 - 25;
+    float y = WIDTH / 2 - 20;
 
-    auto text = "(TicTacToe)";
-    auto fontSize = 20;
+    auto text = "also known as TicTacToe";
+    auto fontSize = 5;
     auto width = MeasureText(text, fontSize);
 
     DrawText(text, x - width / 2, y, fontSize, CROSS);

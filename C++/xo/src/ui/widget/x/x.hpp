@@ -12,8 +12,12 @@ namespace widget
 
         inline void draw()
         {
-            DrawLine(_x, _y, _x + _size, _y + _size, CROSS);
-            DrawLine(_x + _size, _y, _x, _y + _size, CROSS);
+            DrawText("x", _x, _y - _size / 3.3, _size, CROSS);
+        }
+
+        inline int width()
+        {
+            return MeasureText("x", _size);
         }
 
     private:
