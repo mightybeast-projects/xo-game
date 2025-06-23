@@ -20,7 +20,7 @@ namespace widget
         std::vector<std::vector<widget::Cell>> _cells;
 
         void initCells();
-        void initCell(int i, int padding, int j);
+        void initCell(int i, int j);
         void drawFrame();
         void drawSeparators();
         void drawCells();

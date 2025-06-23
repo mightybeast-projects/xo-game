@@ -30,11 +30,8 @@ void screen::MainMenuScreen::drawLogo()
     float ox = xCenter + 75 / 2 + padding / 2 - size / 2;
     float oy = yCenter + 75 / 2 + padding / 2 - size * 1.25;
 
-    auto x = std::make_unique<widget::X>(xx, xy, size);
-    auto o = std::make_unique<widget::O>(ox, oy, size);
-
-    _widgets.push_back(std::move(x));
-    _widgets.push_back(std::move(o));
+    _widgets.push_back(std::make_unique<widget::X>(xx, xy, size));
+    _widgets.push_back(std::make_unique<widget::O>(ox, oy, size));
 }
 
 void screen::MainMenuScreen::drawStartButton()

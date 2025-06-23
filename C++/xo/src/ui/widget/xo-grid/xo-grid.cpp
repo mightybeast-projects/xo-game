@@ -24,15 +24,14 @@ void widget::XOGrid::initCells()
     auto col = std::vector<widget::Cell>(_xo->size());
     _cells = std::vector<std::vector<widget::Cell>>(_xo->size(), col);
 
-    auto padding = 4;
-
     for (auto i = 0; i < _xo->size(); i++)
         for (auto j = 0; j < _xo->size(); j++)
-            initCell(i, j, padding);
+            initCell(i, j);
 }
 
-void widget::XOGrid::initCell(int i, int j, int padding)
+void widget::XOGrid::initCell(int i, int j)
 {
+    auto padding = 4;
     auto x = cellSize() * i + padding;
     auto y = cellSize() * j + padding;
     auto size = cellSize() - padding * 2;
@@ -41,8 +40,10 @@ void widget::XOGrid::initCell(int i, int j, int padding)
     auto cell = widget::Cell(x, y, size, value);
     auto cb = [this, i, j]()
     {
-        _xo->placeNext(i, j);
-        _cells[i][j].setValue(_xo->state()[i][j].value());
+        auto res = _xo->placeNext(i, j);
+
+        if (res)
+            _cells[i][j].setValue(_xo->state()[i][j].value());
     };
 
     cell.onClick(cb);
