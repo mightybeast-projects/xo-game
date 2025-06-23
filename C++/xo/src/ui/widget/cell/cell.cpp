@@ -1,0 +1,42 @@
+#include "cell.hpp"
+#include <optional>
+#include "x.hpp"
+#include "o.hpp"
+
+widget::Cell::Cell(float x, float y, int size, std::optional<xo::XOValue> value)
+    : _x(x), _y(y), _size(size)
+{
+    if (!value.has_value())
+        return;
+
+    setDrawable(value.value());
+}
+
+void widget::Cell::draw()
+{
+    DrawRectangleRounded(
+        {_x, _y, (float)_size, (float)_size},
+        0.1,
+        0,
+        BG_SECONDARY);
+
+    if (_drawable.has_value())
+        _drawable->get()->draw();
+}
+
+void widget::Cell::setValue(xo::XOValue value)
+{
+    setDrawable(value);
+}
+
+void widget::Cell::setDrawable(xo::XOValue value)
+{
+    auto x = _x + _size / 4;
+    auto y = _y + _size / 4;
+
+    if (value == xo::XOValue::X)
+        _drawable = std::make_shared<widget::X>(x, y, _size);
+
+    if (value == xo::XOValue::O)
+        _drawable = std::make_shared<widget::O>(x, y, _size);
+}

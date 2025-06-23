@@ -12,7 +12,7 @@ namespace widget
 
         inline void draw()
         {
-            DrawText("o", _x, _y - _size / 3.3, _size, CIRCLE);
+            DrawText("o", _x, _y - _size / 3.3, _size, SECONDARY);
         }
 
         inline int width()

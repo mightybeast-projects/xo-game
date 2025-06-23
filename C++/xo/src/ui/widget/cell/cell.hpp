@@ -5,28 +5,24 @@
 #include "raylib.h"
 #include "config.hpp"
 #include <optional>
+#include <memory>
 
 namespace widget
 {
     struct Cell : common::Drawable
     {
-        Cell() {};
-        Cell(float x, float y, int size, std::optional<xo::XOValue> value)
-            : _x(x), _y(y), _size(size), _value(value) {}
+        Cell() = default;
+        Cell(float x, float y, int size, std::optional<xo::XOValue> value);
 
-        void draw()
-        {
-            DrawRectangleRounded(
-                {_x, _y, (float)_size, (float)_size},
-                0.1,
-                0,
-                BG_SECONDARY);
-        }
+        void draw();
+        void setValue(xo::XOValue value);
 
     private:
         float _x;
         float _y;
         int _size;
-        std::optional<xo::XOValue> _value;
+        std::optional<std::shared_ptr<common::Drawable>> _drawable;
+
+        void setDrawable(xo::XOValue value);
     };
 }

@@ -6,6 +6,7 @@
 #include "style_cyber.h"
 #include "screen-manager.hpp"
 #include "main-menu.hpp"
+#include <iostream>
 
 int main()
 {

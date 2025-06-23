@@ -10,6 +10,15 @@ widget::XOGrid::XOGrid(int size)
     _xo = std::make_unique<xo::XO>(size);
 
     initCells();
+
+    _xo->placeNext(0, 0);
+    _cells[0][0].setValue(_xo->state()[0][0].value());
+
+    _xo->placeNext(0, 2);
+    _cells[0][2].setValue(_xo->state()[0][2].value());
+
+    _xo->placeNext(1, 1);
+    _cells[1][1].setValue(_xo->state()[1][1].value());
 }
 
 void widget::XOGrid::draw()
@@ -17,10 +26,6 @@ void widget::XOGrid::draw()
     drawFrame();
     drawSeparators();
     drawCells();
-
-    widget::X x = widget::X(cellSize() / 4, cellSize() / 4, cellSize());
-
-    x.draw();
 }
 
 void widget::XOGrid::initCells()
@@ -46,18 +51,18 @@ void widget::XOGrid::initCells()
 
 void widget::XOGrid::drawFrame()
 {
-    DrawLine(0, 1, WIDTH, 1, PRIMARY);
-    DrawLine(1, 0, 1, WIDTH, PRIMARY);
-    DrawLine(WIDTH, 0, WIDTH, WIDTH, PRIMARY);
-    DrawLine(0, WIDTH, WIDTH, WIDTH, PRIMARY);
+    DrawLine(0, 1, WIDTH, 1, BG_PRIMARY);
+    DrawLine(1, 0, 1, WIDTH, BG_PRIMARY);
+    DrawLine(WIDTH, 0, WIDTH, WIDTH, BG_PRIMARY);
+    DrawLine(0, WIDTH, WIDTH, WIDTH, BG_PRIMARY);
 }
 
 void widget::XOGrid::drawSeparators()
 {
     for (auto i = 1; i < _xo->size(); i++)
     {
-        DrawLine(cellSize() * i, 0, cellSize() * i, WIDTH, PRIMARY);
-        DrawLine(0, cellSize() * i, WIDTH, cellSize() * i, PRIMARY);
+        DrawLine(cellSize() * i, 0, cellSize() * i, WIDTH, BG_PRIMARY);
+        DrawLine(0, cellSize() * i, WIDTH, cellSize() * i, BG_PRIMARY);
     }
 }
 
