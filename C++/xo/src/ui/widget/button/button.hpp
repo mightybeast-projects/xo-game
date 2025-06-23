@@ -4,23 +4,18 @@
 #include "string"
 #include "functional"
 #include "drawable.hpp"
+#include "clickable.hpp"
 
 namespace widget
 {
-    struct Button : common::Drawable
+    struct Button : common::Drawable, common::Clickable
     {
         Button(Rectangle rect, std::string text) : _rect(rect), _text(text) {};
 
         void draw();
 
-        void onClick(std::function<void()> cb)
-        {
-            _onClick = cb;
-        }
-
     private:
         Rectangle _rect;
         std::string _text;
-        std::function<void()> _onClick;
     };
 }

@@ -5,11 +5,5 @@ void widget::Button::draw()
 {
     GuiButton(_rect, _text.c_str());
 
-    if (_onClick && IsMouseButtonReleased(MOUSE_LEFT_BUTTON))
-    {
-        Vector2 mousePos = GetMousePosition();
-
-        if (CheckCollisionPointRec(mousePos, _rect))
-            _onClick();
-    }
+    handleClick(_rect);
 }
