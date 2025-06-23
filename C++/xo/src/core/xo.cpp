@@ -19,16 +19,18 @@ void xo::XO::placeNext(int i, int j)
         _nextValue = X;
 }
 
-void xo::XO::place(int i, int j, XOValue value)
+bool xo::XO::place(int i, int j, XOValue value)
 {
     const auto oob = (i < 0 || i >= _size) || (j < 0 || j >= _size);
 
     if (_winner.has_value() || oob || _state[i][j].has_value())
-        return;
+        return false;
 
     _state[i][j] = value;
 
     checkWinConditions();
+
+    return true;
 }
 
 bool xo::XO::checkWinConditions()

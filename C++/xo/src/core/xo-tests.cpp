@@ -20,29 +20,33 @@ TEST_F(XOGame, Should_Have_Empty_Cells_On_Initialization)
 
 TEST_F(XOGame, Should_Place_Value)
 {
-    xo.place(1, 2, xo::X);
-    xo.place(2, 2, xo::O);
+    auto res = xo.place(1, 2, xo::X);
 
     EXPECT_EQ(xo.state()[1][2], xo::X);
-    EXPECT_EQ(xo.state()[2][2], xo::O);
+    EXPECT_EQ(res, true);
 }
 
 TEST_F(XOGame, Should_Not_Place_Value_On_Already_Occupied_Cell)
 {
     xo.place(1, 2, xo::X);
-    xo.place(1, 2, xo::O);
+
+    auto res = xo.place(1, 2, xo::O);
 
     EXPECT_EQ(xo.state()[1][2], xo::X);
+    EXPECT_EQ(res, false);
 }
 
 TEST_F(XOGame, Should_Not_Place_Value_If_Index_Is_Out_Of_Bounds)
 {
-    xo.place(0, 3, xo::X);
-    xo.place(-1, 1, xo::X);
+    auto res1 = xo.place(0, 3, xo::X);
+    auto res2 = xo.place(-1, 1, xo::X);
 
     for (auto i = 0; i < xo.size(); i++)
         for (auto j = 0; j < xo.size(); j++)
             EXPECT_EQ(xo.state()[i][j], std::nullopt);
+
+    EXPECT_EQ(res1, false);
+    EXPECT_EQ(res2, false);
 }
 
 TEST_F(XOGame, Should_Not_Place_Value_If_It_Has_A_Winner)
@@ -51,9 +55,10 @@ TEST_F(XOGame, Should_Not_Place_Value_If_It_Has_A_Winner)
     xo.place(1, 1, xo::X);
     xo.place(2, 2, xo::X);
 
-    xo.place(0, 1, xo::X);
+    auto res = xo.place(0, 1, xo::X);
 
     EXPECT_EQ(xo.state()[0][1], std::nullopt);
+    EXPECT_EQ(res, false);
 }
 
 TEST_F(XOGame, Should_Place_Next_Value_Starting_With_X)
