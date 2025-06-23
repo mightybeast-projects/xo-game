@@ -63,18 +63,22 @@ TEST_F(XOGame, Should_Not_Place_Value_If_It_Has_A_Winner)
 
 TEST_F(XOGame, Should_Place_Next_Value_Starting_With_X)
 {
-    xo.placeNext(0, 2);
+    auto res = xo.placeNext(0, 2);
 
     EXPECT_EQ(xo.state()[0][2], xo::X);
+    EXPECT_EQ(res, true);
 }
 
 TEST_F(XOGame, Should_Switch_Value_After_Every_Next_Placement)
 {
-    xo.placeNext(0, 1);
-    xo.placeNext(1, 1);
-    xo.placeNext(2, 2);
+    auto res1 = xo.placeNext(0, 1);
+    auto res2 = xo.placeNext(1, 1);
+    auto res3 = xo.placeNext(2, 2);
 
     EXPECT_EQ(xo.state()[0][1], xo::X);
     EXPECT_EQ(xo.state()[1][1], xo::O);
     EXPECT_EQ(xo.state()[2][2], xo::X);
+    EXPECT_EQ(res1, true);
+    EXPECT_EQ(res2, true);
+    EXPECT_EQ(res3, true);
 }

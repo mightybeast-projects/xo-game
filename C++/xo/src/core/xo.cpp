@@ -9,14 +9,19 @@ xo::XO::XO(int size)
         _state[i].resize(size, std::nullopt);
 }
 
-void xo::XO::placeNext(int i, int j)
+bool xo::XO::placeNext(int i, int j)
 {
-    place(i, j, _nextValue);
+    auto res = place(i, j, _nextValue);
+
+    if (!res)
+        return false;
 
     if (_nextValue == X)
         _nextValue = O;
     else if (_nextValue == O)
         _nextValue = X;
+
+    return true;
 }
 
 bool xo::XO::place(int i, int j, XOValue value)

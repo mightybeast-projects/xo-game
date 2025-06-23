@@ -15,7 +15,7 @@ namespace xo
     {
         XO(int size);
 
-        void placeNext(int i, int j);
+        bool placeNext(int i, int j);
         bool place(int i, int j, XOValue value);
 
         inline int size() const
