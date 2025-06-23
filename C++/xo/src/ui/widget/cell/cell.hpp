@@ -1,14 +1,18 @@
 #pragma once
 
+#include "xo.hpp"
 #include "drawable.hpp"
 #include "raylib.h"
 #include "config.hpp"
+#include <optional>
 
 namespace widget
 {
     struct Cell : common::Drawable
     {
-        Cell(float x, float y, int size) : _x(x), _y(y), _size(size) {}
+        Cell() {};
+        Cell(float x, float y, int size, std::optional<xo::XOValue> value)
+            : _x(x), _y(y), _size(size), _value(value) {}
 
         void draw()
         {
@@ -23,5 +27,6 @@ namespace widget
         float _x;
         float _y;
         int _size;
+        std::optional<xo::XOValue> _value;
     };
 }

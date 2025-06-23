@@ -3,10 +3,13 @@
 #include "config.hpp"
 #include "x.hpp"
 #include "cell.hpp"
+#include <optional>
 
 widget::XOGrid::XOGrid(int size)
 {
     _xo = std::make_unique<xo::XO>(size);
+
+    initCells();
 }
 
 void widget::XOGrid::draw()
@@ -18,6 +21,27 @@ void widget::XOGrid::draw()
     widget::X x = widget::X(cellSize() / 4, cellSize() / 4, cellSize());
 
     x.draw();
+}
+
+void widget::XOGrid::initCells()
+{
+    auto col = std::vector<widget::Cell>(_xo->size());
+    _cells = std::vector<std::vector<widget::Cell>>(_xo->size(), col);
+
+    auto padding = 4;
+
+    for (auto i = 0; i < _xo->size(); i++)
+    {
+        for (auto j = 0; j < _xo->size(); j++)
+        {
+            auto x = cellSize() * i + padding;
+            auto y = cellSize() * j + padding;
+            auto size = cellSize() - padding * 2;
+            auto value = _xo->state()[i][j];
+
+            _cells[i][j] = widget::Cell(x, y, size, value);
+        }
+    }
 }
 
 void widget::XOGrid::drawFrame()
@@ -39,19 +63,7 @@ void widget::XOGrid::drawSeparators()
 
 void widget::XOGrid::drawCells()
 {
-    auto padding = 4;
-
     for (auto i = 0; i < _xo->size(); i++)
-    {
         for (auto j = 0; j < _xo->size(); j++)
-        {
-            auto x = cellSize() * i + padding;
-            auto y = cellSize() * j + padding;
-            auto size = cellSize() - padding * 2;
-
-            widget::Cell cell = widget::Cell(x, y, size);
-
-            cell.draw();
-        }
-    }
+            _cells[i][j].draw();
 }
