@@ -23,23 +23,29 @@ namespace xo
             return _size;
         }
 
-        inline std::optional<XOValue> winner() const
+        inline const std::optional<XOValue> winner() const
         {
             return _winner;
         }
 
-        inline const std::vector<std::vector<std::optional<XOValue>>> &state() const
+        inline const std::vector<std::vector<std::optional<XOValue>>> &cells() const
         {
-            return _state;
+            return _cells;
+        }
+
+        inline const bool isDraw()
+        {
+            return allCellsAreOccupied() && !_winner.has_value();
         }
 
     private:
         int _size;
         XOValue _nextValue = X;
         std::optional<XOValue> _winner = std::nullopt;
-        std::vector<std::vector<std::optional<XOValue>>> _state;
+        std::vector<std::vector<std::optional<XOValue>>> _cells;
 
         bool checkWinConditions();
         bool checkLine(int startI, int startJ, int iIncrement, int jIncrement);
+        bool allCellsAreOccupied();
     };
 }

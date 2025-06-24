@@ -35,14 +35,14 @@ void widget::XOGrid::initCell(int i, int j)
     auto x = cellSize() * i + padding;
     auto y = cellSize() * j + padding;
     auto size = cellSize() - padding * 2;
-    auto value = _xo->state()[i][j];
+    auto value = _xo->cells()[i][j];
 
     auto cb = [this, i, j]()
     {
         auto res = _xo->placeNext(i, j);
 
         if (res)
-            _cells[i][j].setValue(_xo->state()[i][j].value());
+            _cells[i][j].setValue(_xo->cells()[i][j].value());
     };
 
     _cells[i][j] = widget::Cell(x, y, size, value, cb);
