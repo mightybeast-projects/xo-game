@@ -11,7 +11,7 @@ xo::XO::XO(int size)
 
 bool xo::XO::placeNext(int i, int j)
 {
-    auto res = place(i, j, _nextValue);
+    const auto res = place(i, j, _nextValue);
 
     if (!res)
         return false;
@@ -40,7 +40,7 @@ bool xo::XO::place(int i, int j, XOValue value)
 
 bool xo::XO::checkWinConditions()
 {
-    int directions[8][4] = {
+    const int directions[8][4] = {
         {0, 0, 1, 1},
         {0, 2, 1, -1},
         {0, 0, 0, 1},

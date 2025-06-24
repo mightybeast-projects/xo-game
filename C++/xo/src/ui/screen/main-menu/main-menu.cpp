@@ -18,17 +18,17 @@ void screen::MainMenuScreen::draw()
 
 void screen::MainMenuScreen::drawLogo()
 {
-    float size = 75;
+    const float size = 75;
 
-    float padding = 20;
+    const float padding = 20;
 
-    float xCenter = WIDTH / 2;
-    float yCenter = WIDTH / 2;
+    const float xCenter = WIDTH / 2;
+    const float yCenter = WIDTH / 2;
 
-    float xx = xCenter - size / 2;
-    float xy = yCenter - size * 1.25;
-    float ox = xCenter + 75 / 2 + padding / 2 - size / 2;
-    float oy = yCenter + 75 / 2 + padding / 2 - size * 1.25;
+    const float xx = xCenter - size / 2;
+    const float xy = yCenter - size * 1.25;
+    const float ox = xCenter + 75 / 2 + padding / 2 - size / 2;
+    const float oy = yCenter + 75 / 2 + padding / 2 - size * 1.25;
 
     _widgets.push_back(std::make_unique<widget::X>(xx, xy, size));
     _widgets.push_back(std::make_unique<widget::O>(ox, oy, size));
@@ -36,14 +36,15 @@ void screen::MainMenuScreen::drawLogo()
 
 void screen::MainMenuScreen::drawStartButton()
 {
-    float width = 120;
-    float height = 30;
-    float x = WIDTH / 2 - width / 2;
-    float y = WIDTH / 2 - height / 2 + 50;
-    auto rect = (Rectangle){x, y, width, height};
-    auto text = GuiIconText(ICON_PLAYER_PLAY, "Start Game");
+    const float width = 120;
+    const float height = 30;
+    const float x = WIDTH / 2 - width / 2;
+    const float y = WIDTH / 2 - height / 2 + 50;
 
-    auto cb = [this]()
+    const auto rect = (Rectangle){x, y, width, height};
+    const auto text = GuiIconText(ICON_PLAYER_PLAY, "Start Game");
+
+    const auto cb = [this]()
     {
         _sm->switchTo(new screen::GameScreen());
     };

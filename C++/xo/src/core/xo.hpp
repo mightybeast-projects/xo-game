@@ -18,22 +18,22 @@ namespace xo
         bool placeNext(int i, int j);
         bool place(int i, int j, XOValue value);
 
-        inline int size() const
+        inline int size()
         {
             return _size;
         }
 
-        inline const std::optional<XOValue> winner() const
+        inline const std::optional<XOValue> winner()
         {
             return _winner;
         }
 
-        inline const std::vector<std::vector<std::optional<XOValue>>> &cells() const
+        inline const std::vector<std::vector<std::optional<XOValue>>> &cells()
         {
             return _cells;
         }
 
-        inline const bool isDraw()
+        inline bool isDraw()
         {
             return allCellsAreOccupied() && !_winner.has_value();
         }
