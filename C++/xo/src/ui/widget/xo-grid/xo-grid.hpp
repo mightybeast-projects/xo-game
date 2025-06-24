@@ -20,9 +20,6 @@ namespace widget
         std::vector<std::vector<widget::Cell>> _cells;
 
         void initCell(int i, int j);
-        void drawFrame();
-        void drawSeparators();
-        void drawCells();
         void drawRestartDialog();
 
         inline float cellSize()

@@ -18,20 +18,21 @@ void screen::MainMenuScreen::draw()
 
 void screen::MainMenuScreen::drawLogo()
 {
-    const float size = 75;
+    const auto size = 50;
+    const auto offset = 75;
+    const auto padding = 2.5;
 
-    const float padding = 20;
+    const float p[4][2] = {
+        {WIDTH / 2 - size - padding, WIDTH / 2 - size - offset - padding},
+        {WIDTH / 2 + padding, WIDTH / 2 - size - offset - padding},
+        {WIDTH / 2 - size - padding, WIDTH / 2 - offset + padding},
+        {WIDTH / 2 + padding, WIDTH / 2 - offset + padding},
+    };
 
-    const float xCenter = WIDTH / 2;
-    const float yCenter = WIDTH / 2;
-
-    const float xx = xCenter - size / 2;
-    const float xy = yCenter - size * 1.25;
-    const float ox = xCenter + 75 / 2 + padding / 2 - size / 2;
-    const float oy = yCenter + 75 / 2 + padding / 2 - size * 1.25;
-
-    _widgets.push_back(std::make_unique<widget::X>(xx, xy, size));
-    _widgets.push_back(std::make_unique<widget::O>(ox, oy, size));
+    _widgets.push_back(std::make_unique<widget::Cell>(p[0][0], p[0][1], size, xo::X, nullptr));
+    _widgets.push_back(std::make_unique<widget::Cell>(p[1][0], p[1][1], size, std::nullopt, nullptr));
+    _widgets.push_back(std::make_unique<widget::Cell>(p[2][0], p[2][1], size, std::nullopt, nullptr));
+    _widgets.push_back(std::make_unique<widget::Cell>(p[3][0], p[3][1], size, xo::O, nullptr));
 }
 
 void screen::MainMenuScreen::drawStartButton()

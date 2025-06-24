@@ -21,14 +21,14 @@ widget::XOGrid::XOGrid(std::shared_ptr<xo::XO> xo)
 
 void widget::XOGrid::draw()
 {
-    drawFrame();
-    drawSeparators();
-    drawCells();
+    for (auto i = 0; i < _xo->size(); i++)
+        for (auto j = 0; j < _xo->size(); j++)
+            _cells[i][j].draw();
 }
 
 void widget::XOGrid::initCell(int i, int j)
 {
-    auto padding = 4;
+    auto padding = 5;
     auto x = cellSize() * i + padding;
     auto y = cellSize() * j + padding;
     auto size = cellSize() - padding * 2;
@@ -43,28 +43,4 @@ void widget::XOGrid::initCell(int i, int j)
     };
 
     _cells[i][j] = widget::Cell(x, y, size, value, cb);
-}
-
-void widget::XOGrid::drawFrame()
-{
-    DrawLine(0, 1, WIDTH, 1, BG_PRIMARY);
-    DrawLine(1, 0, 1, WIDTH, BG_PRIMARY);
-    DrawLine(WIDTH, 0, WIDTH, WIDTH, BG_PRIMARY);
-    DrawLine(0, WIDTH, WIDTH, WIDTH, BG_PRIMARY);
-}
-
-void widget::XOGrid::drawSeparators()
-{
-    for (auto i = 1; i < _xo->size(); i++)
-    {
-        DrawLine(cellSize() * i, 0, cellSize() * i, WIDTH, BG_PRIMARY);
-        DrawLine(0, cellSize() * i, WIDTH, cellSize() * i, BG_PRIMARY);
-    }
-}
-
-void widget::XOGrid::drawCells()
-{
-    for (auto i = 0; i < _xo->size(); i++)
-        for (auto j = 0; j < _xo->size(); j++)
-            _cells[i][j].draw();
 }

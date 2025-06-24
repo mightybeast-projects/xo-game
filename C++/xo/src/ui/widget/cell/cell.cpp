@@ -36,8 +36,8 @@ void widget::Cell::setValue(xo::XOValue value)
 
 void widget::Cell::setDrawable(xo::XOValue value)
 {
-    const auto x = _x + _size / 4;
-    const auto y = _y + _size / 4;
+    const auto x = _x + _size / 3.8;
+    const auto y = _y + _size / 3.8;
 
     if (value == xo::XOValue::X)
         _drawable = std::make_shared<widget::X>(x, y, _size);
