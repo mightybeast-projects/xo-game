@@ -11,15 +11,14 @@ namespace widget
 {
     struct XOGrid : common::Drawable
     {
-        XOGrid(int size);
+        XOGrid(std::shared_ptr<xo::XO> xo);
 
         void draw();
 
     private:
-        std::unique_ptr<xo::XO> _xo;
+        std::shared_ptr<xo::XO> _xo;
         std::vector<std::vector<widget::Cell>> _cells;
 
-        void initGame(int size);
         void initCell(int i, int j);
         void drawFrame();
         void drawSeparators();
