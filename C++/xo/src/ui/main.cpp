@@ -21,11 +21,6 @@ int main()
 
     while (!WindowShouldClose())
     {
-        if (IsKeyPressed(KEY_Q))
-            sm.switchTo(new screen::MainMenuScreen());
-        if (IsKeyPressed(KEY_W))
-            sm.switchTo(new screen::GameScreen());
-
         ClearBackground(BG);
         BeginDrawing();
 

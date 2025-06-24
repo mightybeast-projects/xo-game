@@ -19,11 +19,12 @@ namespace widget
         std::unique_ptr<xo::XO> _xo;
         std::vector<std::vector<widget::Cell>> _cells;
 
-        void initCells();
+        void initGame(int size);
         void initCell(int i, int j);
         void drawFrame();
         void drawSeparators();
         void drawCells();
+        void drawRestartDialog();
 
         inline float cellSize()
         {
