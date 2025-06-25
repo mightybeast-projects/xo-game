@@ -10,6 +10,7 @@ namespace screen
     struct GameScreen : Screen
     {
         GameScreen();
+
         void draw() override;
 
     private:
