@@ -1,4 +1,5 @@
 #include "screen-manager.hpp"
+#include "screen.hpp"
 
 void screen::ScreenManager::switchTo(screen::Screen *screen)
 {
