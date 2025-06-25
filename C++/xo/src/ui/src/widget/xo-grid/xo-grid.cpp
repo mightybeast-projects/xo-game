@@ -9,7 +9,7 @@
 
 widget::XOGrid::XOGrid(std::shared_ptr<xo::XO> xo)
 {
-    _xo = std::move(xo);
+    _xo = xo;
 
     auto col = std::vector<widget::Cell>(_xo->size());
     _cells = std::vector<std::vector<widget::Cell>>(_xo->size(), col);

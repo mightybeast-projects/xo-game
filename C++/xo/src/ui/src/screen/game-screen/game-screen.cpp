@@ -38,7 +38,7 @@ void screen::GameScreen::drawRestartDialog()
     if (box == 1)
         initGame();
     if (box == 2)
-        _sm->switchTo(new screen::MainMenuScreen());
+        _screenManager->switchTo(std::make_unique<screen::MainMenuScreen>());
 }
 
 void screen::GameScreen::initGame()

@@ -11,9 +11,9 @@ namespace screen
 
     struct Screen : common::Drawable
     {
-        inline void setScreenManager(ScreenManager *sm)
+        inline void setScreenManager(ScreenManager *screenManager)
         {
-            _sm = sm;
+            _screenManager = screenManager;
         }
 
         inline virtual void draw()
@@ -23,7 +23,7 @@ namespace screen
         }
 
     protected:
-        screen::ScreenManager *_sm;
+        screen::ScreenManager *_screenManager;
         std::vector<std::unique_ptr<common::Drawable>> _widgets;
     };
 }

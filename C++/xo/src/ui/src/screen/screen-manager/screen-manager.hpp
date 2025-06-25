@@ -9,7 +9,7 @@ namespace screen
 
     struct ScreenManager
     {
-        void switchTo(screen::Screen *screen);
+        void switchTo(std::unique_ptr<screen::Screen> screen);
         void draw();
 
     private:

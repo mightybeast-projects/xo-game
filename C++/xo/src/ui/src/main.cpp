@@ -7,6 +7,7 @@
 #include "screen-manager.hpp"
 #include "main-menu-screen.hpp"
 #include <iostream>
+#include <memory>
 
 int main()
 {
@@ -17,7 +18,7 @@ int main()
 
     screen::ScreenManager sm;
 
-    sm.switchTo(new screen::MainMenuScreen());
+    sm.switchTo(std::make_unique<screen::MainMenuScreen>());
 
     while (!WindowShouldClose())
     {

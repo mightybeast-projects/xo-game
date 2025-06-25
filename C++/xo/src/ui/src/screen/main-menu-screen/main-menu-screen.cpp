@@ -37,17 +37,17 @@ void screen::MainMenuScreen::drawLogo()
 
 void screen::MainMenuScreen::drawStartButton()
 {
-    const float width = 120;
+    const float width = 100;
     const float height = 30;
     const float x = WIDTH / 2 - width / 2;
     const float y = WIDTH / 2 - height / 2 + 50;
 
     const auto rect = (Rectangle){x, y, width, height};
-    const auto text = GuiIconText(ICON_PLAYER_PLAY, "Start Game");
+    const auto text = GuiIconText(ICON_PLAYER_PLAY, "Play");
 
     const auto cb = [this]()
     {
-        _sm->switchTo(new screen::GameScreen());
+        _screenManager->switchTo(std::make_unique<screen::GameScreen>());
     };
 
     _widgets.push_back(std::make_unique<widget::Button>(rect, text, cb));
