@@ -11,7 +11,7 @@ target_include_directories(xo-core PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
 #tests
 file(GLOB_RECURSE TEST_FILES CONFIGURE_DEPENDS
-	test/*.cpp
+	src/*.tests.cpp
 )
 
 add_executable(xo-tests ${TEST_FILES})
