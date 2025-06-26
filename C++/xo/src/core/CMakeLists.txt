@@ -1,23 +1,28 @@
-#lib
-file(GLOB_RECURSE CORE_FILES CONFIGURE_DEPENDS
-	src/xo.cpp
-	src/xo.hpp
+#core
+file(GLOB_RECURSE ALL_CORE_CPP CONFIGURE_DEPENDS
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp
 )
 
-add_library(xo-core STATIC ${CORE_FILES})
+set(CORE_SOURCES "")
+foreach(f ${ALL_CORE_CPP})
+    if(NOT f MATCHES "\\.tests?\\.cpp$")
+        list(APPEND CORE_SOURCES ${f})
+    endif()
+endforeach()
+
+add_library(xo-core STATIC ${CORE_SOURCES})
 
 target_include_directories(xo-core PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
 
-#tests
-file(GLOB_RECURSE TEST_FILES CONFIGURE_DEPENDS
-	src/*.tests.cpp
+#test
+file(GLOB_RECURSE CORE_TEST_FILES CONFIGURE_DEPENDS
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/*.tests.cpp
 )
 
-add_executable(xo-tests ${TEST_FILES})
+add_executable(xo-tests ${CORE_TEST_FILES})
 
-target_link_libraries(xo-tests GTest::gtest_main xo-core)
+target_link_libraries(xo-tests PRIVATE GTest::gtest_main xo-core)
 
 include(GoogleTest)
-
 gtest_discover_tests(xo-tests)
