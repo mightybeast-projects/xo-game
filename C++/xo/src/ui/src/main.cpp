@@ -1,5 +1,4 @@
 #define RAYGUI_IMPLEMENTATION
-#include "raygui.h"
 #include "config.hpp"
 #include "game-screen.hpp"
 #include "screen-manager.hpp"

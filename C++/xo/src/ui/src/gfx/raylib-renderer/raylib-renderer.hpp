@@ -1,6 +1,7 @@
 #pragma once
 
 #include "raylib.h"
+#include "raygui.h"
 #include "config.hpp"
 #include "renderer.hpp"
 #include "style_cyber.h"
@@ -33,6 +34,24 @@ namespace gfx
         void closeGameWindow() override
         {
             CloseWindow();
+        }
+
+        int drawGuiButton(const Rect rect, const std::string text) override
+        {
+            return GuiButton({rect.x, rect.y, rect.width, rect.height}, text.c_str());
+        }
+
+        int drawGuiMessageBox(
+            const Rect rect,
+            const std::string title,
+            const std::string message,
+            const std::string buttons) override
+        {
+            return GuiMessageBox(
+                {rect.x, rect.y, rect.width, rect.height},
+                title.c_str(),
+                message.c_str(),
+                buttons.c_str());
         }
     };
 }

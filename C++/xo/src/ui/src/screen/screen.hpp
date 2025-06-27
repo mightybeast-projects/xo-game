@@ -27,7 +27,6 @@ namespace screen
 
     protected:
         screen::ScreenManager *_screenManager;
-        std::shared_ptr<gfx::Renderer> _renderer;
         std::vector<std::unique_ptr<common::Drawable>> _widgets;
     };
 }
