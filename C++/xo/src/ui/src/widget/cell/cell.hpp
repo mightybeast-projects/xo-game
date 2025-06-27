@@ -27,6 +27,6 @@ namespace widget
         Rect _rect;
         std::optional<std::shared_ptr<common::Drawable>> _drawableValue;
 
-        void setDrawable(xo::XOValue value);
+        void setDrawableValue(xo::XOValue value);
     };
 }

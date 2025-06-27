@@ -14,15 +14,17 @@ namespace gfx
         void initGameWindow() override
         {
             InitWindow(WIDTH, WIDTH, "XOGame");
-            SetTargetFPS(TARGET_FPS);
+            SetTargetFPS(60);
             GuiLoadStyleCyber();
         }
 
         void draw(const std::function<void()> onDraw) override
         {
+            Color bg = {46, 46, 46, 255};
+
             while (!WindowShouldClose())
             {
-                ClearBackground(BG);
+                ClearBackground(bg);
                 BeginDrawing();
 
                 onDraw();
@@ -52,6 +54,25 @@ namespace gfx
                 title.c_str(),
                 message.c_str(),
                 buttons.c_str());
+        }
+
+        void drawText(const std::string text,
+                      const int x,
+                      const int y,
+                      const int fontSize,
+                      Col color) override
+        {
+            return DrawText(
+                text.c_str(),
+                x,
+                y,
+                fontSize,
+                {color.r, color.g, color.b, color.a});
+        }
+
+        int measureText(const std::string text, int fontSize) override
+        {
+            return MeasureText(text.c_str(), fontSize);
         }
     };
 }

@@ -14,13 +14,15 @@ widget::Cell::Cell(
     if (!value.has_value())
         return;
 
-    setDrawable(value.value());
+    setDrawableValue(value.value());
 }
 
 void widget::Cell::draw()
 {
-    Rectangle rect = {_rect.x, _rect.y, _rect.width, _rect.height};
-    DrawRectangleRounded(rect, 0.1, 0, BG_SECONDARY);
+    const Rectangle rect = {_rect.x, _rect.y, _rect.width, _rect.height};
+    const Color color = {56, 56, 56, 255};
+
+    DrawRectangleRounded(rect, 0.1, 0, color);
 
     if (_drawableValue.has_value())
         _drawableValue->get()->draw();
@@ -30,10 +32,10 @@ void widget::Cell::draw()
 
 void widget::Cell::setValue(xo::XOValue value)
 {
-    setDrawable(value);
+    setDrawableValue(value);
 }
 
-void widget::Cell::setDrawable(xo::XOValue value)
+void widget::Cell::setDrawableValue(xo::XOValue value)
 {
     const auto x = _rect.x + _rect.width / 3.75;
     const auto y = _rect.y + _rect.width / 3.75;

@@ -1,6 +1,5 @@
 #pragma once
 
-#include "raylib.h"
 #include "config.hpp"
 #include "drawable.hpp"
 #include "renderer.hpp"
@@ -19,12 +18,14 @@ namespace widget
 
         inline void draw() override
         {
-            DrawText("x", _x, _y - _size / 3.3, _size, PRIMARY);
+            const Col color = {99, 141, 219, 255};
+
+            _renderer->drawText("x", _x, _y - _size / 3.3, _size, color);
         }
 
         inline int width()
         {
-            return MeasureText("x", _size);
+            return _renderer->measureText("x", _size);
         }
 
     private:

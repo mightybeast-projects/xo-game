@@ -3,6 +3,7 @@
 #include <functional>
 #include <string>
 #include "rect.hpp"
+#include "col.hpp"
 
 namespace gfx
 {
@@ -17,5 +18,11 @@ namespace gfx
                                       const std::string title,
                                       const std::string message,
                                       const std::string buttons) = 0;
+        virtual void drawText(const std::string text,
+                              const int posX,
+                              const int posY,
+                              const int fontSize,
+                              Col color) = 0;
+        virtual int measureText(const std::string text, int fontSize) = 0;
     };
 }

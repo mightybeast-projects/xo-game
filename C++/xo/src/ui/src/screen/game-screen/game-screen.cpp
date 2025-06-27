@@ -1,5 +1,3 @@
-#include "raylib.h"
-#include "raygui.h"
 #include "game-screen.hpp"
 #include "main-menu-screen.hpp"
 #include "config.hpp"
@@ -44,7 +42,7 @@ void screen::GameScreen::drawRestartDialog()
 
 void screen::GameScreen::initGame()
 {
-    _xo = std::make_shared<xo::XO>(GAME_GRID_SIZE);
+    _xo = std::make_shared<xo::XO>(3);
 
     _widgets.clear();
     _widgets.push_back(std::make_unique<widget::XOGrid>(_xo, _renderer));
