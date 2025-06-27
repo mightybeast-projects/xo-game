@@ -8,8 +8,10 @@ widget::Cell::Cell(
     float y,
     int size,
     std::optional<xo::XOValue> value,
-    std::function<void()> onClick)
-    : _x(x), _y(y), _size(size), common::Clickable(onClick)
+    std::function<void()> onClick) : _x(x),
+                                     _y(y),
+                                     _size(size),
+                                     common::Clickable(onClick)
 {
     _rect = {_x, _y, (float)_size, (float)_size};
 

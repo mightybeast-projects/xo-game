@@ -16,7 +16,7 @@ namespace screen
             _screenManager = screenManager;
         }
 
-        inline virtual void draw()
+        inline void draw() override
         {
             for (auto &w : _widgets)
                 w->draw();

@@ -20,7 +20,7 @@ namespace widget
             std::optional<xo::XOValue> value,
             std::function<void()> onClick);
 
-        void draw();
+        void draw() override;
         void setValue(xo::XOValue value);
 
     private:

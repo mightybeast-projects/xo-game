@@ -13,7 +13,7 @@ namespace widget
     {
         XOGrid(std::shared_ptr<xo::XO> xo);
 
-        void draw();
+        void draw() override;
 
     private:
         std::shared_ptr<xo::XO> _xo;

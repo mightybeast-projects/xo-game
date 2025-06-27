@@ -10,7 +10,7 @@ namespace widget
     {
         X(int x, int y, int size) : _x(x), _y(y), _size(size) {}
 
-        inline void draw()
+        inline void draw() override
         {
             DrawText("x", _x, _y - _size / 3.3, _size, PRIMARY);
         }
