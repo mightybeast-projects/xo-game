@@ -6,7 +6,7 @@
 #include "cell.hpp"
 #include <optional>
 #include <string>
-#include "rect.hpp"
+#include "types.hpp"
 
 widget::XOGrid::XOGrid(std::shared_ptr<xo::XO> xo, std::shared_ptr<gfx::Renderer> renderer)
     : common::Drawable(renderer)

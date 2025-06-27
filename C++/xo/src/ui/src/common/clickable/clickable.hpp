@@ -2,7 +2,7 @@
 
 #include <functional>
 #include "raylib.h"
-#include "rect.hpp"
+#include "types.hpp"
 
 namespace common
 {

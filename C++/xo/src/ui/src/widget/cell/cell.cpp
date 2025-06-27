@@ -19,10 +19,10 @@ widget::Cell::Cell(
 
 void widget::Cell::draw()
 {
-    const Rectangle rect = {_rect.x, _rect.y, _rect.width, _rect.height};
-    const Color color = {56, 56, 56, 255};
+    const Rect rect = {_rect.x, _rect.y, _rect.width, _rect.height};
+    const Col color = {56, 56, 56, 255};
 
-    DrawRectangleRounded(rect, 0.1, 0, color);
+    _renderer->drawRectangleRounded(rect, 0.1, 0, color);
 
     if (_drawableValue.has_value())
         _drawableValue->get()->draw();

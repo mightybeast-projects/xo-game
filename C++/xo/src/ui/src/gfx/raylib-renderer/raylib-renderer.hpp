@@ -49,11 +49,9 @@ namespace gfx
             const std::string message,
             const std::string buttons) override
         {
-            return GuiMessageBox(
-                {rect.x, rect.y, rect.width, rect.height},
-                title.c_str(),
-                message.c_str(),
-                buttons.c_str());
+            Rectangle r = {rect.x, rect.y, rect.width, rect.height};
+
+            return GuiMessageBox(r, title.c_str(), message.c_str(), buttons.c_str());
         }
 
         void drawText(const std::string text,
@@ -62,17 +60,25 @@ namespace gfx
                       const int fontSize,
                       Col color) override
         {
-            return DrawText(
-                text.c_str(),
-                x,
-                y,
-                fontSize,
-                {color.r, color.g, color.b, color.a});
+            Color c = {color.r, color.g, color.b, color.a};
+
+            return DrawText(text.c_str(), x, y, fontSize, c);
         }
 
         int measureText(const std::string text, int fontSize) override
         {
             return MeasureText(text.c_str(), fontSize);
+        }
+
+        void drawRectangleRounded(const Rect rect,
+                                  const float roundness,
+                                  const int segments,
+                                  const Col color)
+        {
+            Rectangle r = {rect.x, rect.y, rect.width, rect.height};
+            Color c = {color.r, color.g, color.b, color.a};
+
+            return DrawRectangleRounded(r, roundness, segments, c);
         }
     };
 }

@@ -7,3 +7,11 @@ struct Col
     unsigned char b;
     unsigned char a;
 };
+
+struct Rect
+{
+    float x;
+    float y;
+    float width;
+    float height;
+};

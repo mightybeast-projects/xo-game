@@ -6,7 +6,7 @@
 #include <optional>
 #include <memory>
 #include "clickable.hpp"
-#include "rect.hpp"
+#include "types.hpp"
 #include "drawable.hpp"
 
 namespace widget

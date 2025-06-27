@@ -1,5 +1,5 @@
 #include "clickable.hpp"
-#include "rect.hpp"
+#include "types.hpp"
 #include "raylib.h"
 
 void common::Clickable::handleClick(Rect r)
