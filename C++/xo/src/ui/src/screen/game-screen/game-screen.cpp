@@ -29,11 +29,12 @@ void screen::GameScreen::drawRestartDialog()
     if (_xo->isDraw())
         message = "Draw!";
 
-    const Rectangle r = {85, 70, 250, 100};
+    const Rect r = {85, 70, 250, 100};
+    const Rectangle rect = {r.x, r.y, r.width, r.height};
     const char *title = "#191#Game over!";
     const char *btnLables = "Restart;Quit";
 
-    const auto box = GuiMessageBox(r, title, message.c_str(), btnLables);
+    const auto box = GuiMessageBox(rect, title, message.c_str(), btnLables);
 
     if (box == 1)
         initGame();

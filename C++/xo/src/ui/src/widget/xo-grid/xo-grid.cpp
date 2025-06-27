@@ -6,6 +6,7 @@
 #include "cell.hpp"
 #include <optional>
 #include <string>
+#include "rect.hpp"
 
 widget::XOGrid::XOGrid(std::shared_ptr<xo::XO> xo)
 {
@@ -42,5 +43,5 @@ void widget::XOGrid::initCell(int i, int j)
             _cells[i][j].setValue(_xo->cells()[i][j].value());
     };
 
-    _cells[i][j] = widget::Cell(x, y, size, value, cb);
+    _cells[i][j] = widget::Cell({x, y, size, size}, value, cb);
 }

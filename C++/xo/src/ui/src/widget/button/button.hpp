@@ -1,6 +1,5 @@
 #pragma once
 
-#include "raylib.h"
 #include "string"
 #include "functional"
 #include "drawable.hpp"
@@ -11,7 +10,7 @@ namespace widget
     struct Button : common::Drawable, common::Clickable
     {
         Button(
-            Rectangle rect,
+            Rect rect,
             std::string text,
             std::function<void()> onClick) : _rect(rect),
                                              _text(text),
@@ -20,7 +19,7 @@ namespace widget
         void draw() override;
 
     private:
-        Rectangle _rect;
+        Rect _rect;
         std::string _text;
     };
 }

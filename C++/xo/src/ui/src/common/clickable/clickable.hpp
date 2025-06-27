@@ -2,6 +2,7 @@
 
 #include <functional>
 #include "raylib.h"
+#include "rect.hpp"
 
 namespace common
 {
@@ -13,6 +14,6 @@ namespace common
     protected:
         std::function<void()> _onClick;
 
-        void handleClick(Rectangle rect);
+        void handleClick(Rect rect);
     };
 }

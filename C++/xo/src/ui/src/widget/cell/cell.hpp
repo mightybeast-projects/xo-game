@@ -2,11 +2,11 @@
 
 #include "xo.hpp"
 #include "drawable.hpp"
-#include "raylib.h"
 #include "config.hpp"
 #include <optional>
 #include <memory>
 #include "clickable.hpp"
+#include "rect.hpp"
 
 namespace widget
 {
@@ -14,9 +14,7 @@ namespace widget
     {
         Cell() = default;
         Cell(
-            float x,
-            float y,
-            int size,
+            Rect rect,
             std::optional<xo::XOValue> value,
             std::function<void()> onClick);
 
@@ -24,10 +22,7 @@ namespace widget
         void setValue(xo::XOValue value);
 
     private:
-        float _x;
-        float _y;
-        int _size;
-        Rectangle _rect;
+        Rect _rect;
         std::optional<std::shared_ptr<common::Drawable>> _drawableValue;
 
         void setDrawable(xo::XOValue value);
