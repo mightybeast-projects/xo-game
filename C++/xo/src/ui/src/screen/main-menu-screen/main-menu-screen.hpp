@@ -3,12 +3,13 @@
 #include <memory>
 #include "button.hpp"
 #include "screen.hpp"
+#include "renderer.hpp"
 
 namespace screen
 {
     struct MainMenuScreen : Screen
     {
-        MainMenuScreen();
+        MainMenuScreen(std::shared_ptr<gfx::Renderer> renderer);
 
         void draw() override;
 

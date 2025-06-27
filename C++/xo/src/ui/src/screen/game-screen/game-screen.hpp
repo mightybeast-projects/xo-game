@@ -9,7 +9,7 @@ namespace screen
 {
     struct GameScreen : Screen
     {
-        GameScreen();
+        GameScreen(std::shared_ptr<gfx::Renderer> renderer);
 
         void draw() override;
 

@@ -11,14 +11,15 @@
 
 int main()
 {
-    auto renderer = std::make_unique<gfx::RaylibRenderer>();
-    auto sm = std::make_unique<screen::ScreenManager>();
+    auto renderer = std::make_shared<gfx::RaylibRenderer>();
+    auto screenManager = std::make_unique<screen::ScreenManager>();
+    auto mainMenuScreen = std::make_unique<screen::MainMenuScreen>(renderer);
 
-    sm->switchTo(std::make_unique<screen::MainMenuScreen>());
+    screenManager->switchTo(std::move(mainMenuScreen));
 
     const auto onDraw = [&]()
     {
-        sm->draw();
+        screenManager->draw();
     };
 
     renderer->initGameWindow();

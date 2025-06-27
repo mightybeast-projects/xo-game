@@ -4,8 +4,10 @@
 #include "game-screen.hpp"
 #include "x.hpp"
 #include "o.hpp"
+#include "renderer.hpp"
 
-screen::MainMenuScreen::MainMenuScreen()
+screen::MainMenuScreen::MainMenuScreen(std::shared_ptr<gfx::Renderer> renderer)
+    : Screen::Screen(renderer)
 {
     drawLogo();
     drawStartButton();
@@ -46,7 +48,7 @@ void screen::MainMenuScreen::drawStartButton()
 
     const auto cb = [this]()
     {
-        _screenManager->switchTo(std::make_unique<screen::GameScreen>());
+        _screenManager->switchTo(std::make_unique<screen::GameScreen>(_renderer));
     };
 
     _widgets.push_back(std::make_unique<widget::Button>(rect, text, cb));

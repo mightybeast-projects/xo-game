@@ -4,6 +4,7 @@
 #include <memory>
 #include "drawable.hpp"
 #include <vector>
+#include "renderer.hpp"
 
 namespace screen
 {
@@ -11,6 +12,8 @@ namespace screen
 
     struct Screen : common::Drawable
     {
+        Screen(std::shared_ptr<gfx::Renderer> renderer) : _renderer(renderer) {}
+
         inline void setScreenManager(ScreenManager *screenManager)
         {
             _screenManager = screenManager;
@@ -24,6 +27,7 @@ namespace screen
 
     protected:
         screen::ScreenManager *_screenManager;
+        std::shared_ptr<gfx::Renderer> _renderer;
         std::vector<std::unique_ptr<common::Drawable>> _widgets;
     };
 }

@@ -5,7 +5,8 @@
 #include "config.hpp"
 #include "xo-grid.hpp"
 
-screen::GameScreen::GameScreen()
+screen::GameScreen::GameScreen(std::shared_ptr<gfx::Renderer> renderer)
+    : Screen::Screen(renderer)
 {
     initGame();
 }
@@ -39,7 +40,7 @@ void screen::GameScreen::drawRestartDialog()
     if (box == 1)
         initGame();
     if (box == 2)
-        _screenManager->switchTo(std::make_unique<screen::MainMenuScreen>());
+        _screenManager->switchTo(std::make_unique<screen::MainMenuScreen>(_renderer));
 }
 
 void screen::GameScreen::initGame()
