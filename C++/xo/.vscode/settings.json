@@ -1,8 +1,0 @@
-{
-	"files.associations": {
-		"*.mustache": "html",
-		"*.php": "php",
-		"*.tpp": "cpp",
-		"iostream": "cpp"
-	}
-}

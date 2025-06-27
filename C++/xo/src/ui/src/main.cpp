@@ -3,34 +3,25 @@
 #include "raygui.h"
 #include "config.hpp"
 #include "game-screen.hpp"
-#include "style_cyber.h"
 #include "screen-manager.hpp"
 #include "main-menu-screen.hpp"
 #include <iostream>
 #include <memory>
+#include "raylib-renderer.hpp"
 
 int main()
 {
-    InitWindow(WIDTH, WIDTH, "XOGame");
-    SetTargetFPS(TARGET_FPS);
+    auto renderer = std::make_unique<gfx::RaylibRenderer>();
+    auto sm = std::make_unique<screen::ScreenManager>();
 
-    GuiLoadStyleCyber();
+    sm->switchTo(std::make_unique<screen::MainMenuScreen>());
 
-    screen::ScreenManager sm;
-
-    sm.switchTo(std::make_unique<screen::MainMenuScreen>());
-
-    while (!WindowShouldClose())
+    const auto onDraw = [&]()
     {
-        ClearBackground(BG);
-        BeginDrawing();
+        sm->draw();
+    };
 
-        sm.draw();
-
-        EndDrawing();
-    }
-
-    CloseWindow();
-
-    return 0;
+    renderer->initGameWindow();
+    renderer->draw(onDraw);
+    renderer->closeGameWindow();
 }

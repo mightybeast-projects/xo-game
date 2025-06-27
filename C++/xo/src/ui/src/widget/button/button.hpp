@@ -6,12 +6,12 @@
 #include "drawable.hpp"
 #include "clickable.hpp"
 
-namespace widget
+namespace widget 
 {
     struct Button : common::Drawable, common::Clickable
     {
         Button(Rectangle rect, std::string text, std::function<void()> onClick)
-            : common::Clickable(onClick), _rect(rect), _text(text) {};
+            : _rect(rect), _text(text), common::Clickable(onClick) {};
 
         void draw();
 

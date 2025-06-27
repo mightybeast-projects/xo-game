@@ -9,7 +9,7 @@ widget::Cell::Cell(
     int size,
     std::optional<xo::XOValue> value,
     std::function<void()> onClick)
-    : common::Clickable(onClick), _x(x), _y(y), _size(size)
+    : _x(x), _y(y), _size(size), common::Clickable(onClick)
 {
     _rect = {_x, _y, (float)_size, (float)_size};
 
@@ -23,8 +23,8 @@ void widget::Cell::draw()
 {
     DrawRectangleRounded(_rect, 0.1, 0, BG_SECONDARY);
 
-    if (_drawable.has_value())
-        _drawable->get()->draw();
+    if (_drawableValue.has_value())
+        _drawableValue->get()->draw();
 
     handleClick(_rect);
 }
@@ -40,8 +40,8 @@ void widget::Cell::setDrawable(xo::XOValue value)
     const auto y = _y + _size / 3.75;
 
     if (value == xo::XOValue::X)
-        _drawable = std::make_shared<widget::X>(x, y, _size);
+        _drawableValue = std::make_shared<widget::X>(x, y, _size);
 
     if (value == xo::XOValue::O)
-        _drawable = std::make_shared<widget::O>(x, y, _size);
+        _drawableValue = std::make_shared<widget::O>(x, y, _size);
 }

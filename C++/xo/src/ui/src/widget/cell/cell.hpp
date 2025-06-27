@@ -28,7 +28,7 @@ namespace widget
         float _y;
         int _size;
         Rectangle _rect;
-        std::optional<std::shared_ptr<common::Drawable>> _drawable;
+        std::optional<std::shared_ptr<common::Drawable>> _drawableValue;
 
         void setDrawable(xo::XOValue value);
     };

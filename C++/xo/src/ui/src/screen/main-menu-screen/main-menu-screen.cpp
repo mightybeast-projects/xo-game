@@ -34,15 +34,14 @@ void screen::MainMenuScreen::drawLogo()
     _widgets.push_back(std::make_unique<widget::Cell>(p[2][0], p[2][1], size, std::nullopt, nullptr));
     _widgets.push_back(std::make_unique<widget::Cell>(p[3][0], p[3][1], size, xo::O, nullptr));
 }
-
-void screen::MainMenuScreen::drawStartButton()
+ 
+void screen::MainMenuScreen::drawStartButton() 
 {
     const float width = 100;
     const float height = 30;
     const float x = WIDTH / 2 - width / 2;
     const float y = WIDTH / 2 - height / 2 + 50;
-
-    const auto rect = (Rectangle){x, y, width, height};
+    const Rectangle rect = {x, y, width, height};
     const auto text = GuiIconText(ICON_PLAYER_PLAY, "Play");
 
     const auto cb = [this]()
