@@ -12,7 +12,7 @@ namespace screen
 
     struct Screen : common::Drawable
     {
-        Screen(std::shared_ptr<gfx::Renderer> renderer) : _renderer(renderer) {}
+        Screen(std::shared_ptr<gfx::Renderer> renderer) : common::Drawable(renderer) {}
 
         inline void setScreenManager(ScreenManager *screenManager)
         {

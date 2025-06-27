@@ -11,7 +11,7 @@ namespace widget
 {
     struct XOGrid : common::Drawable
     {
-        XOGrid(std::shared_ptr<xo::XO> xo);
+        XOGrid(std::shared_ptr<xo::XO> xo, std::shared_ptr<gfx::Renderer> renderer);
 
         void draw() override;
 

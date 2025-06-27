@@ -4,6 +4,8 @@
 #include "functional"
 #include "drawable.hpp"
 #include "clickable.hpp"
+#include <memory>
+#include "renderer.hpp"
 
 namespace widget
 {
@@ -12,8 +14,10 @@ namespace widget
         Button(
             Rect rect,
             std::string text,
+            std::shared_ptr<gfx::Renderer> renderer,
             std::function<void()> onClick) : _rect(rect),
                                              _text(text),
+                                             common::Drawable(renderer),
                                              common::Clickable(onClick) {};
 
         void draw() override;

@@ -8,7 +8,8 @@
 #include <string>
 #include "rect.hpp"
 
-widget::XOGrid::XOGrid(std::shared_ptr<xo::XO> xo)
+widget::XOGrid::XOGrid(std::shared_ptr<xo::XO> xo, std::shared_ptr<gfx::Renderer> renderer)
+    : common::Drawable(renderer)
 {
     _xo = xo;
 
@@ -43,5 +44,5 @@ void widget::XOGrid::initCell(int i, int j)
             _cells[i][j].setValue(_xo->cells()[i][j].value());
     };
 
-    _cells[i][j] = widget::Cell({x, y, size, size}, value, cb);
+    _cells[i][j] = widget::Cell({x, y, size, size}, value, _renderer, cb);
 }

@@ -3,12 +3,20 @@
 #include "raylib.h"
 #include "config.hpp"
 #include "drawable.hpp"
+#include "renderer.hpp"
+#include <memory>
 
 namespace widget
 {
     struct O : common::Drawable
     {
-        O(int x, int y, int size) : _x(x), _y(y), _size(size) {}
+        O(int x,
+          int y,
+          int size,
+          std::shared_ptr<gfx::Renderer> renderer) : _x(x),
+                                                     _y(y),
+                                                     _size(size),
+                                                     common::Drawable(renderer) {}
 
         inline void draw() override
         {

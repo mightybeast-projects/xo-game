@@ -6,7 +6,9 @@
 widget::Cell::Cell(
     Rect rect,
     std::optional<xo::XOValue> value,
+    std::shared_ptr<gfx::Renderer> renderer,
     std::function<void()> onClick) : _rect(rect),
+                                     common::Drawable(renderer),
                                      common::Clickable(onClick)
 {
     if (!value.has_value())
@@ -37,8 +39,8 @@ void widget::Cell::setDrawable(xo::XOValue value)
     const auto y = _rect.y + _rect.width / 3.75;
 
     if (value == xo::XOValue::X)
-        _drawableValue = std::make_shared<widget::X>(x, y, _rect.width);
+        _drawableValue = std::make_shared<widget::X>(x, y, _rect.width, _renderer);
 
     if (value == xo::XOValue::O)
-        _drawableValue = std::make_shared<widget::O>(x, y, _rect.width);
+        _drawableValue = std::make_shared<widget::O>(x, y, _rect.width, _renderer);
 }

@@ -6,7 +6,7 @@
 #include "xo-grid.hpp"
 
 screen::GameScreen::GameScreen(std::shared_ptr<gfx::Renderer> renderer)
-    : Screen::Screen(renderer)
+    : Screen(renderer)
 {
     initGame();
 }
@@ -48,5 +48,5 @@ void screen::GameScreen::initGame()
     _xo = std::make_shared<xo::XO>(GAME_GRID_SIZE);
 
     _widgets.clear();
-    _widgets.push_back(std::make_unique<widget::XOGrid>(_xo));
+    _widgets.push_back(std::make_unique<widget::XOGrid>(_xo, _renderer));
 }
