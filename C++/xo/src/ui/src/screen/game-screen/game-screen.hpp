@@ -9,14 +9,14 @@ namespace screen
 {
     struct GameScreen : Screen
     {
-        GameScreen(gfx::Renderer *renderer);
+        GameScreen();
 
-        void draw() override;
+        void draw(const gfx::Renderer &renderer) override;
 
     private:
         std::unique_ptr<xo::XO> _xo;
 
-        void drawRestartDialog();
         void initGame();
+        void drawRestartDialog(const gfx::Renderer &renderer);
     };
 }

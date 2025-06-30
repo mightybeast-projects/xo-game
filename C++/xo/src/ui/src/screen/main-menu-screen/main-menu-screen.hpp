@@ -9,14 +9,12 @@ namespace screen
 {
     struct MainMenuScreen : Screen
     {
-        MainMenuScreen(gfx::Renderer *renderer);
-
-        void draw() override;
+        MainMenuScreen();
 
     private:
         std::unique_ptr<widget::Button> _startBtn;
 
-        void drawLogo();
-        void drawStartButton();
+        void initLogo();
+        void initStartButton();
     };
 }

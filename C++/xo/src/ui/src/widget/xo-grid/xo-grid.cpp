@@ -7,8 +7,9 @@
 #include <optional>
 #include <string>
 #include "types.hpp"
+#include "raylib-renderer.hpp"
 
-widget::XOGrid::XOGrid(xo::XO *xo, gfx::Renderer *renderer) : common::Drawable(renderer)
+widget::XOGrid::XOGrid(xo::XO *xo)
 {
     _xo = xo;
 
@@ -19,11 +20,11 @@ widget::XOGrid::XOGrid(xo::XO *xo, gfx::Renderer *renderer) : common::Drawable(r
             initCell(i, j);
 }
 
-void widget::XOGrid::draw()
+void widget::XOGrid::draw(const gfx::Renderer &renderer)
 {
     for (auto i = 0; i < _xo->size(); i++)
         for (auto j = 0; j < _xo->size(); j++)
-            _cells[i][j].draw();
+            _cells[i][j].draw(renderer);
 }
 
 void widget::XOGrid::initCell(int i, int j)
@@ -42,5 +43,5 @@ void widget::XOGrid::initCell(int i, int j)
             _cells[i][j].setValue(_xo->cells()[i][j].value());
     };
 
-    _cells[i].push_back(widget::Cell({x, y, size, size}, value, _renderer, cb));
+    _cells[i].push_back(widget::Cell({x, y, size, size}, value, cb));
 }

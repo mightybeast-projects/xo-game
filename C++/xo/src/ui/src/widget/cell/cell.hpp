@@ -15,10 +15,9 @@ namespace widget
     {
         Cell(Rect rect,
              std::optional<xo::XOValue> value,
-             gfx::Renderer *renderer,
              std::function<void()> onClick);
 
-        void draw() override;
+        void draw(const gfx::Renderer &renderer) override;
         void setValue(xo::XOValue value);
 
     private:

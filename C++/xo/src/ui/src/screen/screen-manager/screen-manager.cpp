@@ -7,7 +7,7 @@ void screen::ScreenManager::switchTo(std::unique_ptr<screen::Screen> screen)
     _current->setScreenManager(this);
 }
 
-void screen::ScreenManager::draw()
+void screen::ScreenManager::draw(const gfx::Renderer &renderer)
 {
-    _current->draw();
+    _current->draw(renderer);
 }

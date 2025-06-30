@@ -2,15 +2,16 @@
 
 #include "screen.hpp"
 #include <memory>
+#include "drawable.hpp"
 
 namespace screen
 {
     struct Screen;
 
-    struct ScreenManager
+    struct ScreenManager : common::Drawable
     {
         void switchTo(std::unique_ptr<screen::Screen> screen);
-        void draw();
+        void draw(const gfx::Renderer &renderer) override;
 
     private:
         std::unique_ptr<screen::Screen> _current;

@@ -1,0 +1,13 @@
+{
+	"files.associations": {
+		"*.dbclient-js": "javascript",
+		"*.mustache": "html",
+		"*.php": "php",
+		"*.tpp": "cpp",
+		"atomic": "cpp",
+		"format": "cpp",
+		"iomanip": "cpp",
+		"istream": "cpp",
+		"ostream": "cpp"
+	}
+}

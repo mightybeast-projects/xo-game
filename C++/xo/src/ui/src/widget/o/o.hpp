@@ -9,24 +9,18 @@ namespace widget
 {
     struct O : common::Drawable
     {
-        O(int x,
-          int y,
-          int size,
-          gfx::Renderer *renderer) : _x(x),
-                                     _y(y),
-                                     _size(size),
-                                     common::Drawable(renderer) {}
+        O(int x, int y, int size) : _x(x), _y(y), _size(size) {}
 
-        inline void draw() override
+        inline void draw(const gfx::Renderer &renderer) override
         {
             Col color = {255, 150, 69, 255};
 
-            _renderer->drawText("o", _x, _y - _size / 3.3, _size, color);
+            renderer.drawText("o", _x, _y - _size / 3.3, _size, color);
         }
 
-        inline int width()
+        inline int width(const gfx::Renderer &renderer)
         {
-            return _renderer->measureText("o", _size);
+            return renderer.measureText("o", _size);
         }
 
     private:

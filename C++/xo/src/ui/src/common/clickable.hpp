@@ -11,16 +11,14 @@ namespace common
 {
     struct Clickable : common::Drawable
     {
-        Clickable(gfx::Renderer *renderer,
-                  std::function<void()> onClick) : common::Drawable(renderer),
-                                                   _onClick(onClick) {};
+        Clickable(std::function<void()> onClick) : _onClick(onClick) {};
 
     protected:
         std::function<void()> _onClick;
 
-        void checkLeftClick(Rect rect)
+        void checkLeftClick(Rect rect, const gfx::Renderer &renderer)
         {
-            _renderer->handleLeftClick(rect, _onClick);
+            renderer.handleLeftClick(rect, _onClick);
         }
     };
 }

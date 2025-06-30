@@ -10,13 +10,13 @@ int main()
 {
     auto renderer = std::make_unique<gfx::RaylibRenderer>();
     auto screenManager = std::make_unique<screen::ScreenManager>();
-    auto mainMenuScreen = std::make_unique<screen::MainMenuScreen>(renderer.get());
+    auto mainMenuScreen = std::make_unique<screen::MainMenuScreen>();
 
     screenManager->switchTo(std::move(mainMenuScreen));
 
     const auto onDraw = [&]()
     {
-        screenManager->draw();
+        screenManager->draw(*renderer);
     };
 
     renderer->initGameWindow();

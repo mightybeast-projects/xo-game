@@ -13,12 +13,11 @@ namespace widget
     {
         Button(Rect rect,
                std::string text,
-               gfx::Renderer *renderer,
                std::function<void()> onClick) : _rect(rect),
                                                 _text(text),
-                                                common::Clickable(renderer, onClick) {};
+                                                common::Clickable(onClick) {};
 
-        void draw() override;
+        void draw(const gfx::Renderer &renderer) override;
 
     private:
         Rect _rect;

@@ -12,17 +12,15 @@ namespace screen
 
     struct Screen : common::Drawable
     {
-        Screen(gfx::Renderer *renderer) : common::Drawable(renderer) {}
-
         inline void setScreenManager(ScreenManager *screenManager)
         {
             _screenManager = screenManager;
         }
 
-        inline void draw() override
+        inline void draw(const gfx::Renderer &renderer) override
         {
             for (auto &w : _widgets)
-                w->draw();
+                w->draw(renderer);
         }
 
     protected:

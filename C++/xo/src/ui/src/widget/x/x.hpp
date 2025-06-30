@@ -8,24 +8,18 @@ namespace widget
 {
     struct X : common::Drawable
     {
-        X(int x,
-          int y,
-          int size,
-          gfx::Renderer *renderer) : _x(x),
-                                     _y(y),
-                                     _size(size),
-                                     common::Drawable(renderer) {}
+        X(int x, int y, int size) : _x(x), _y(y), _size(size) {}
 
-        inline void draw() override
+        inline void draw(const gfx::Renderer &renderer) override
         {
             const Col color = {99, 141, 219, 255};
 
-            _renderer->drawText("x", _x, _y - _size / 3.3, _size, color);
+            renderer.drawText("x", _x, _y - _size / 3.3, _size, color);
         }
 
-        inline int width()
+        inline int width(const gfx::Renderer &renderer)
         {
-            return _renderer->measureText("x", _size);
+            return renderer.measureText("x", _size);
         }
 
     private:

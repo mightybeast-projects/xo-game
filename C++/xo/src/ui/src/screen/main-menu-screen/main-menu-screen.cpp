@@ -6,18 +6,13 @@
 #include "o.hpp"
 #include "renderer.hpp"
 
-screen::MainMenuScreen::MainMenuScreen(gfx::Renderer *renderer) : Screen(renderer)
+screen::MainMenuScreen::MainMenuScreen()
 {
-    drawLogo();
-    drawStartButton();
+    initLogo();
+    initStartButton();
 }
 
-void screen::MainMenuScreen::draw()
-{
-    Screen::draw();
-}
-
-void screen::MainMenuScreen::drawLogo()
+void screen::MainMenuScreen::initLogo()
 {
     const auto size = 50;
     const auto offset = 75;
@@ -33,12 +28,12 @@ void screen::MainMenuScreen::drawLogo()
 
     for (int i = 0; i < 4; i++)
     {
-        auto c = std::make_unique<widget::Cell>(rectangles[i], values[i], _renderer, nullptr);
+        auto c = std::make_unique<widget::Cell>(rectangles[i], values[i], nullptr);
         _widgets.push_back(std::move(c));
     }
 }
 
-void screen::MainMenuScreen::drawStartButton()
+void screen::MainMenuScreen::initStartButton()
 {
     const float width = 100;
     const float height = 30;
@@ -49,8 +44,8 @@ void screen::MainMenuScreen::drawStartButton()
 
     const auto cb = [this]()
     {
-        _screenManager->switchTo(std::make_unique<screen::GameScreen>(_renderer));
+        _screenManager->switchTo(std::make_unique<screen::GameScreen>());
     };
 
-    _widgets.push_back(std::make_unique<widget::Button>(rect, text, _renderer, cb));
+    _widgets.push_back(std::make_unique<widget::Button>(rect, text, cb));
 }

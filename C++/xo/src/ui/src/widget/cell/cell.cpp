@@ -6,9 +6,8 @@
 widget::Cell::Cell(
     Rect rect,
     std::optional<xo::XOValue> value,
-    gfx::Renderer *renderer,
     std::function<void()> onClick) : _rect(rect),
-                                     common::Clickable(renderer, onClick)
+                                     common::Clickable(onClick)
 {
     if (!value.has_value())
         return;
@@ -16,17 +15,17 @@ widget::Cell::Cell(
     setDrawableValue(value.value());
 }
 
-void widget::Cell::draw()
+void widget::Cell::draw(const gfx::Renderer &renderer)
 {
     const Rect rect = {_rect.x, _rect.y, _rect.width, _rect.height};
     const Col color = {56, 56, 56, 255};
 
-    _renderer->drawRectangleRounded(rect, 0.1, 0, color);
+    renderer.drawRectangleRounded(rect, 0.1, 0, color);
 
     if (_drawableValue.has_value())
-        _drawableValue->get()->draw();
+        _drawableValue->get()->draw(renderer);
 
-    checkLeftClick(_rect);
+    checkLeftClick(_rect, renderer);
 }
 
 void widget::Cell::setValue(xo::XOValue value)
@@ -40,8 +39,8 @@ void widget::Cell::setDrawableValue(xo::XOValue value)
     const auto y = _rect.y + _rect.width / 3.75;
 
     if (value == xo::XOValue::X)
-        _drawableValue = std::make_shared<widget::X>(x, y, _rect.width, _renderer);
+        _drawableValue = std::make_shared<widget::X>(x, y, _rect.width);
 
     if (value == xo::XOValue::O)
-        _drawableValue = std::make_shared<widget::O>(x, y, _rect.width, _renderer);
+        _drawableValue = std::make_shared<widget::O>(x, y, _rect.width);
 }

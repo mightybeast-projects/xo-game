@@ -7,11 +7,6 @@ namespace common
 {
     struct Drawable
     {
-        Drawable(gfx::Renderer *renderer) : _renderer(renderer) {}
-
-        virtual void draw() = 0;
-
-    protected:
-        gfx::Renderer *_renderer;
+        virtual void draw(const gfx::Renderer &renderer) = 0;
     };
 }
