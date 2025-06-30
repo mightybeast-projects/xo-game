@@ -9,7 +9,7 @@
 
 namespace widget
 {
-    struct Button : common::Clickable
+    struct Button : common::Clickable, common::Drawable
     {
         Button(Rect rect,
                std::string text,

@@ -11,19 +11,17 @@
 
 namespace widget
 {
-    struct Cell : common::Clickable
+    struct Cell : common::Clickable, common::Drawable
     {
-        Cell(Rect rect,
-             std::optional<xo::XOValue> value,
-             std::function<void()> onClick);
+        Cell(const Rect rect,
+             const std::optional<xo::XOValue> value,
+             const std::function<void()> onClick);
 
         void draw(const gfx::Renderer &renderer) override;
-        void setValue(xo::XOValue value);
+        void setValue(const xo::XOValue value);
 
     private:
         Rect _rect;
-        std::optional<std::shared_ptr<common::Drawable>> _drawableValue;
-
-        void setDrawableValue(xo::XOValue value);
+        std::optional<std::unique_ptr<common::Drawable>> _drawableValue;
     };
 }

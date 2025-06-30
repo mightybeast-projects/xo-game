@@ -30,6 +30,7 @@ namespace gfx
                                   const int segments,
                                   const Col color) const override;
 
-        void handleLeftClick(const Rect r, const std::function<void()> onClick) const override;
+        void handleLeftClick(const Rect r,
+                             const std::function<void()> onClick) const override;
     };
 }
