@@ -6,14 +6,14 @@
 #include <functional>
 #include "raylib-renderer.hpp"
 
-void gfx::RaylibRenderer::initGameWindow()
+void gfx::RaylibRenderer::initGameWindow() const
 {
     InitWindow(WIDTH, WIDTH, "XOGame");
     SetTargetFPS(60);
     GuiLoadStyleCyber();
 }
 
-void gfx::RaylibRenderer::draw(const std::function<void()> onDraw)
+void gfx::RaylibRenderer::draw(const std::function<void()> onDraw) const
 {
     Color bg = {46, 46, 46, 255};
 
@@ -28,12 +28,12 @@ void gfx::RaylibRenderer::draw(const std::function<void()> onDraw)
     }
 }
 
-void gfx::RaylibRenderer::closeGameWindow()
+void gfx::RaylibRenderer::closeGameWindow() const
 {
     CloseWindow();
 }
 
-int gfx::RaylibRenderer::drawGuiButton(const Rect rect, const std::string text)
+int gfx::RaylibRenderer::drawGuiButton(const Rect rect, const std::string text) const
 {
     return GuiButton({rect.x, rect.y, rect.width, rect.height}, text.c_str());
 }
@@ -42,7 +42,7 @@ int gfx::RaylibRenderer::drawGuiMessageBox(
     const Rect rect,
     const std::string title,
     const std::string message,
-    const std::string buttons)
+    const std::string buttons) const
 {
     Rectangle r = {rect.x, rect.y, rect.width, rect.height};
 
@@ -53,14 +53,14 @@ void gfx::RaylibRenderer::drawText(const std::string text,
                                    const int x,
                                    const int y,
                                    const int fontSize,
-                                   Col color)
+                                   Col color) const
 {
     Color c = {color.r, color.g, color.b, color.a};
 
     return DrawText(text.c_str(), x, y, fontSize, c);
 }
 
-int gfx::RaylibRenderer::measureText(const std::string text, int fontSize)
+int gfx::RaylibRenderer::measureText(const std::string text, int fontSize) const
 {
     return MeasureText(text.c_str(), fontSize);
 }
@@ -68,7 +68,7 @@ int gfx::RaylibRenderer::measureText(const std::string text, int fontSize)
 void gfx::RaylibRenderer::drawRectangleRounded(const Rect rect,
                                                const float roundness,
                                                const int segments,
-                                               const Col color)
+                                               const Col color) const
 {
     Rectangle r = {rect.x, rect.y, rect.width, rect.height};
     Color c = {color.r, color.g, color.b, color.a};
@@ -78,7 +78,7 @@ void gfx::RaylibRenderer::drawRectangleRounded(const Rect rect,
 
 void gfx::RaylibRenderer::handleLeftClick(
     const Rect r,
-    const std::function<void()> onClick)
+    const std::function<void()> onClick) const
 {
     if (onClick && IsMouseButtonReleased(MOUSE_LEFT_BUTTON))
     {
