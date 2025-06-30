@@ -11,12 +11,12 @@ namespace widget
 {
     struct XOGrid : common::Drawable
     {
-        XOGrid(std::shared_ptr<xo::XO> xo, std::shared_ptr<gfx::Renderer> renderer);
+        XOGrid(xo::XO *xo, gfx::Renderer *renderer);
 
         void draw() override;
 
     private:
-        std::shared_ptr<xo::XO> _xo;
+        xo::XO *_xo;
         std::vector<std::vector<widget::Cell>> _cells;
 
         void initCell(int i, int j);

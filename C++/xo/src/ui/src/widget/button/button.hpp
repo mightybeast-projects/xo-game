@@ -13,7 +13,7 @@ namespace widget
     {
         Button(Rect rect,
                std::string text,
-               std::shared_ptr<gfx::Renderer> renderer,
+               gfx::Renderer *renderer,
                std::function<void()> onClick) : _rect(rect),
                                                 _text(text),
                                                 common::Clickable(renderer, onClick) {};

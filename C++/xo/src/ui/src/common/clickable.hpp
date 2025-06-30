@@ -11,7 +11,7 @@ namespace common
 {
     struct Clickable : common::Drawable
     {
-        Clickable(std::shared_ptr<gfx::Renderer> renderer,
+        Clickable(gfx::Renderer *renderer,
                   std::function<void()> onClick) : common::Drawable(renderer),
                                                    _onClick(onClick) {};
 

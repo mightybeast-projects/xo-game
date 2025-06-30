@@ -6,7 +6,7 @@
 widget::Cell::Cell(
     Rect rect,
     std::optional<xo::XOValue> value,
-    std::shared_ptr<gfx::Renderer> renderer,
+    gfx::Renderer *renderer,
     std::function<void()> onClick) : _rect(rect),
                                      common::Clickable(renderer, onClick)
 {

@@ -9,7 +9,7 @@ namespace screen
 {
     struct MainMenuScreen : Screen
     {
-        MainMenuScreen(std::shared_ptr<gfx::Renderer> renderer);
+        MainMenuScreen(gfx::Renderer *renderer);
 
         void draw() override;
 

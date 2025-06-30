@@ -3,8 +3,7 @@
 #include "config.hpp"
 #include "xo-grid.hpp"
 
-screen::GameScreen::GameScreen(std::shared_ptr<gfx::Renderer> renderer)
-    : Screen(renderer)
+screen::GameScreen::GameScreen(gfx::Renderer *renderer) : Screen(renderer)
 {
     initGame();
 }
@@ -42,8 +41,8 @@ void screen::GameScreen::drawRestartDialog()
 
 void screen::GameScreen::initGame()
 {
-    _xo = std::make_shared<xo::XO>(3);
+    _xo = std::make_unique<xo::XO>(3);
 
     _widgets.clear();
-    _widgets.push_back(std::make_unique<widget::XOGrid>(_xo, _renderer));
+    _widgets.push_back(std::make_unique<widget::XOGrid>(_xo.get(), _renderer));
 }

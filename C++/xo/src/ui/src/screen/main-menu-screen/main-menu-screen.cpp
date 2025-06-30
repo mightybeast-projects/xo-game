@@ -6,8 +6,7 @@
 #include "o.hpp"
 #include "renderer.hpp"
 
-screen::MainMenuScreen::MainMenuScreen(std::shared_ptr<gfx::Renderer> renderer)
-    : Screen(renderer)
+screen::MainMenuScreen::MainMenuScreen(gfx::Renderer *renderer) : Screen(renderer)
 {
     drawLogo();
     drawStartButton();

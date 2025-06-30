@@ -12,10 +12,10 @@ namespace widget
         O(int x,
           int y,
           int size,
-          std::shared_ptr<gfx::Renderer> renderer) : _x(x),
-                                                     _y(y),
-                                                     _size(size),
-                                                     common::Drawable(renderer) {}
+          gfx::Renderer *renderer) : _x(x),
+                                     _y(y),
+                                     _size(size),
+                                     common::Drawable(renderer) {}
 
         inline void draw() override
         {
