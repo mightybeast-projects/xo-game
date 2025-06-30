@@ -11,13 +11,12 @@ namespace widget
 {
     struct Button : common::Clickable
     {
-        Button(
-            Rect rect,
-            std::string text,
-            std::shared_ptr<gfx::Renderer> renderer,
-            std::function<void()> onClick) : _rect(rect),
-                                             _text(text),
-                                             common::Clickable(renderer, onClick) {};
+        Button(Rect rect,
+               std::string text,
+               std::shared_ptr<gfx::Renderer> renderer,
+               std::function<void()> onClick) : _rect(rect),
+                                                _text(text),
+                                                common::Clickable(renderer, onClick) {};
 
         void draw() override;
 

@@ -32,6 +32,8 @@ namespace gfx
                                           const int segments,
                                           const Col color) = 0;
 
-        virtual void handleLeftClick(Rect r, std::function<void()> onClick) = 0;
+        virtual void handleLeftClick(
+            const Rect r,
+            const std::function<void()> onClick) = 0;
     };
 }

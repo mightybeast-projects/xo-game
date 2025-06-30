@@ -1,96 +1,35 @@
 #pragma once
 
-#include "raylib.h"
-#include "raygui.h"
-#include "config.hpp"
 #include "renderer.hpp"
-#include "style_cyber.h"
-#include <functional>
 
 namespace gfx
 {
     struct RaylibRenderer : gfx::Renderer
     {
-        void initGameWindow() override
-        {
-            InitWindow(WIDTH, WIDTH, "XOGame");
-            SetTargetFPS(60);
-            GuiLoadStyleCyber();
-        }
-
-        void draw(const std::function<void()> onDraw) override
-        {
-            Color bg = {46, 46, 46, 255};
-
-            while (!WindowShouldClose())
-            {
-                ClearBackground(bg);
-                BeginDrawing();
-
-                onDraw();
-
-                EndDrawing();
-            }
-        }
-
-        void closeGameWindow() override
-        {
-            CloseWindow();
-        }
-
-        int drawGuiButton(const Rect rect, const std::string text) override
-        {
-            return GuiButton({rect.x, rect.y, rect.width, rect.height}, text.c_str());
-        }
+        void initGameWindow() override;
+        void draw(const std::function<void()> onDraw) override;
+        void closeGameWindow() override;
+        int drawGuiButton(const Rect rect, const std::string text) override;
 
         int drawGuiMessageBox(
             const Rect rect,
             const std::string title,
             const std::string message,
-            const std::string buttons) override
-        {
-            Rectangle r = {rect.x, rect.y, rect.width, rect.height};
-
-            return GuiMessageBox(r, title.c_str(), message.c_str(), buttons.c_str());
-        }
+            const std::string buttons) override;
 
         void drawText(const std::string text,
                       const int x,
                       const int y,
                       const int fontSize,
-                      Col color) override
-        {
-            Color c = {color.r, color.g, color.b, color.a};
+                      Col color) override;
 
-            return DrawText(text.c_str(), x, y, fontSize, c);
-        }
-
-        int measureText(const std::string text, int fontSize) override
-        {
-            return MeasureText(text.c_str(), fontSize);
-        }
+        int measureText(const std::string text, int fontSize) override;
 
         void drawRectangleRounded(const Rect rect,
                                   const float roundness,
                                   const int segments,
-                                  const Col color) override
-        {
-            Rectangle r = {rect.x, rect.y, rect.width, rect.height};
-            Color c = {color.r, color.g, color.b, color.a};
+                                  const Col color) override;
 
-            return DrawRectangleRounded(r, roundness, segments, c);
-        }
-
-        void handleLeftClick(Rect r, std::function<void()> onClick) override
-        {
-            if (onClick && IsMouseButtonReleased(MOUSE_LEFT_BUTTON))
-            {
-                const Vector2 mousePos = GetMousePosition();
-                const Rectangle rect = {r.x, r.y, r.width, r.height};
-
-                if (CheckCollisionPointRec(mousePos, rect))
-                    onClick();
-            }
-        }
+        void handleLeftClick(const Rect r, const std::function<void()> onClick) override;
     };
 }

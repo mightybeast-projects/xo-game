@@ -13,11 +13,10 @@ namespace widget
 {
     struct Cell : common::Clickable
     {
-        Cell(
-            Rect rect,
-            std::optional<xo::XOValue> value,
-            std::shared_ptr<gfx::Renderer> renderer,
-            std::function<void()> onClick);
+        Cell(Rect rect,
+             std::optional<xo::XOValue> value,
+             std::shared_ptr<gfx::Renderer> renderer,
+             std::function<void()> onClick);
 
         void draw() override;
         void setValue(xo::XOValue value);

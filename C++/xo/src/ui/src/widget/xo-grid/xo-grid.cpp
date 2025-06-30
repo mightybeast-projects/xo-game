@@ -8,8 +8,9 @@
 #include <string>
 #include "types.hpp"
 
-widget::XOGrid::XOGrid(std::shared_ptr<xo::XO> xo, std::shared_ptr<gfx::Renderer> renderer)
-    : common::Drawable(renderer)
+widget::XOGrid::XOGrid(
+    std::shared_ptr<xo::XO> xo,
+    std::shared_ptr<gfx::Renderer> renderer) : common::Drawable(renderer)
 {
     _xo = xo;
 

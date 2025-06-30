@@ -1,4 +1,3 @@
-#define RAYGUI_IMPLEMENTATION
 #include "config.hpp"
 #include "game-screen.hpp"
 #include "screen-manager.hpp"
