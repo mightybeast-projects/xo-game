@@ -9,7 +9,7 @@
 
 namespace widget
 {
-    struct Button : common::Drawable, common::Clickable
+    struct Button : common::Clickable
     {
         Button(
             Rect rect,
@@ -17,8 +17,7 @@ namespace widget
             std::shared_ptr<gfx::Renderer> renderer,
             std::function<void()> onClick) : _rect(rect),
                                              _text(text),
-                                             common::Drawable(renderer),
-                                             common::Clickable(onClick) {};
+                                             common::Clickable(renderer, onClick) {};
 
         void draw() override;
 

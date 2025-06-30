@@ -73,12 +73,24 @@ namespace gfx
         void drawRectangleRounded(const Rect rect,
                                   const float roundness,
                                   const int segments,
-                                  const Col color)
+                                  const Col color) override
         {
             Rectangle r = {rect.x, rect.y, rect.width, rect.height};
             Color c = {color.r, color.g, color.b, color.a};
 
             return DrawRectangleRounded(r, roundness, segments, c);
+        }
+
+        void handleLeftClick(Rect r, std::function<void()> onClick) override
+        {
+            if (onClick && IsMouseButtonReleased(MOUSE_LEFT_BUTTON))
+            {
+                const Vector2 mousePos = GetMousePosition();
+                const Rectangle rect = {r.x, r.y, r.width, r.height};
+
+                if (CheckCollisionPointRec(mousePos, rect))
+                    onClick();
+            }
         }
     };
 }

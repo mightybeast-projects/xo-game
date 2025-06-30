@@ -31,5 +31,7 @@ namespace gfx
                                           const float roundness,
                                           const int segments,
                                           const Col color) = 0;
+
+        virtual void handleLeftClick(Rect r, std::function<void()> onClick) = 0;
     };
 }

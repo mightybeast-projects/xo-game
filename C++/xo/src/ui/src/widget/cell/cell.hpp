@@ -11,7 +11,7 @@
 
 namespace widget
 {
-    struct Cell : common::Drawable, common::Clickable
+    struct Cell : common::Clickable
     {
         Cell(
             Rect rect,

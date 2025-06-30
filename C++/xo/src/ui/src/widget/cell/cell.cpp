@@ -8,8 +8,7 @@ widget::Cell::Cell(
     std::optional<xo::XOValue> value,
     std::shared_ptr<gfx::Renderer> renderer,
     std::function<void()> onClick) : _rect(rect),
-                                     common::Drawable(renderer),
-                                     common::Clickable(onClick)
+                                     common::Clickable(renderer, onClick)
 {
     if (!value.has_value())
         return;
@@ -27,7 +26,7 @@ void widget::Cell::draw()
     if (_drawableValue.has_value())
         _drawableValue->get()->draw();
 
-    handleClick(_rect);
+    checkLeftClick(_rect);
 }
 
 void widget::Cell::setValue(xo::XOValue value)
