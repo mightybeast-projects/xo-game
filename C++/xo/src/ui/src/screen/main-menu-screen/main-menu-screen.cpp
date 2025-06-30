@@ -1,6 +1,5 @@
 #include "main-menu-screen.hpp"
 #include "config.hpp"
-#include "raygui.h"
 #include "game-screen.hpp"
 #include "x.hpp"
 #include "o.hpp"
@@ -40,7 +39,7 @@ void screen::MainMenuScreen::initStartButton()
     const float x = WIDTH / 2 - width / 2;
     const float y = WIDTH / 2 - height / 2 + 50;
     const Rect rect = {x, y, width, height};
-    const auto text = GuiIconText(ICON_PLAYER_PLAY, "Play");
+    const auto text = "#119#Play";
 
     const auto cb = [this]()
     {

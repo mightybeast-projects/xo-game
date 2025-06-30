@@ -1,6 +1,5 @@
 #include "xo-grid.hpp"
 #include "xo.hpp"
-#include "raygui.h"
 #include "config.hpp"
 #include "x.hpp"
 #include "cell.hpp"
