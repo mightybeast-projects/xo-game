@@ -13,8 +13,7 @@ widget::XOGrid::XOGrid(std::shared_ptr<xo::XO> xo, std::shared_ptr<gfx::Renderer
 {
     _xo = xo;
 
-    auto col = std::vector<widget::Cell>(_xo->size());
-    _cells = std::vector<std::vector<widget::Cell>>(_xo->size(), col);
+    _cells.resize(_xo->size());
 
     for (auto i = 0; i < _xo->size(); i++)
         for (auto j = 0; j < _xo->size(); j++)
@@ -44,5 +43,5 @@ void widget::XOGrid::initCell(int i, int j)
             _cells[i][j].setValue(_xo->cells()[i][j].value());
     };
 
-    _cells[i][j] = widget::Cell({x, y, size, size}, value, _renderer, cb);
+    _cells[i].push_back(widget::Cell({x, y, size, size}, value, _renderer, cb));
 }
