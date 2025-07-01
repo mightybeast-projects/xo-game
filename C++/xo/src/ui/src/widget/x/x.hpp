@@ -1,6 +1,5 @@
 #pragma once
 
-#include "config.hpp"
 #include "drawable.hpp"
 #include "renderer.hpp"
 
