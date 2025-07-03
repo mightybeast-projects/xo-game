@@ -23,8 +23,6 @@ namespace gfx
                       const int fontSize,
                       Col color) const override;
 
-        int measureText(const std::string text, int fontSize) const override;
-
         void drawRectangleRounded(const Rect rect,
                                   const float roundness,
                                   const int segments,

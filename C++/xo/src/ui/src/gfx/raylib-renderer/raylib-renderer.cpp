@@ -60,11 +60,6 @@ void gfx::RaylibRenderer::drawText(const std::string text,
     return DrawText(text.c_str(), x, y, fontSize, c);
 }
 
-int gfx::RaylibRenderer::measureText(const std::string text, int fontSize) const
-{
-    return MeasureText(text.c_str(), fontSize);
-}
-
 void gfx::RaylibRenderer::drawRectangleRounded(const Rect rect,
                                                const float roundness,
                                                const int segments,

@@ -8,8 +8,14 @@ add_executable(xo-ui-tests
 
 target_link_libraries(xo-ui-tests PRIVATE
 	GTest::gtest_main
+  	GTest::gmock
+  	GTest::gmock_main
 	xo-core
 	xo-ui
+)
+
+target_include_directories(xo-ui-tests PRIVATE
+  ${CMAKE_CURRENT_SOURCE_DIR}/utils
 )
 
 include(GoogleTest)

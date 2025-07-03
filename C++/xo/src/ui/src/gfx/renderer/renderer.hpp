@@ -25,8 +25,6 @@ namespace gfx
                               const int fontSize,
                               Col color) const = 0;
 
-        virtual int measureText(const std::string text, int fontSize) const = 0;
-
         virtual void drawRectangleRounded(const Rect rec,
                                           const float roundness,
                                           const int segments,
