@@ -23,13 +23,10 @@ void screen::MainMenuScreen::initLogo()
         {WIDTH / 2 - size - padding, WIDTH / 2 - offset + padding, size, size},
         {WIDTH / 2 + padding, WIDTH / 2 - offset + padding, size, size}};
 
-    const std::optional<xo::XOValue> values[4] = {xo::X, std::nullopt, std::nullopt, xo::O};
-
-    for (int i = 0; i < 4; i++)
-    {
-        auto c = std::make_unique<widget::Cell>(rectangles[i], values[i], nullptr);
-        _widgets.push_back(std::move(c));
-    }
+    _widgets.push_back(std::make_unique<widget::Cell>(rectangles[0], xo::X));
+    _widgets.push_back(std::make_unique<widget::Cell>(rectangles[1]));
+    _widgets.push_back(std::make_unique<widget::Cell>(rectangles[2]));
+    _widgets.push_back(std::make_unique<widget::Cell>(rectangles[3], xo::O));
 }
 
 void screen::MainMenuScreen::initStartButton()

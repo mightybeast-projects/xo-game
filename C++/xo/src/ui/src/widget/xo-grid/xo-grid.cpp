@@ -28,13 +28,14 @@ void widget::XOGrid::draw(const gfx::Renderer &renderer)
 
 void widget::XOGrid::initCell(int i, int j)
 {
-    auto padding = 5;
-    auto x = cellSize() * i + padding;
-    auto y = cellSize() * j + padding;
-    auto size = cellSize() - padding * 2;
-    auto value = _xo->cells()[i][j];
+    const auto padding = 5;
+    const auto x = cellSize() * i + padding;
+    const auto y = cellSize() * j + padding;
+    const auto size = cellSize() - padding * 2;
+    const auto value = _xo->cells()[i][j];
+    const Rect rect = {x, y, size, size};
 
-    auto cb = [this, i, j]()
+    auto placeNextValue = [this, i, j]()
     {
         auto res = _xo->placeNext(i, j);
 
@@ -42,5 +43,9 @@ void widget::XOGrid::initCell(int i, int j)
             _cells[i][j].setValue(_xo->cells()[i][j].value());
     };
 
-    _cells[i].push_back(widget::Cell({x, y, size, size}, value, cb));
+    auto cell = widget::Cell(rect);
+
+    cell.onClick(placeNextValue);
+
+    _cells[i].push_back(std::move(cell));
 }

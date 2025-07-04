@@ -3,17 +3,6 @@
 #include "x.hpp"
 #include "o.hpp"
 
-widget::Cell::Cell(const Rect rect,
-                   const std::optional<xo::XOValue> value,
-                   const std::function<void()> onClick) : _rect(rect),
-                                                          common::Clickable(onClick)
-{
-    if (!value.has_value())
-        return;
-
-    setValue(value.value());
-}
-
 void widget::Cell::draw(const gfx::Renderer &renderer)
 {
     const Rect rect = {_rect.x, _rect.y, _rect.width, _rect.height};
