@@ -4,7 +4,7 @@
 #include "xo-value.hpp"
 #include "types.hpp"
 
-TEST(XOValueWidget, Should_Draw_Value_With_Specified_Position_And_Size)
+TEST(XOValueWidget, Should_Draw_Value_With_Specified_Position_Size_And_Color)
 {
     const auto text = "x";
     const auto x = 1;
