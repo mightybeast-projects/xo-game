@@ -18,6 +18,11 @@ namespace common
             _onClick = onClick;
         }
 
+        void click()
+        {
+            _onClick();
+        }
+
     protected:
         std::function<void()> _onClick;
 

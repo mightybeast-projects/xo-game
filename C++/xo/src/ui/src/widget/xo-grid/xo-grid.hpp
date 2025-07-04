@@ -15,9 +15,14 @@ namespace widget
 
         void draw(const gfx::Renderer &renderer) override;
 
+        inline void clickTile(int i, int j)
+        {
+            _cells[i][j].click();
+        }
+
     private:
-        xo::XO *_xo;
         std::vector<std::vector<widget::Cell>> _cells;
+        xo::XO *_xo;
 
         void initCell(int i, int j);
 
