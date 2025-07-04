@@ -13,6 +13,7 @@ namespace widget
 {
     struct Cell : common::Clickable, common::Drawable
     {
+        Cell(const Rect rect) : _rect(rect), common::Clickable(nullptr) {}
         Cell(const Rect rect,
              const std::optional<xo::XOValue> value,
              const std::function<void()> onClick);
