@@ -15,8 +15,7 @@ TEST(OWidget, Should_Draw_O_Value_With_Specified_Position_And_Size)
 
     mock::MockRenderer renderer;
 
-    EXPECT_CALL(renderer, drawText("o", x, y - size / 3.3, size, color))
-        .Times(testing::AtLeast(1));
+    EXPECT_CALL(renderer, drawText("o", x, y - size / 3.3, size, color)).Times(1);
 
     widget.draw(renderer);
 }

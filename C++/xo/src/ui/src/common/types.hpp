@@ -22,4 +22,12 @@ struct Rect
     float y;
     float width;
     float height;
+
+    friend bool operator==(const Rect &lhs, const Rect &rhs)
+    {
+        return lhs.x == rhs.x &&
+               lhs.y == rhs.y &&
+               lhs.width == rhs.width &&
+               lhs.height == rhs.height;
+    }
 };
