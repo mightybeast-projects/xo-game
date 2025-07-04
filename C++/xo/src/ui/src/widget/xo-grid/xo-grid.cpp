@@ -28,14 +28,13 @@ void widget::XOGrid::draw(const gfx::Renderer &renderer)
 
 void widget::XOGrid::initCell(int i, int j)
 {
-    const auto padding = 5;
-    const auto x = cellSize() * i + padding;
-    const auto y = cellSize() * j + padding;
-    const auto size = cellSize() - padding * 2;
-    const auto value = _xo->cells()[i][j];
+    const float padding = 5;
+    const float x = cellSize() * i + padding;
+    const float y = cellSize() * j + padding;
+    const float size = cellSize() - padding * 2;
     const Rect rect = {x, y, size, size};
 
-    auto placeNextValue = [this, i, j]()
+    const auto placeNextValue = [this, i, j]()
     {
         auto res = _xo->placeNext(i, j);
 
