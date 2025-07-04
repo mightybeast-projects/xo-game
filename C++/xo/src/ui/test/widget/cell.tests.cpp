@@ -26,8 +26,26 @@ TEST_F(CellWidget, Should_Draw_Cell_With_No_Value_If_It_Is_Not_Specified)
     widget.draw(renderer);
 }
 
-TEST_F(CellWidget, Should_Draw_Cell_With_Specified_Position_Size_And_Value)
+TEST_F(CellWidget, Should_Draw_Cell_With_Specified_Position_Size_And_X_Value)
 {
+    widget = widget::Cell(rect, xo::X, onClick);
+
+    EXPECT_CALL(renderer, drawRectangleRounded(rect, 0.1, 0, color)).Times(1);
+    EXPECT_CALL(renderer, drawText("x", _, _, _, _)).Times(1);
+    EXPECT_CALL(renderer, handleLeftClick(rect, _)).Times(1);
+
+    widget.draw(renderer);
+}
+
+TEST_F(CellWidget, Should_Draw_Cell_With_Specified_Position_Size_And_O_Value)
+{
+    widget = widget::Cell(rect, xo::O, onClick);
+
+    EXPECT_CALL(renderer, drawRectangleRounded(rect, 0.1, 0, color)).Times(1);
+    EXPECT_CALL(renderer, drawText("o", _, _, _, _)).Times(1);
+    EXPECT_CALL(renderer, handleLeftClick(rect, _)).Times(1);
+
+    widget.draw(renderer);
 }
 
 TEST_F(CellWidget, Should_Set_Value)
