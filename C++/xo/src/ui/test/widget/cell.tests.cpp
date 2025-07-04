@@ -10,7 +10,7 @@ using testing::_;
 struct CellWidget : public testing::Test
 {
     const mock::MockRenderer renderer;
-    const Rect rect = {0, 0, 0, 0};
+    const Rect rect = {0, 0, 100, 100};
     const Col color = {56, 56, 56, 255};
 };
 
