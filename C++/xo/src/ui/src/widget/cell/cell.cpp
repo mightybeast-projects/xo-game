@@ -1,7 +1,5 @@
 #include "cell.hpp"
 #include <optional>
-#include "x.hpp"
-#include "o.hpp"
 
 void widget::Cell::draw(const gfx::Renderer &renderer)
 {
@@ -22,8 +20,10 @@ void widget::Cell::setValue(const xo::XOValue value)
     const auto y = _rect.y + _rect.width / 3.75;
 
     if (value == xo::XOValue::X)
-        _drawableValue = std::make_unique<widget::X>(x, y, _rect.width);
+        _drawableValue = std::make_unique<widget::XOValue>(
+            "x", x, y, _rect.width, (Col){99, 141, 219, 255});
 
     if (value == xo::XOValue::O)
-        _drawableValue = std::make_unique<widget::O>(x, y, _rect.width);
+        _drawableValue = std::make_unique<widget::XOValue>(
+            "o", x, y, _rect.width, (Col){255, 150, 69, 255});
 }

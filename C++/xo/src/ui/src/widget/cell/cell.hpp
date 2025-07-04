@@ -8,6 +8,7 @@
 #include "clickable.hpp"
 #include "types.hpp"
 #include "drawable.hpp"
+#include "xo-value.hpp"
 
 namespace widget
 {
@@ -15,16 +16,14 @@ namespace widget
     {
         Cell(const Rect rect) : _rect(rect), common::Clickable(nullptr) {}
 
-        Cell(const Rect rect,
-             const xo::XOValue value) : _rect(rect), common::Clickable(nullptr)
+        Cell(const Rect rect, const xo::XOValue value)
+            : _rect(rect), common::Clickable(nullptr)
         {
             setValue(value);
         }
 
-        Cell(const Rect rect,
-             const xo::XOValue value,
-             const std::function<void()> onClick) : _rect(rect),
-                                                    common::Clickable(onClick)
+        Cell(const Rect rect, const xo::XOValue value, const std::function<void()> onClick)
+            : _rect(rect), common::Clickable(onClick)
         {
             setValue(value);
         }
@@ -34,6 +33,6 @@ namespace widget
 
     private:
         Rect _rect;
-        std::optional<std::unique_ptr<common::Drawable>> _drawableValue;
+        std::optional<std::unique_ptr<widget::XOValue>> _drawableValue;
     };
 }

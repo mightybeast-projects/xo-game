@@ -1,7 +1,6 @@
 #include "xo-grid.hpp"
 #include "xo.hpp"
 #include "config.hpp"
-#include "x.hpp"
 #include "cell.hpp"
 #include <optional>
 #include <string>

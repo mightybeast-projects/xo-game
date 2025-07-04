@@ -1,8 +1,6 @@
 #include "main-menu-screen.hpp"
 #include "config.hpp"
 #include "game-screen.hpp"
-#include "x.hpp"
-#include "o.hpp"
 #include "renderer.hpp"
 
 screen::MainMenuScreen::MainMenuScreen()
