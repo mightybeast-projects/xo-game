@@ -4,6 +4,7 @@
 #include "xo-grid.hpp"
 #include <memory>
 #include "screen.hpp"
+#include "restart-dialog.hpp"
 
 namespace screen
 {
@@ -15,8 +16,9 @@ namespace screen
 
     private:
         std::unique_ptr<xo::XO> _xo;
+        std::unique_ptr<widget::RestartDialog> _dialog;
 
         void initGame();
-        void drawRestartDialog(const gfx::Renderer &renderer);
+        void initRestartDialog();
     };
 }
