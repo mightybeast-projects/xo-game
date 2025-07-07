@@ -15,7 +15,7 @@ target_link_libraries(xo-ui-tests PRIVATE
 )
 
 target_include_directories(xo-ui-tests PRIVATE
-  ${CMAKE_CURRENT_SOURCE_DIR}/utils
+  ${CMAKE_CURRENT_SOURCE_DIR}/mock
 )
 
 include(GoogleTest)

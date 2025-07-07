@@ -9,24 +9,23 @@ using testing::_;
 struct ScreenManager : public testing::Test
 {
     screen::ScreenManager screenManager;
+    std::unique_ptr<mock::MockScreen> screen = std::make_unique<mock::MockScreen>();
+    mock::MockScreen *screenPtr = screen.get();
 };
 
 TEST_F(ScreenManager, Should_Switch_Current_Screen)
 {
-    auto screen = std::make_unique<mock::MockScreen>();
+    EXPECT_CALL(*screenPtr, setScreenManager(&screenManager));
 
     screenManager.switchTo(std::move(screen));
 }
 
 TEST_F(ScreenManager, Should_Draw_Current_Screen)
 {
-    const mock::MockRenderer renderer;
-
-    auto screen = std::make_unique<mock::MockScreen>();
+    mock::MockRenderer renderer;
 
     screenManager.switchTo(std::move(screen));
 
-    EXPECT_CALL(renderer, drawText("x", _, _, _, _)).Times(1);
-
+    EXPECT_CALL(*screenPtr, draw(::testing::Ref(renderer))).Times(1);
     screenManager.draw(renderer);
 }
