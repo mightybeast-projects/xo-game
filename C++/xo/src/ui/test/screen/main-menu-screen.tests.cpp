@@ -7,8 +7,8 @@ using testing::_;
 
 struct MainMenuScreen : public testing::Test
 {
+    const mock::MockRenderer renderer;
     screen::MainMenuScreen screen;
-    mock::MockRenderer renderer;
 };
 
 TEST_F(MainMenuScreen, Should_Draw_Logo_And_Play_Button)
