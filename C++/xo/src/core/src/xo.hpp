@@ -38,6 +38,11 @@ namespace xo
             return allCellsAreOccupied() && !_winner.has_value();
         }
 
+        inline bool hasEnded()
+        {
+            return isDraw() || _winner.has_value();
+        }
+
     private:
         int _size;
         XOValue _nextValue = X;

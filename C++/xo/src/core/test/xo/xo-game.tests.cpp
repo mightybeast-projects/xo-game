@@ -123,3 +123,34 @@ TEST_F(XOGame, Should_Be_In_Draw_State_If_All_Cells_Are_Occupied_And_There_Is_No
     EXPECT_EQ(xo.winner(), std::nullopt);
     EXPECT_EQ(xo.isDraw(), true);
 }
+
+TEST_F(XOGame, Should_Not_End_If_There_Is_No_Draw_Or_Winner)
+{
+    EXPECT_EQ(xo.hasEnded(), false);
+}
+
+TEST_F(XOGame, Should_End_If_There_Is_A_Draw)
+{
+    xo.place(0, 0, xo::O);
+    xo.place(0, 1, xo::X);
+    xo.place(0, 2, xo::O);
+
+    xo.place(1, 0, xo::O);
+    xo.place(1, 1, xo::X);
+    xo.place(1, 2, xo::X);
+
+    xo.place(2, 0, xo::X);
+    xo.place(2, 1, xo::O);
+    xo.place(2, 2, xo::X);
+
+    EXPECT_EQ(xo.hasEnded(), true);
+}
+
+TEST_F(XOGame, Should_End_If_There_Is_A_Winner)
+{
+    xo.place(0, 0, xo::X);
+    xo.place(1, 1, xo::X);
+    xo.place(2, 2, xo::X);
+
+    EXPECT_EQ(xo.hasEnded(), true);
+}

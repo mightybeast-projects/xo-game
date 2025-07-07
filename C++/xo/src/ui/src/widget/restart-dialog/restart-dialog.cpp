@@ -3,7 +3,7 @@
 
 void widget::RestartDialog::draw(const gfx::Renderer &renderer)
 {
-    if (!_xo->isDraw() & !_xo->winner().has_value())
+    if (!_xo->hasEnded())
         return;
 
     std::string message;
@@ -16,8 +16,8 @@ void widget::RestartDialog::draw(const gfx::Renderer &renderer)
         message = "Draw!";
 
     const Rect r = {85, 70, 250, 100};
-    const char *title = "#191#Game over!";
-    const char *btnLables = "Restart;Quit";
+    const std::string title = "#191#Game over!";
+    const std::string btnLables = "Restart;Quit";
 
     const auto box = renderer.drawGuiMessageBox(r, title, message, btnLables);
 
