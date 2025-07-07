@@ -1,10 +1,4 @@
-#include <gtest/gtest.h>
-#include "xo.hpp"
-
-struct XOGame : public testing::Test
-{
-    xo::XO xo = xo::XO(3);
-};
+#include "xo-game.fixture.hpp"
 
 TEST_F(XOGame, Winner_Should_Not_Be_Defined_On_Initialization)
 {

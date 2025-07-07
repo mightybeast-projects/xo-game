@@ -12,7 +12,7 @@ void widget::RestartDialog::draw(const gfx::Renderer &renderer)
         message = "X player won!";
     if (_xo->winner().has_value() && _xo->winner() == xo::O)
         message = "O player won!";
-    if (_xo->isDraw())
+    if (_xo->isInDrawState())
         message = "Draw!";
 
     const Rect r = {85, 70, 250, 100};

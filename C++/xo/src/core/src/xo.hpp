@@ -33,14 +33,14 @@ namespace xo
             return _cells;
         }
 
-        inline bool isDraw()
+        inline bool isInDrawState()
         {
             return allCellsAreOccupied() && !_winner.has_value();
         }
 
         inline bool hasEnded()
         {
-            return isDraw() || _winner.has_value();
+            return isInDrawState() || _winner.has_value();
         }
 
     private:
