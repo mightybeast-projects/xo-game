@@ -15,7 +15,6 @@ namespace screen
     private:
         std::unique_ptr<xo::XO> _xo;
 
-        std::unique_ptr<widget::RestartDialog> initRestartDialog();
-        std::unique_ptr<widget::XOGrid> initGrid(widget::RestartDialog *dialog);
+        void initRestartDialog();
     };
 }

@@ -3,7 +3,7 @@
 
 void widget::RestartDialog::draw(const gfx::Renderer &renderer)
 {
-    if (_isHidden)
+    if (!_xo->isDraw() & !_xo->winner().has_value())
         return;
 
     std::string message;

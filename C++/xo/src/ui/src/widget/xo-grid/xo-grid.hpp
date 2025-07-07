@@ -15,11 +15,6 @@ namespace widget
 
         void draw(const gfx::Renderer &renderer) override;
 
-        inline void onAfterTileClick(std::function<void()> onAfterTileClick)
-        {
-            _onAfterTileClick = onAfterTileClick;
-        }
-
         inline void clickTile(int i, int j)
         {
             _cells[i][j].click();

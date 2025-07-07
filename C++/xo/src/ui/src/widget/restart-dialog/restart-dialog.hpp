@@ -20,17 +20,11 @@ namespace widget
             _onQuit = onQuit;
         }
 
-        void show()
-        {
-            _isHidden = false;
-        }
-
         void draw(const gfx::Renderer &renderer) override;
 
     private:
         xo::XO *_xo;
         std::function<void()> _onRestart;
         std::function<void()> _onQuit;
-        bool _isHidden = true;
     };
 }
