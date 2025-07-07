@@ -35,10 +35,13 @@ void widget::XOGrid::initCell(int i, int j)
 
     const auto placeNextValue = [this, i, j]()
     {
-        auto res = _xo->placeNext(i, j);
+        auto tilePlaced = _xo->placeNext(i, j);
 
-        if (res)
+        if (tilePlaced)
             _cells[i][j].setValue(_xo->cells()[i][j].value());
+
+        if (_onTileClick)
+            _onTileClick();
     };
 
     auto cell = widget::Cell(rect);

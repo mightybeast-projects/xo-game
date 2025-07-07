@@ -12,21 +12,24 @@ void screen::GameScreen::draw(const gfx::Renderer &renderer)
 {
     Screen::draw(renderer);
 
-    if (_xo->isDraw() || _xo->winner().has_value())
-    {
-        if (_dialog == nullptr)
-            initRestartDialog();
-
+    if (_dialog != nullptr)
         _dialog->draw(renderer);
-    }
 }
 
 void screen::GameScreen::initGame()
 {
     _xo = std::make_unique<xo::XO>(3);
 
-    _widgets.clear();
-    _widgets.push_back(std::make_unique<widget::XOGrid>(_xo.get()));
+    auto grid = std::make_unique<widget::XOGrid>(_xo.get());
+    auto onTileClick = [this]()
+    {
+        if (_xo->isDraw() || _xo->winner().has_value())
+            initRestartDialog();
+    };
+
+    grid->onTileClick(onTileClick);
+
+    _widgets.push_back(std::move(grid));
 }
 
 void screen::GameScreen::initRestartDialog()
@@ -35,6 +38,7 @@ void screen::GameScreen::initRestartDialog()
     auto onRestart = [this]()
     {
         _dialog.reset();
+        _widgets.clear();
 
         initGame();
     };

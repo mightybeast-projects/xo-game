@@ -15,6 +15,11 @@ namespace widget
 
         void draw(const gfx::Renderer &renderer) override;
 
+        inline void onTileClick(std::function<void()> onTileClick)
+        {
+            _onTileClick = onTileClick;
+        }
+
         inline void clickTile(int i, int j)
         {
             _cells[i][j].click();
@@ -22,6 +27,7 @@ namespace widget
 
     private:
         std::vector<std::vector<widget::Cell>> _cells;
+        std::function<void()> _onTileClick;
         xo::XO *_xo;
 
         void initCell(int i, int j);

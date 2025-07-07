@@ -46,3 +46,19 @@ TEST_F(XOGridWidget, Should_Draw_Cell_Grid_With_Set_Values)
 
     widget.draw(renderer);
 }
+
+TEST_F(XOGridWidget, Should_Fire_On_Tile_Click_Event)
+{
+    bool clicked = false;
+
+    auto onTileClick = [&]()
+    {
+        clicked = true;
+    };
+
+    widget.onTileClick(onTileClick);
+
+    widget.clickTile(0, 0);
+
+    EXPECT_EQ(clicked, true);
+}
