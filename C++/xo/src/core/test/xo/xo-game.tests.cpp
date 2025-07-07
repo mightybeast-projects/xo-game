@@ -23,7 +23,7 @@ TEST_F(XOGame, Should_Place_Value)
     const auto res = xo.place(1, 2, xo::X);
 
     EXPECT_EQ(xo.cells()[1][2], xo::X);
-    EXPECT_EQ(res, true);
+    EXPECT_TRUE(res);
 }
 
 TEST_F(XOGame, Should_Not_Place_Value_On_Already_Occupied_Cell)
@@ -33,7 +33,7 @@ TEST_F(XOGame, Should_Not_Place_Value_On_Already_Occupied_Cell)
     const auto res = xo.place(1, 2, xo::O);
 
     EXPECT_EQ(xo.cells()[1][2], xo::X);
-    EXPECT_EQ(res, false);
+    EXPECT_TRUE(res);
 }
 
 TEST_F(XOGame, Should_Not_Place_Value_If_Index_Is_Out_Of_Bounds)
@@ -45,8 +45,8 @@ TEST_F(XOGame, Should_Not_Place_Value_If_Index_Is_Out_Of_Bounds)
         for (auto j = 0; j < xo.size(); j++)
             EXPECT_EQ(xo.cells()[i][j], std::nullopt);
 
-    EXPECT_EQ(res1, false);
-    EXPECT_EQ(res2, false);
+    EXPECT_FALSE(res1);
+    EXPECT_FALSE(res2);
 }
 
 TEST_F(XOGame, Should_Not_Place_Value_If_It_Has_A_Winner)
@@ -58,7 +58,7 @@ TEST_F(XOGame, Should_Not_Place_Value_If_It_Has_A_Winner)
     const auto res = xo.place(0, 1, xo::X);
 
     EXPECT_EQ(xo.cells()[0][1], std::nullopt);
-    EXPECT_EQ(res, false);
+    EXPECT_FALSE(res);
 }
 
 TEST_F(XOGame, Should_Place_Next_Value_Starting_With_X)
@@ -66,7 +66,7 @@ TEST_F(XOGame, Should_Place_Next_Value_Starting_With_X)
     const auto res = xo.placeNext(0, 2);
 
     EXPECT_EQ(xo.cells()[0][2], xo::X);
-    EXPECT_EQ(res, true);
+    EXPECT_TRUE(res);
 }
 
 TEST_F(XOGame, Should_Switch_Value_After_Every_Next_Placement)
@@ -78,14 +78,14 @@ TEST_F(XOGame, Should_Switch_Value_After_Every_Next_Placement)
     EXPECT_EQ(xo.cells()[0][1], xo::X);
     EXPECT_EQ(xo.cells()[1][1], xo::O);
     EXPECT_EQ(xo.cells()[2][2], xo::X);
-    EXPECT_EQ(res1, true);
-    EXPECT_EQ(res2, true);
-    EXPECT_EQ(res3, true);
+    EXPECT_TRUE(res1);
+    EXPECT_TRUE(res2);
+    EXPECT_TRUE(res3);
 }
 
 TEST_F(XOGame, Should_Not_Be_In_Draw_State_On_Initialization)
 {
-    EXPECT_EQ(xo.isDraw(), false);
+    EXPECT_FALSE(xo.isDraw());
 }
 
 TEST_F(XOGame, Should_Not_Be_In_Draw_State_If_There_Is_A_Winner)
@@ -103,7 +103,7 @@ TEST_F(XOGame, Should_Not_Be_In_Draw_State_If_There_Is_A_Winner)
 
     xo.place(0, 2, xo::X);
 
-    EXPECT_EQ(xo.isDraw(), false);
+    EXPECT_FALSE(xo.isDraw());
 }
 
 TEST_F(XOGame, Should_Be_In_Draw_State_If_All_Cells_Are_Occupied_And_There_Is_No_Winner)
@@ -121,12 +121,12 @@ TEST_F(XOGame, Should_Be_In_Draw_State_If_All_Cells_Are_Occupied_And_There_Is_No
     xo.place(2, 2, xo::X);
 
     EXPECT_EQ(xo.winner(), std::nullopt);
-    EXPECT_EQ(xo.isDraw(), true);
+    EXPECT_TRUE(xo.isDraw());
 }
 
 TEST_F(XOGame, Should_Not_End_If_There_Is_No_Draw_Or_Winner)
 {
-    EXPECT_EQ(xo.hasEnded(), false);
+    EXPECT_FALSE(xo.hasEnded());
 }
 
 TEST_F(XOGame, Should_End_If_There_Is_A_Draw)
@@ -143,7 +143,7 @@ TEST_F(XOGame, Should_End_If_There_Is_A_Draw)
     xo.place(2, 1, xo::O);
     xo.place(2, 2, xo::X);
 
-    EXPECT_EQ(xo.hasEnded(), true);
+    EXPECT_TRUE(xo.hasEnded());
 }
 
 TEST_F(XOGame, Should_End_If_There_Is_A_Winner)
@@ -152,5 +152,5 @@ TEST_F(XOGame, Should_End_If_There_Is_A_Winner)
     xo.place(1, 1, xo::X);
     xo.place(2, 2, xo::X);
 
-    EXPECT_EQ(xo.hasEnded(), true);
+    EXPECT_TRUE(xo.hasEnded());
 }

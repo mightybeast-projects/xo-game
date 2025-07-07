@@ -26,7 +26,7 @@ TEST_F(XOGame, Should_Have_Winner_When_Diagonal_Win_Condition_Is_Met_1)
     xo.place(1, 1, xo::X);
     xo.place(2, 2, xo::X);
 
-    EXPECT_EQ(xo.winner().has_value(), true);
+    EXPECT_TRUE(xo.winner().has_value());
 }
 
 TEST_F(XOGame, Should_Have_Winner_When_Diagonal_Win_Condition_Is_Met_2)
@@ -35,7 +35,7 @@ TEST_F(XOGame, Should_Have_Winner_When_Diagonal_Win_Condition_Is_Met_2)
     xo.place(1, 1, xo::X);
     xo.place(2, 0, xo::X);
 
-    EXPECT_EQ(xo.winner().has_value(), true);
+    EXPECT_TRUE(xo.winner().has_value());
 }
 
 TEST_F(XOGame, Should_Have_Winner_When_Vertical_Win_Condition_Is_Met_1)
@@ -44,7 +44,7 @@ TEST_F(XOGame, Should_Have_Winner_When_Vertical_Win_Condition_Is_Met_1)
     xo.place(0, 1, xo::X);
     xo.place(0, 2, xo::X);
 
-    EXPECT_EQ(xo.winner().has_value(), true);
+    EXPECT_TRUE(xo.winner().has_value());
 }
 
 TEST_F(XOGame, Should_Have_Winner_When_Vertical_Win_Condition_Is_Met_2)
@@ -53,7 +53,7 @@ TEST_F(XOGame, Should_Have_Winner_When_Vertical_Win_Condition_Is_Met_2)
     xo.place(1, 1, xo::X);
     xo.place(1, 2, xo::X);
 
-    EXPECT_EQ(xo.winner().has_value(), true);
+    EXPECT_TRUE(xo.winner().has_value());
 }
 
 TEST_F(XOGame, Should_Have_Winner_When_Vertical_Win_Condition_Is_Met_3)
@@ -62,7 +62,7 @@ TEST_F(XOGame, Should_Have_Winner_When_Vertical_Win_Condition_Is_Met_3)
     xo.place(2, 1, xo::X);
     xo.place(2, 2, xo::X);
 
-    EXPECT_EQ(xo.winner().has_value(), true);
+    EXPECT_TRUE(xo.winner().has_value());
 }
 
 TEST_F(XOGame, Should_Have_Winner_When_Horizontal_Win_Condition_Is_Met_1)
@@ -71,7 +71,7 @@ TEST_F(XOGame, Should_Have_Winner_When_Horizontal_Win_Condition_Is_Met_1)
     xo.place(1, 0, xo::X);
     xo.place(2, 0, xo::X);
 
-    EXPECT_EQ(xo.winner().has_value(), true);
+    EXPECT_TRUE(xo.winner().has_value());
 }
 
 TEST_F(XOGame, Should_Have_Winner_When_Horizontal_Win_Condition_Is_Met_2)
@@ -80,7 +80,7 @@ TEST_F(XOGame, Should_Have_Winner_When_Horizontal_Win_Condition_Is_Met_2)
     xo.place(1, 1, xo::X);
     xo.place(2, 1, xo::X);
 
-    EXPECT_EQ(xo.winner().has_value(), true);
+    EXPECT_TRUE(xo.winner().has_value());
 }
 
 TEST_F(XOGame, Should_Have_Winner_When_Horizontal_Win_Condition_Is_Met_3)
@@ -89,5 +89,5 @@ TEST_F(XOGame, Should_Have_Winner_When_Horizontal_Win_Condition_Is_Met_3)
     xo.place(1, 2, xo::X);
     xo.place(2, 2, xo::X);
 
-    EXPECT_EQ(xo.winner().has_value(), true);
+    EXPECT_TRUE(xo.winner().has_value());
 }
