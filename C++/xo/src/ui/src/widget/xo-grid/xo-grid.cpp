@@ -40,8 +40,8 @@ void widget::XOGrid::initCell(int i, int j)
         if (tilePlaced)
             _cells[i][j].setValue(_xo->cells()[i][j].value());
 
-        if (_onTileClick)
-            _onTileClick();
+        if (_onAfterTileClick)
+            _onAfterTileClick();
     };
 
     auto cell = widget::Cell(rect);

@@ -56,7 +56,7 @@ TEST_F(XOGridWidget, Should_Fire_On_Tile_Click_Event)
         clicked = true;
     };
 
-    widget.onTileClick(onTileClick);
+    widget.onAfterTileClick(onTileClick);
 
     widget.clickTile(0, 0);
 

@@ -12,13 +12,10 @@ namespace screen
     {
         GameScreen();
 
-        void draw(const gfx::Renderer &renderer) override;
-
     private:
         std::unique_ptr<xo::XO> _xo;
-        std::unique_ptr<widget::RestartDialog> _dialog;
 
-        void initGame();
-        void initRestartDialog();
+        std::unique_ptr<widget::RestartDialog> initRestartDialog();
+        std::unique_ptr<widget::XOGrid> initGrid(widget::RestartDialog *dialog);
     };
 }

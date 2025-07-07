@@ -6,7 +6,7 @@
 screen::MainMenuScreen::MainMenuScreen()
 {
     initLogo();
-    initStartButton();
+    initPlayButton();
 }
 
 void screen::MainMenuScreen::initLogo()
@@ -27,7 +27,7 @@ void screen::MainMenuScreen::initLogo()
     _widgets.push_back(std::make_unique<widget::Cell>(rectangles[3], xo::O));
 }
 
-void screen::MainMenuScreen::initStartButton()
+void screen::MainMenuScreen::initPlayButton()
 {
     const float width = 100;
     const float height = 30;

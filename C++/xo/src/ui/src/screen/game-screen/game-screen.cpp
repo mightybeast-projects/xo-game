@@ -5,48 +5,45 @@
 
 screen::GameScreen::GameScreen()
 {
-    initGame();
-}
-
-void screen::GameScreen::draw(const gfx::Renderer &renderer)
-{
-    Screen::draw(renderer);
-
-    if (_dialog != nullptr)
-        _dialog->draw(renderer);
-}
-
-void screen::GameScreen::initGame()
-{
     _xo = std::make_unique<xo::XO>(3);
 
-    auto grid = std::make_unique<widget::XOGrid>(_xo.get());
-    auto onTileClick = [this]()
-    {
-        if (_xo->isDraw() || _xo->winner().has_value())
-            initRestartDialog();
-    };
-
-    grid->onTileClick(onTileClick);
+    auto dialog = initRestartDialog();
+    auto grid = initGrid(dialog.get());
 
     _widgets.push_back(std::move(grid));
+    _widgets.push_back(std::move(dialog));
 }
 
-void screen::GameScreen::initRestartDialog()
+std::unique_ptr<widget::RestartDialog> screen::GameScreen::initRestartDialog()
 {
-    _dialog = std::make_unique<widget::RestartDialog>(_xo.get());
-    auto onRestart = [this]()
-    {
-        _dialog.reset();
-        _widgets.clear();
+    auto dialog = std::make_unique<widget::RestartDialog>(_xo.get());
 
-        initGame();
+    const auto onRestart = [this]()
+    {
+        _screenManager->switchTo(std::make_unique<screen::GameScreen>());
     };
-    auto onQuit = [this]()
+    const auto onQuit = [this]()
     {
         _screenManager->switchTo(std::make_unique<screen::MainMenuScreen>());
     };
 
-    _dialog->onRestart(onRestart);
-    _dialog->onQuit(onQuit);
+    dialog->onRestart(onRestart);
+    dialog->onQuit(onQuit);
+
+    return dialog;
+}
+
+std::unique_ptr<widget::XOGrid> screen::GameScreen::initGrid(widget::RestartDialog *dialog)
+{
+    auto grid = std::make_unique<widget::XOGrid>(_xo.get());
+
+    const auto onAfterTileClick = [this, dialog]()
+    {
+        if (_xo->isDraw() || _xo->winner().has_value())
+            dialog->show();
+    };
+
+    grid->onAfterTileClick(onAfterTileClick);
+
+    return grid;
 }

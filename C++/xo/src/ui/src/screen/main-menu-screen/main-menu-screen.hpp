@@ -15,6 +15,6 @@ namespace screen
         std::unique_ptr<widget::Button> _startBtn;
 
         void initLogo();
-        void initStartButton();
+        void initPlayButton();
     };
 }
