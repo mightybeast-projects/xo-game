@@ -4,6 +4,8 @@ project(xo)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+add_compile_options(-Wno-unused-result)
+
 include(FetchContent)
 FetchContent_Declare(
   googletest
