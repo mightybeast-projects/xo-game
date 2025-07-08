@@ -1,8 +1,7 @@
 #include "xo.hpp"
 
-xo::XO::XO(int size)
+xo::XO::XO(int size) : _size(size)
 {
-    _size = size;
     _cells.resize(size);
 
     for (auto i = 0; i < size; i++)
@@ -79,7 +78,7 @@ bool xo::XO::checkLine(int startI, int startJ, int iIncrement, int jIncrement)
     return true;
 }
 
-bool xo::XO::allCellsAreOccupied()
+bool xo::XO::allCellsAreOccupied() const
 {
     for (auto i = 0; i < _size; i++)
         for (auto j = 0; j < _size; j++)

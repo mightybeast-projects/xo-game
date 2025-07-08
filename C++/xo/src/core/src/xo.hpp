@@ -23,7 +23,7 @@ namespace xo
             return _size;
         }
 
-        inline const std::optional<XOValue> winner()
+        inline std::optional<XOValue> winner() const
         {
             return _winner;
         }
@@ -33,24 +33,24 @@ namespace xo
             return _cells;
         }
 
-        inline bool isInDrawState()
+        inline bool isInDrawState() const
         {
             return allCellsAreOccupied() && !_winner.has_value();
         }
 
-        inline bool hasEnded()
+        inline bool hasEnded() const
         {
             return isInDrawState() || _winner.has_value();
         }
 
     private:
-        int _size;
+        const int _size;
         XOValue _nextValue = X;
         std::optional<XOValue> _winner = std::nullopt;
         std::vector<std::vector<std::optional<XOValue>>> _cells;
 
         bool checkWinConditions();
         bool checkLine(int startI, int startJ, int iIncrement, int jIncrement);
-        bool allCellsAreOccupied();
+        bool allCellsAreOccupied() const;
     };
 }
