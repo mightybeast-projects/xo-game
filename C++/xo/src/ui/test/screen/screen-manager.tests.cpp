@@ -4,8 +4,6 @@
 #include "mock-renderer.hpp"
 #include <memory>
 
-using testing::_;
-
 struct ScreenManager : public testing::Test
 {
     screen::ScreenManager screenManager;
