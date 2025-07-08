@@ -19,7 +19,7 @@ namespace screen
             _screenManager = screenManager;
         }
 
-        inline void draw(const gfx::Renderer &renderer) override
+        inline void draw(const gfx::Renderer &renderer) const override
         {
             for (auto &w : _widgets)
                 w->draw(renderer);

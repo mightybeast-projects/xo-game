@@ -26,7 +26,7 @@ namespace common
     protected:
         std::function<void()> _onClick;
 
-        void handleLeftClick(Rect rect, const gfx::Renderer &renderer)
+        void handleLeftClick(Rect rect, const gfx::Renderer &renderer) const
         {
             renderer.handleLeftClick(rect, _onClick);
         }

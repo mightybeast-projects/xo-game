@@ -28,7 +28,7 @@ namespace widget
             setValue(value);
         }
 
-        void draw(const gfx::Renderer &renderer) override;
+        void draw(const gfx::Renderer &renderer) const override;
         void setValue(const xo::XOValue value);
 
     private:

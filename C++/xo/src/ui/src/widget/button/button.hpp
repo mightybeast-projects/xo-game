@@ -14,7 +14,7 @@ namespace widget
         Button(Rect rect, std::string text, std::function<void()> onClick)
             : _rect(rect), _text(text), common::Clickable(onClick) {};
 
-        void draw(const gfx::Renderer &renderer) override;
+        void draw(const gfx::Renderer &renderer) const override;
 
     private:
         Rect _rect;

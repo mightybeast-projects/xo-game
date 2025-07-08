@@ -7,6 +7,6 @@ namespace common
 {
     struct Drawable
     {
-        virtual void draw(const gfx::Renderer &renderer) = 0;
+        virtual void draw(const gfx::Renderer &renderer) const = 0;
     };
 }

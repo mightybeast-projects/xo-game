@@ -13,7 +13,7 @@ namespace widget
     {
         XOGrid(xo::XO *xo);
 
-        void draw(const gfx::Renderer &renderer) override;
+        void draw(const gfx::Renderer &renderer) const override;
 
         inline void clickTile(int i, int j)
         {

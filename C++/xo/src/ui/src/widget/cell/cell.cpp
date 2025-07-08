@@ -1,7 +1,7 @@
 #include "cell.hpp"
 #include <optional>
 
-void widget::Cell::draw(const gfx::Renderer &renderer)
+void widget::Cell::draw(const gfx::Renderer &renderer) const
 {
     const Rect rect = {_rect.x, _rect.y, _rect.width, _rect.height};
     const Col color = {56, 56, 56, 255};

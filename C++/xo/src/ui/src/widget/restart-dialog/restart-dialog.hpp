@@ -20,7 +20,7 @@ namespace widget
             _onQuit = onQuit;
         }
 
-        void draw(const gfx::Renderer &renderer) override;
+        void draw(const gfx::Renderer &renderer) const override;
 
     private:
         xo::XO *_xo;

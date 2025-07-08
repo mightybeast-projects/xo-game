@@ -18,7 +18,7 @@ widget::XOGrid::XOGrid(xo::XO *xo)
             initCell(i, j);
 }
 
-void widget::XOGrid::draw(const gfx::Renderer &renderer)
+void widget::XOGrid::draw(const gfx::Renderer &renderer) const
 {
     for (auto i = 0; i < _xo->size(); i++)
         for (auto j = 0; j < _xo->size(); j++)

@@ -12,7 +12,7 @@ namespace widget
         XOValue(std::string text, int x, int y, int size, Col color)
             : _text(text), _x(x), _y(y), _size(size), _color(color) {};
 
-        void draw(const gfx::Renderer &renderer) override;
+        void draw(const gfx::Renderer &renderer) const override;
 
     private:
         std::string _text;

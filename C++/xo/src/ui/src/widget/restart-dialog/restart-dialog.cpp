@@ -1,7 +1,7 @@
 #include "restart-dialog.hpp"
 #include <string>
 
-void widget::RestartDialog::draw(const gfx::Renderer &renderer)
+void widget::RestartDialog::draw(const gfx::Renderer &renderer) const
 {
     if (!_xo->hasEnded())
         return;
