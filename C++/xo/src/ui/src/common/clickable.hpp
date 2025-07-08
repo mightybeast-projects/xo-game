@@ -13,6 +13,8 @@ namespace common
     {
         Clickable(const std::function<void()> &onClick) : _onClick(onClick) {};
 
+        ~Clickable() = default;
+
         void onClick(std::function<void()> onClick)
         {
             _onClick = onClick;
