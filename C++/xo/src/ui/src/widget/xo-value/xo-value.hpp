@@ -15,10 +15,10 @@ namespace widget
         void draw(const gfx::Renderer &renderer) const override;
 
     private:
-        std::string _text;
-        int _x;
-        int _y;
-        int _size;
-        Col _color;
+        const std::string _text;
+        const int _x;
+        const int _y;
+        const int _size;
+        const Col _color;
     };
 }

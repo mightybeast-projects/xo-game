@@ -28,7 +28,8 @@ TEST_F(ButtonWidget, Should_Draw_On_Position_With_Specified_Text)
 TEST_F(ButtonWidget, Should_Fire_Click_Event_On_Click)
 {
     bool clicked = false;
-    auto onClick = [&]()
+
+    const auto onClick = [&]()
     {
         clicked = true;
     };

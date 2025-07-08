@@ -7,10 +7,8 @@
 #include "types.hpp"
 #include "raylib-renderer.hpp"
 
-widget::XOGrid::XOGrid(xo::XO *xo)
+widget::XOGrid::XOGrid(xo::XO *xo) : _xo(xo)
 {
-    _xo = xo;
-
     _cells.resize(_xo->size());
 
     for (auto i = 0; i < _xo->size(); i++)

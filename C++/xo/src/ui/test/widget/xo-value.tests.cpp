@@ -12,9 +12,9 @@ TEST(XOValueWidget, Should_Draw_Value_With_Specified_Position_Size_And_Color)
     const auto size = 10;
     const Col color = {255, 150, 69, 255};
 
-    widget::XOValue widget = widget::XOValue(text, x, y, size, color);
+    const widget::XOValue widget = widget::XOValue(text, x, y, size, color);
 
-    mock::MockRenderer renderer;
+    const mock::MockRenderer renderer;
 
     EXPECT_CALL(renderer, drawText(text, x, y - size / 3.3, size, color)).Times(1);
 

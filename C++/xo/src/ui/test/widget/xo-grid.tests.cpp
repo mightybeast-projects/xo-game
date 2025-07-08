@@ -25,8 +25,7 @@ TEST_F(XOGridWidget, Should_Draw_Empty_Cell_Grid)
             const float x = i * WIDTH / xo->size() + padding;
             const float y = j * WIDTH / xo->size() + padding;
             const float size = WIDTH / xo->size() - padding * 2;
-
-            Rect rect = {x, y, size, size};
+            const Rect rect = {x, y, size, size};
 
             EXPECT_CALL(renderer, drawRectangleRounded(rect, _, _, _));
         }

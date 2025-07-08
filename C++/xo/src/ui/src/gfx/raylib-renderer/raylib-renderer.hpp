@@ -7,28 +7,26 @@ namespace gfx
     struct RaylibRenderer : gfx::Renderer
     {
         void initGameWindow() const override;
-        void draw(const std::function<void()> onDraw) const override;
+        void draw(std::function<void()> onDraw) const override;
         void closeGameWindow() const override;
-        int drawGuiButton(const Rect rect, const std::string text) const override;
+        int drawGuiButton(Rect rect, std::string text) const override;
 
-        int drawGuiMessageBox(
-            const Rect rect,
-            const std::string title,
-            const std::string message,
-            const std::string buttons) const override;
+        int drawGuiMessageBox(Rect rect,
+                              std::string title,
+                              std::string message,
+                              std::string buttons) const override;
 
-        void drawText(const std::string text,
-                      const int x,
-                      const int y,
-                      const int fontSize,
+        void drawText(std::string text,
+                      int x,
+                      int y,
+                      int fontSize,
                       Col color) const override;
 
-        void drawRectangleRounded(const Rect rect,
-                                  const float roundness,
-                                  const int segments,
-                                  const Col color) const override;
+        void drawRectangleRounded(Rect rect,
+                                  float roundness,
+                                  int segments,
+                                  Col color) const override;
 
-        void handleLeftClick(const Rect r,
-                             const std::function<void()> onClick) const override;
+        void handleLeftClick(Rect r, std::function<void()> onClick) const override;
     };
 }

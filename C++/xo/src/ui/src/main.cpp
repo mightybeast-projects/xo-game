@@ -8,8 +8,9 @@
 
 int main()
 {
-    auto renderer = std::make_unique<gfx::RaylibRenderer>();
-    auto screenManager = std::make_unique<screen::ScreenManager>();
+    const auto renderer = std::make_unique<gfx::RaylibRenderer>();
+    const auto screenManager = std::make_unique<screen::ScreenManager>();
+
     auto mainMenuScreen = std::make_unique<screen::MainMenuScreen>();
 
     screenManager->switchTo(std::move(mainMenuScreen));

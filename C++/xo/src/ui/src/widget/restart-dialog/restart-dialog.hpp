@@ -23,7 +23,8 @@ namespace widget
         void draw(const gfx::Renderer &renderer) const override;
 
     private:
-        xo::XO *_xo;
+        xo::XO *const _xo;
+
         std::function<void()> _onRestart;
         std::function<void()> _onQuit;
     };

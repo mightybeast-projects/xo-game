@@ -20,6 +20,7 @@ void screen::GameScreen::initRestartDialog()
     {
         _screenManager->switchTo(std::make_unique<screen::GameScreen>());
     };
+
     const auto onQuit = [this]()
     {
         _screenManager->switchTo(std::make_unique<screen::MainMenuScreen>());

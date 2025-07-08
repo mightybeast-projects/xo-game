@@ -22,7 +22,7 @@ TEST_F(ScreenManager, Should_Switch_Current_Screen)
 
 TEST_F(ScreenManager, Should_Draw_Current_Screen)
 {
-    mock::MockRenderer renderer;
+    const mock::MockRenderer renderer;
 
     screenManager.switchTo(std::move(screen));
 

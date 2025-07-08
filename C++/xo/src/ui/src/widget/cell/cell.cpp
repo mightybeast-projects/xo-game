@@ -14,7 +14,7 @@ void widget::Cell::draw(const gfx::Renderer &renderer) const
     handleLeftClick(_rect, renderer);
 }
 
-void widget::Cell::setValue(const xo::XOValue value)
+void widget::Cell::setValue(xo::XOValue value)
 {
     const auto x = _rect.x + _rect.width / 3.75;
     const auto y = _rect.y + _rect.width / 3.75;

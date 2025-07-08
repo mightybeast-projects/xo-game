@@ -21,13 +21,14 @@ namespace widget
         }
 
     private:
+        xo::XO *const _xo;
+
         std::vector<std::vector<widget::Cell>> _cells;
         std::function<void()> _onAfterTileClick;
-        xo::XO *_xo;
 
         void initCell(int i, int j);
 
-        inline float cellSize()
+        inline float cellSize() const
         {
             return WIDTH / _xo->size();
         }

@@ -17,7 +17,7 @@ namespace widget
         void draw(const gfx::Renderer &renderer) const override;
 
     private:
-        Rect _rect;
-        std::string _text;
+        const Rect _rect;
+        const std::string _text;
     };
 }

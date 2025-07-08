@@ -11,8 +11,8 @@ struct RestartDialog : public testing::Test
     const mock::MockRenderer renderer;
     const std::string title = "#191#Game over!";
     const std::string btns = "Restart;Quit";
+    const std::unique_ptr<xo::XO> xo = std::make_unique<xo::XO>(3);
 
-    std::unique_ptr<xo::XO> xo = std::make_unique<xo::XO>(3);
     widget::RestartDialog widget = widget::RestartDialog(xo.get());
 };
 
@@ -78,7 +78,7 @@ TEST_F(RestartDialog, Should_Fire_Restart_Event_On_Restart_Button_Click)
 
     bool restarted = false;
 
-    auto onRestart = [&]()
+    const auto onRestart = [&]()
     {
         restarted = true;
     };
@@ -100,7 +100,7 @@ TEST_F(RestartDialog, Should_Fire_Quit_Event_On_Quit_Button_Click)
 
     bool quit = false;
 
-    auto onQuit = [&]()
+    const auto onQuit = [&]()
     {
         quit = true;
     };
