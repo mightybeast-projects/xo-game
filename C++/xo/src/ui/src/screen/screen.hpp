@@ -12,9 +12,9 @@ namespace screen
 
     struct Screen : common::Drawable
     {
-        ~Screen() = default;
+        virtual ~Screen() = default;
 
-        inline void setScreenManager(ScreenManager *screenManager)
+        inline virtual void setScreenManager(ScreenManager *screenManager)
         {
             _screenManager = screenManager;
         }

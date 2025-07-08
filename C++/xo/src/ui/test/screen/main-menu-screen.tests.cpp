@@ -3,13 +3,16 @@
 #include "main-menu-screen.hpp"
 #include "mock-renderer.hpp"
 
-TEST(MainMenuScreen, Should_Draw_Logo_And_Play_Button)
-{
-    using testing::_;
+using testing::_;
 
+struct MainMenuScreen : public testing::Test
+{
     const mock::MockRenderer renderer;
     screen::MainMenuScreen screen;
+};
 
+TEST_F(MainMenuScreen, Should_Draw_Logo_And_Play_Button)
+{
     EXPECT_CALL(renderer, drawRectangleRounded(_, _, _, _)).Times(4);
     EXPECT_CALL(renderer, drawText("x", _, _, _, _));
     EXPECT_CALL(renderer, drawText("o", _, _, _, _));
