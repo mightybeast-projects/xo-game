@@ -12,9 +12,8 @@ struct ButtonWidget : public testing::Test
     const mock::MockRenderer renderer;
     const Rect rect = { 0, 0, 100, 100 };
     const std::string text = "text";
-    const std::function<void()> onClick;
 
-    widget::Button widget = widget::Button(rect, text, onClick);
+    widget::Button widget = widget::Button(rect, text, nullptr);
 };
 
 TEST_F(ButtonWidget, Should_Draw_On_Position_With_Specified_Text)
@@ -31,11 +30,11 @@ TEST_F(ButtonWidget, Should_Fire_Click_Event_On_Click)
 
     widget.onClick([&]() { clicked = true; });
 
-    EXPECT_CALL(renderer, handleLeftClick(_, _))
-        .WillOnce(testing::Invoke(
-            [](const Rect&, const std::function<void()>& callback) {
-                callback();
-            }));
+    auto cb = [](const Rect&, const std::function<void()>& callback) {
+        callback();
+    };
+
+    EXPECT_CALL(renderer, handleLeftClick(_, _)).WillOnce(testing::Invoke(cb));
 
     widget.draw(renderer);
 

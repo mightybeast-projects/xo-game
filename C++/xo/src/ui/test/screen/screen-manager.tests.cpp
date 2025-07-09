@@ -1,10 +1,8 @@
-#include <gmock/gmock.h>
-#include <gtest/gtest.h>
-
-#include <memory>
-
 #include "mock-renderer.hpp"
 #include "mock-screen.hpp"
+#include <gmock/gmock.h>
+#include <gtest/gtest.h>
+#include <memory>
 
 using testing::_;
 
