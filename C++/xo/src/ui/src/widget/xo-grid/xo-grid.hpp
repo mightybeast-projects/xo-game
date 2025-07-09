@@ -17,13 +17,13 @@ namespace widget
 
         inline void clickTile(int i, int j)
         {
-            _cells[i][j].click();
+            _cells[i][j]->click();
         }
 
     private:
         xo::XO *const _xo;
 
-        std::vector<std::vector<widget::Cell>> _cells;
+        std::vector<std::vector<std::unique_ptr<widget::Cell>>> _cells;
         std::function<void()> _onAfterTileClick;
 
         void initCell(int i, int j);

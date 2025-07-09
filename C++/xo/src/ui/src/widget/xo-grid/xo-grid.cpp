@@ -20,7 +20,7 @@ void widget::XOGrid::draw(const gfx::Renderer &renderer) const
 {
     for (auto i = 0; i < _xo->size(); i++)
         for (auto j = 0; j < _xo->size(); j++)
-            _cells[i][j].draw(renderer);
+            _cells[i][j]->draw(renderer);
 }
 
 void widget::XOGrid::initCell(int i, int j)
@@ -36,15 +36,15 @@ void widget::XOGrid::initCell(int i, int j)
         auto tilePlaced = _xo->placeNext(i, j);
 
         if (tilePlaced)
-            _cells[i][j].setValue(_xo->cells()[i][j].value());
+            _cells[i][j]->setValue(_xo->cells()[i][j].value());
 
         if (_onAfterTileClick)
             _onAfterTileClick();
     };
 
-    auto cell = widget::Cell(rect);
+    auto cell = std::make_unique<widget::Cell>(rect);
 
-    cell.onClick(placeNextValue);
+    cell->onClick(placeNextValue);
 
     _cells[i].push_back(std::move(cell));
 }
