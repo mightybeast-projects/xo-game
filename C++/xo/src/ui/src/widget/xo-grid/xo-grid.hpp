@@ -1,19 +1,19 @@
 #pragma once
 
+#include "cell.hpp"
+#include "config.hpp"
+#include "drawable.hpp"
 #include "xo.hpp"
 #include <memory>
 #include <vector>
-#include "drawable.hpp"
-#include "config.hpp"
-#include "cell.hpp"
 
 namespace widget
 {
     struct XOGrid : common::Drawable
     {
-        XOGrid(xo::XO *xo);
+        XOGrid(xo::XO* xo);
 
-        void draw(const gfx::Renderer &renderer) const override;
+        void draw(const gfx::Renderer& renderer) const override;
 
         inline void clickTile(int i, int j)
         {
@@ -21,7 +21,7 @@ namespace widget
         }
 
     private:
-        xo::XO *const _xo;
+        xo::XO* const _xo;
 
         std::vector<std::vector<std::unique_ptr<widget::Cell>>> _cells;
         std::function<void()> _onAfterTileClick;

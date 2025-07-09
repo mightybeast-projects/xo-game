@@ -1,7 +1,7 @@
 #pragma once
 
-#include <gtest/gtest.h>
 #include "xo.hpp"
+#include <gtest/gtest.h>
 
 struct XOGame : public testing::Test
 {

@@ -1,7 +1,7 @@
-#include <gmock/gmock.h>
-#include <gtest/gtest.h>
 #include "main-menu-screen.hpp"
 #include "mock-renderer.hpp"
+#include <gmock/gmock.h>
+#include <gtest/gtest.h>
 
 using testing::_;
 

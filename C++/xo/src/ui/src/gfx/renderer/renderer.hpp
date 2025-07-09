@@ -1,8 +1,8 @@
 #pragma once
 
+#include "types.hpp"
 #include <functional>
 #include <string>
-#include "types.hpp"
 
 namespace gfx
 {
@@ -15,23 +15,26 @@ namespace gfx
         virtual int drawGuiButton(Rect rect, std::string text) const = 0;
 
         virtual int drawGuiMessageBox(Rect rect,
-                                      std::string title,
-                                      std::string message,
-                                      std::string buttons) const = 0;
+            std::string title,
+            std::string message,
+            std::string buttons) const
+            = 0;
 
         virtual void drawText(std::string text,
-                              int posX,
-                              int posY,
-                              int fontSize,
-                              Col color) const = 0;
+            int posX,
+            int posY,
+            int fontSize,
+            Col color) const
+            = 0;
 
         virtual void drawRectangleRounded(Rect rec,
-                                          float roundness,
-                                          int segments,
-                                          Col color) const = 0;
+            float roundness,
+            int segments,
+            Col color) const
+            = 0;
 
-        virtual void handleLeftClick(
-            Rect r,
-            std::function<void()> onClick) const = 0;
+        virtual void handleLeftClick(Rect r,
+            std::function<void()> onClick) const
+            = 0;
     };
 }

@@ -1,7 +1,7 @@
 #pragma once
 
-#include <vector>
 #include <optional>
+#include <vector>
 
 namespace xo
 {
@@ -28,7 +28,7 @@ namespace xo
             return _winner;
         }
 
-        inline const std::vector<std::vector<std::optional<XOValue>>> &cells()
+        inline const std::vector<std::vector<std::optional<XOValue>>>& cells()
         {
             return _cells;
         }

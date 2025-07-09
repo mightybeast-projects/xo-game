@@ -1,10 +1,10 @@
 #define RAYGUI_IMPLEMENTATION
-#include "raylib.h"
-#include "raygui.h"
+#include "raylib-renderer.hpp"
 #include "config.hpp"
+#include "raygui.h"
+#include "raylib.h"
 #include "style_cyber.h"
 #include <functional>
-#include "raylib-renderer.hpp"
 
 void gfx::RaylibRenderer::initGameWindow() const
 {
@@ -15,7 +15,7 @@ void gfx::RaylibRenderer::initGameWindow() const
 
 void gfx::RaylibRenderer::draw(const std::function<void()> onDraw) const
 {
-    const Color bg = {46, 46, 46, 255};
+    const Color bg = { 46, 46, 46, 255 };
 
     while (!WindowShouldClose())
     {
@@ -35,47 +35,48 @@ void gfx::RaylibRenderer::closeGameWindow() const
 
 int gfx::RaylibRenderer::drawGuiButton(Rect rect, std::string text) const
 {
-    return GuiButton({rect.x, rect.y, rect.width, rect.height}, text.c_str());
+    return GuiButton({ rect.x, rect.y, rect.width, rect.height }, text.c_str());
 }
 
 int gfx::RaylibRenderer::drawGuiMessageBox(Rect rect,
-                                           std::string title,
-                                           std::string message,
-                                           std::string buttons) const
+    std::string title,
+    std::string message,
+    std::string buttons) const
 {
-    const Rectangle r = {rect.x, rect.y, rect.width, rect.height};
+    const Rectangle r = { rect.x, rect.y, rect.width, rect.height };
 
     return GuiMessageBox(r, title.c_str(), message.c_str(), buttons.c_str());
 }
 
 void gfx::RaylibRenderer::drawText(std::string text,
-                                   int x,
-                                   int y,
-                                   int fontSize,
-                                   Col color) const
+    int x,
+    int y,
+    int fontSize,
+    Col color) const
 {
-    const Color c = {color.r, color.g, color.b, color.a};
+    const Color c = { color.r, color.g, color.b, color.a };
 
     return DrawText(text.c_str(), x, y, fontSize, c);
 }
 
 void gfx::RaylibRenderer::drawRectangleRounded(Rect rect,
-                                               float roundness,
-                                               int segments,
-                                               Col color) const
+    float roundness,
+    int segments,
+    Col color) const
 {
-    const Rectangle r = {rect.x, rect.y, rect.width, rect.height};
-    const Color c = {color.r, color.g, color.b, color.a};
+    const Rectangle r = { rect.x, rect.y, rect.width, rect.height };
+    const Color c = { color.r, color.g, color.b, color.a };
 
     return DrawRectangleRounded(r, roundness, segments, c);
 }
 
-void gfx::RaylibRenderer::handleLeftClick(Rect r, std::function<void()> onClick) const
+void gfx::RaylibRenderer::handleLeftClick(Rect r,
+    std::function<void()> onClick) const
 {
     if (onClick && IsMouseButtonReleased(MOUSE_LEFT_BUTTON))
     {
         const Vector2 mousePos = GetMousePosition();
-        const Rectangle rect = {r.x, r.y, r.width, r.height};
+        const Rectangle rect = { r.x, r.y, r.width, r.height };
 
         if (CheckCollisionPointRec(mousePos, rect))
             onClick();

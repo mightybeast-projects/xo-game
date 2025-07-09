@@ -1,16 +1,19 @@
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
-#include "mock-screen.hpp"
-#include "mock-renderer.hpp"
+
 #include <memory>
+
+#include "mock-renderer.hpp"
+#include "mock-screen.hpp"
 
 using testing::_;
 
 struct ScreenManager : public testing::Test
 {
     screen::ScreenManager screenManager;
-    std::unique_ptr<mock::MockScreen> screen = std::make_unique<mock::MockScreen>();
-    mock::MockScreen *screenPtr = screen.get();
+    std::unique_ptr<mock::MockScreen> screen
+        = std::make_unique<mock::MockScreen>();
+    mock::MockScreen* screenPtr = screen.get();
 };
 
 TEST_F(ScreenManager, Should_Switch_Current_Screen)

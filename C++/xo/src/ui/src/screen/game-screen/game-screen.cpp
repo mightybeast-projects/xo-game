@@ -1,6 +1,6 @@
 #include "game-screen.hpp"
-#include "main-menu-screen.hpp"
 #include "config.hpp"
+#include "main-menu-screen.hpp"
 #include "xo-grid.hpp"
 
 screen::GameScreen::GameScreen()
@@ -16,18 +16,13 @@ void screen::GameScreen::initRestartDialog()
 {
     auto dialog = std::make_unique<widget::RestartDialog>(_xo.get());
 
-    const auto onRestart = [this]()
-    {
+    dialog->onRestart([this]() {
         _screenManager->switchTo(std::make_unique<screen::GameScreen>());
-    };
+    });
 
-    const auto onQuit = [this]()
-    {
+    dialog->onQuit([this]() {
         _screenManager->switchTo(std::make_unique<screen::MainMenuScreen>());
-    };
-
-    dialog->onRestart(onRestart);
-    dialog->onQuit(onQuit);
+    });
 
     _widgets.push_back(std::move(dialog));
 }

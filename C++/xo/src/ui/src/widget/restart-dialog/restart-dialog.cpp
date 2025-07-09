@@ -1,7 +1,7 @@
 #include "restart-dialog.hpp"
 #include <string>
 
-void widget::RestartDialog::draw(const gfx::Renderer &renderer) const
+void widget::RestartDialog::draw(const gfx::Renderer& renderer) const
 {
     if (!_xo->hasEnded())
         return;
@@ -15,7 +15,7 @@ void widget::RestartDialog::draw(const gfx::Renderer &renderer) const
     if (_xo->isInDrawState())
         message = "Draw!";
 
-    const Rect r = {85, 70, 250, 100};
+    const Rect r = { 85, 70, 250, 100 };
     const auto title = "#191#Game over!";
     const auto btnLables = "Restart;Quit";
 

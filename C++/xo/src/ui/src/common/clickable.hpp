@@ -1,17 +1,17 @@
 #pragma once
 
-#include <functional>
-#include "raylib.h"
-#include "types.hpp"
 #include "drawable.hpp"
+#include "raylib.h"
 #include "renderer.hpp"
+#include "types.hpp"
+#include <functional>
 #include <memory.h>
 
 namespace common
 {
     struct Clickable
     {
-        Clickable(const std::function<void()> &onClick) : _onClick(onClick) {};
+        Clickable(const std::function<void()>& onClick) : _onClick(onClick) { };
 
         void onClick(std::function<void()> onClick)
         {
@@ -26,7 +26,7 @@ namespace common
     protected:
         std::function<void()> _onClick;
 
-        void handleLeftClick(Rect rect, const gfx::Renderer &renderer) const
+        void handleLeftClick(Rect rect, const gfx::Renderer& renderer) const
         {
             renderer.handleLeftClick(rect, _onClick);
         }

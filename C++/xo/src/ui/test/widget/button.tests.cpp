@@ -1,16 +1,16 @@
+#include "button.hpp"
+#include "mock-renderer.hpp"
+#include <functional>
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
-#include "mock-renderer.hpp"
-#include "button.hpp"
 #include <string>
-#include <functional>
 
 using testing::_;
 
 struct ButtonWidget : public testing::Test
 {
     const mock::MockRenderer renderer;
-    const Rect rect = {0, 0, 100, 100};
+    const Rect rect = { 0, 0, 100, 100 };
     const std::string text = "text";
     const std::function<void()> onClick;
 
@@ -29,17 +29,13 @@ TEST_F(ButtonWidget, Should_Fire_Click_Event_On_Click)
 {
     bool clicked = false;
 
-    const auto onClick = [&]()
-    {
-        clicked = true;
-    };
-
-    widget.onClick(onClick);
+    widget.onClick([&]() { clicked = true; });
 
     EXPECT_CALL(renderer, handleLeftClick(_, _))
         .WillOnce(testing::Invoke(
-            [](const Rect &, const std::function<void()> &callback)
-            { callback(); }));
+            [](const Rect&, const std::function<void()>& callback) {
+                callback();
+            }));
 
     widget.draw(renderer);
 

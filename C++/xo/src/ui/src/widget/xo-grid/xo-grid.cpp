@@ -1,13 +1,13 @@
 #include "xo-grid.hpp"
-#include "xo.hpp"
-#include "config.hpp"
 #include "cell.hpp"
+#include "config.hpp"
+#include "raylib-renderer.hpp"
+#include "types.hpp"
+#include "xo.hpp"
 #include <optional>
 #include <string>
-#include "types.hpp"
-#include "raylib-renderer.hpp"
 
-widget::XOGrid::XOGrid(xo::XO *xo) : _xo(xo)
+widget::XOGrid::XOGrid(xo::XO* xo) : _xo(xo)
 {
     _cells.resize(_xo->size());
 
@@ -16,7 +16,7 @@ widget::XOGrid::XOGrid(xo::XO *xo) : _xo(xo)
             initCell(i, j);
 }
 
-void widget::XOGrid::draw(const gfx::Renderer &renderer) const
+void widget::XOGrid::draw(const gfx::Renderer& renderer) const
 {
     for (auto i = 0; i < _xo->size(); i++)
         for (auto j = 0; j < _xo->size(); j++)
@@ -29,10 +29,11 @@ void widget::XOGrid::initCell(int i, int j)
     const float x = cellSize() * i + padding;
     const float y = cellSize() * j + padding;
     const float size = cellSize() - padding * 2;
-    const Rect rect = {x, y, size, size};
+    const Rect rect = { x, y, size, size };
 
-    const auto placeNextValue = [this, i, j]()
-    {
+    auto cell = std::make_unique<widget::Cell>(rect);
+
+    cell->onClick([this, i, j]() {
         auto tilePlaced = _xo->placeNext(i, j);
 
         if (tilePlaced)
@@ -40,11 +41,7 @@ void widget::XOGrid::initCell(int i, int j)
 
         if (_onAfterTileClick)
             _onAfterTileClick();
-    };
-
-    auto cell = std::make_unique<widget::Cell>(rect);
-
-    cell->onClick(placeNextValue);
+    });
 
     _cells[i].push_back(std::move(cell));
 }

@@ -1,20 +1,19 @@
 #pragma once
 
-#include "xo.hpp"
-#include "drawable.hpp"
-#include "config.hpp"
-#include <optional>
-#include <memory>
 #include "clickable.hpp"
-#include "types.hpp"
+#include "config.hpp"
 #include "drawable.hpp"
+#include "types.hpp"
 #include "xo-value.hpp"
+#include "xo.hpp"
+#include <memory>
+#include <optional>
 
 namespace widget
 {
     struct Cell : common::Clickable, common::Drawable
     {
-        Cell(Rect rect) : _rect(rect), common::Clickable(nullptr) {}
+        Cell(Rect rect) : _rect(rect), common::Clickable(nullptr) { }
 
         Cell(Rect rect, xo::XOValue value)
             : _rect(rect), common::Clickable(nullptr)
@@ -28,7 +27,7 @@ namespace widget
             setValue(value);
         }
 
-        void draw(const gfx::Renderer &renderer) const override;
+        void draw(const gfx::Renderer& renderer) const override;
         void setValue(xo::XOValue value);
 
     private:

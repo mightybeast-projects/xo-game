@@ -1,9 +1,9 @@
 #pragma once
 
-#include <memory>
 #include "button.hpp"
-#include "screen.hpp"
 #include "renderer.hpp"
+#include "screen.hpp"
+#include <memory>
 
 namespace screen
 {

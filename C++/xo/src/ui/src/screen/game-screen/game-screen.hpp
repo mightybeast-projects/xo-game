@@ -1,10 +1,10 @@
 #pragma once
 
 #include "button.hpp"
+#include "restart-dialog.hpp"
+#include "screen.hpp"
 #include "xo-grid.hpp"
 #include <memory>
-#include "screen.hpp"
-#include "restart-dialog.hpp"
 
 namespace screen
 {

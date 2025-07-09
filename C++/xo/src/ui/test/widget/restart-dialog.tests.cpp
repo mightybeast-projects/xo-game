@@ -1,8 +1,8 @@
-#include <gmock/gmock.h>
-#include <gtest/gtest.h>
 #include "restart-dialog.hpp"
 #include "mock-renderer.hpp"
 #include "xo.hpp"
+#include <gmock/gmock.h>
+#include <gtest/gtest.h>
 
 using testing::_;
 
@@ -23,7 +23,8 @@ TEST_F(RestartDialog, Should_Not_Be_Drawn_By_Default)
     widget.draw(renderer);
 }
 
-TEST_F(RestartDialog, Should_Draw_Message_Box_With_Draw_Message_If_XO_Game_Has_Ended_In_Draw)
+TEST_F(RestartDialog,
+    Should_Draw_Message_Box_With_Draw_Message_If_XO_Game_Has_Ended_In_Draw)
 {
     xo->place(0, 0, xo::O);
     xo->place(0, 1, xo::X);
@@ -44,7 +45,8 @@ TEST_F(RestartDialog, Should_Draw_Message_Box_With_Draw_Message_If_XO_Game_Has_E
     widget.draw(renderer);
 }
 
-TEST_F(RestartDialog, Should_Draw_Message_Box_With_X_Player_Won_Message_If_X_Player_Won)
+TEST_F(RestartDialog,
+    Should_Draw_Message_Box_With_X_Player_Won_Message_If_X_Player_Won)
 {
     xo->place(0, 0, xo::X);
     xo->place(1, 1, xo::X);
@@ -57,7 +59,8 @@ TEST_F(RestartDialog, Should_Draw_Message_Box_With_X_Player_Won_Message_If_X_Pla
     widget.draw(renderer);
 }
 
-TEST_F(RestartDialog, Should_Draw_Message_Box_With_O_Player_Won_Message_If_O_Player_Won)
+TEST_F(RestartDialog,
+    Should_Draw_Message_Box_With_O_Player_Won_Message_If_O_Player_Won)
 {
     xo->place(0, 0, xo::O);
     xo->place(1, 1, xo::O);
@@ -78,12 +81,7 @@ TEST_F(RestartDialog, Should_Fire_Restart_Event_On_Restart_Button_Click)
 
     bool restarted = false;
 
-    const auto onRestart = [&]()
-    {
-        restarted = true;
-    };
-
-    widget.onRestart(onRestart);
+    widget.onRestart([&]() { restarted = true; });
 
     EXPECT_CALL(renderer, drawGuiMessageBox).WillOnce(::testing::Return(1));
 
@@ -100,12 +98,7 @@ TEST_F(RestartDialog, Should_Fire_Quit_Event_On_Quit_Button_Click)
 
     bool quit = false;
 
-    const auto onQuit = [&]()
-    {
-        quit = true;
-    };
-
-    widget.onQuit(onQuit);
+    widget.onQuit([&]() { quit = true; });
 
     EXPECT_CALL(renderer, drawGuiMessageBox).WillOnce(::testing::Return(2));
 

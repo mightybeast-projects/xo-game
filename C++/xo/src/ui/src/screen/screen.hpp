@@ -1,10 +1,10 @@
 #pragma once
 
+#include "drawable.hpp"
+#include "renderer.hpp"
 #include "screen-manager.hpp"
 #include <memory>
-#include "drawable.hpp"
 #include <vector>
-#include "renderer.hpp"
 
 namespace screen
 {
@@ -14,19 +14,19 @@ namespace screen
     {
         virtual ~Screen() = default;
 
-        inline virtual void setScreenManager(ScreenManager *screenManager)
+        inline virtual void setScreenManager(ScreenManager* screenManager)
         {
             _screenManager = screenManager;
         }
 
-        inline void draw(const gfx::Renderer &renderer) const override
+        inline void draw(const gfx::Renderer& renderer) const override
         {
-            for (auto &w : _widgets)
+            for (auto& w : _widgets)
                 w->draw(renderer);
         }
 
     protected:
-        screen::ScreenManager *_screenManager;
+        screen::ScreenManager* _screenManager;
         std::vector<std::unique_ptr<common::Drawable>> _widgets;
     };
 }

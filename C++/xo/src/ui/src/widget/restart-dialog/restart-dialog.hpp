@@ -8,7 +8,7 @@ namespace widget
 {
     struct RestartDialog : public common::Drawable
     {
-        RestartDialog(xo::XO *xo) : _xo(xo) {}
+        RestartDialog(xo::XO* xo) : _xo(xo) { }
 
         void onRestart(std::function<void()> onRestart)
         {
@@ -20,10 +20,10 @@ namespace widget
             _onQuit = onQuit;
         }
 
-        void draw(const gfx::Renderer &renderer) const override;
+        void draw(const gfx::Renderer& renderer) const override;
 
     private:
-        xo::XO *const _xo;
+        xo::XO* const _xo;
 
         std::function<void()> _onRestart;
         std::function<void()> _onQuit;

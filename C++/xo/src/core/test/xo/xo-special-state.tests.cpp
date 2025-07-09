@@ -23,7 +23,8 @@ TEST_F(XOGame, Should_Not_Be_In_Draw_State_If_There_Is_A_Winner)
     EXPECT_FALSE(xo.isInDrawState());
 }
 
-TEST_F(XOGame, Should_Be_In_Draw_State_If_All_Cells_Are_Occupied_And_There_Is_No_Winner)
+TEST_F(XOGame,
+    Should_Be_In_Draw_State_If_All_Cells_Are_Occupied_And_There_Is_No_Winner)
 {
     xo.place(0, 0, xo::O);
     xo.place(0, 1, xo::X);
