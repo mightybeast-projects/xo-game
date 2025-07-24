@@ -1,6 +1,6 @@
-[submodule "C++/xo/lib/raylib"]
-	path = C++/xo/src/ui/lib/raylib
+[submodule "src/ui/lib/raylib"]
+	path = src/ui/lib/raylib
 	url = https://github.com/raysan5/raylib.git
-[submodule "C++/xo/lib/raygui"]
-	path = C++/xo/src/ui/lib/raygui
+[submodule "src/ui/lib/raygui"]
+	path = src/ui/lib/raygui
 	url = https://github.com/raysan5/raygui.git
