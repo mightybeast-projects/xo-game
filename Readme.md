@@ -18,9 +18,10 @@ TicTacToe game clone. Nothing really special, except I tried to go "all in" with
 
 ## 🎮 **How to play**
 
-Clone this repo, build with CMake and run:
+Clone this repo, pull github submodules, build with CMake and run:
 
 ```
+$ git submodule update --recursive
 $ cmake -B build -S .
 $ cd build && make
 $ cd src/ui && ./xo-game
