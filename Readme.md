@@ -1,6 +1,6 @@
 # ❎ **XO** ⏺️
 
-<img src="src/ui/demo.gif" height="300">
+<img src="src/ui/demo.gif" height="500">
 
 ## 📃 Description
 
